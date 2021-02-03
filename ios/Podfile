@@ -7,6 +7,9 @@ target 'AwesomeProject' do
   config = use_native_modules!
 
   use_react_native!(:path => config["reactNativePath"])
+  
+  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
+
 
   target 'AwesomeProjectTests' do
     inherit! :complete

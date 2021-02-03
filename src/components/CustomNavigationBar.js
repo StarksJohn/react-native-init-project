@@ -40,7 +40,7 @@ const CustomNavigationBar = (props) => {
     /*The async keyword cannot be added to the first parameter https://juejin.im/post/6844903985338400782#heading-27 */
     () => {
       //todo
-      console.log('CustomNavigationBar componentDidMount props=', props);
+      console.log('CustomNavigationBar componentDidMount ');
 
       //componentWillUnmount
       return () => {
@@ -54,20 +54,16 @@ const CustomNavigationBar = (props) => {
   componentDidUpdate
   */
   useEffect(() => {
-    // console.log('CustomNavigationBar componentDidUpdate');
+    // console.log('CustomNavigationBar componentDidUpdate props=', props);
   });
 
+  console.log('CustomNavigationBar render props=', props);
   //render
   return (
-    // <Appbar.Header>
-    //   {/*Whether to show the left arrow 是否显示左箭头*/}
-    //   {previous ? <Appbar.BackAction onPress={navigation.goBack} /> : null}
-    //   <Appbar.Content title={scene.descriptor?.options?.headerTitle} />
-    // </Appbar.Header>
     <Appbar.Header>
       {/*Whether to show the left arrow 是否显示左箭头*/}
       {previous ? <Appbar.BackAction onPress={navigation.goBack} /> : null}
-      <Appbar.Content title={scene.descriptor?.options?.headerTitle} />
+      <Appbar.Content title={scene?.descriptor?.options?.headerTitle} />
       {/*https://callstack.github.io/react-native-paper/integrate-app-bar-with-react-navigation.html hamburger menu*/}
       {/*{!previous ? (*/}
       {/*  <Menu*/}

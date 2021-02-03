@@ -1,21 +1,17 @@
 import React, {useEffect} from 'react';
-import {View, Text, Button, StyleSheet, StatusBar} from 'react-native';
+import {View, Text, Button, StyleSheet} from 'react-native';
 import {useTheme} from '@react-navigation/native';
-import CustomNavigationBar from '../components/CustomNavigationBar';
 import useNavFocusListener from '../components/useNavFocusListener';
+import CustomNavigationBar from '../components/CustomNavigationBar';
 import routes from '../routes/routes';
 
-const HomePage = ({navigation}) => {
-  const {colors} = useTheme();
+const DetailsPage = ({navigation}) => {
   const {setOptions} = navigation; //在具体页面内设置 ScreenOptions https://www.jianshu.com/p/a2582f8b16fd
-  const theme = useTheme();
+  const {colors} = useTheme();
 
   useNavFocusListener({
     onFocus: () => {
-      console.log('HomePage.js onFocus isFocused=', navigation.isFocused());
-      // setOptions({ no effect
-      //   headerShown: false,
-      // });
+      console.log('DetailsPage.js onFocus isFocused=', navigation.isFocused());
     },
     unfocused: () => {
       console.log('MinePage.js unfocused isFocused=', navigation.isFocused());
@@ -29,7 +25,12 @@ const HomePage = ({navigation}) => {
     /*The async keyword cannot be added to the first parameter https://juejin.im/post/6844903985338400782#heading-27 */
     () => {
       //todo
-      console.log('HomePage componentDidMount ');
+      console.log('DetailsScreen componentDidMount navigation=', navigation);
+      // setOptions({
+      //   header: (props) => <CustomNavigationBar {...props} />,
+      //   headerTitle: routes.DetailsPage.headerTitle,
+      //   headerShown: true,
+      // });
 
       //componentWillUnmount
       return () => {
@@ -41,19 +42,12 @@ const HomePage = ({navigation}) => {
 
   return (
     <View style={styles.container}>
-      {/*<StatusBar barStyle={theme.dark ? 'light-content' : 'dark-content'} />*/}
-      <Text style={{color: colors.text}}>HomePage</Text>
-      <Button
-        title="Go to details screen"
-        onPress={() => {
-          routes.push(navigation, routes.DetailsPage.routeName);
-        }}
-      />
+      <Text>Details Screen</Text>
     </View>
   );
 };
 
-export default HomePage;
+export default DetailsPage;
 
 const styles = StyleSheet.create({
   container: {

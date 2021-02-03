@@ -10,13 +10,13 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@react-native-community/async-storage": "^1.9.0",
     "@react-native-community/masked-view": "^0.1.6",
     "@react-native-community/toolbar-android": "^0.1.0-rc.2",
     "@react-navigation/drawer": "^5.1.1",
     "@react-navigation/material-bottom-tabs": "^5.1.6",
     "@react-navigation/native": "^5.0.6",
     "@react-navigation/stack": "^5.0.6",
+    "RNProjectTools": "git+https://github.com/cham1985/RNProjectTools.git",
     "prop-types": "^15.7.2",
     "react": "16.13.1",
     "react-native": "0.63.4",

@@ -22,10 +22,16 @@ import MainTabNavigator from './routes/MainTabNavigator';
 import {ThemeContext} from './context/themeContext';
 import {Provider as StoreProvider} from 'react-redux';
 import {createStackNavigator} from '@react-navigation/stack';
-import * as routes from './routes/routes';
+import routes from './routes/routes';
 import constant from './constants/constant';
+import CustomNavigationBar from './components/CustomNavigationBar';
+import WelcomePage from './pages/WelcomePage';
+import {appStyle, tool, asyncStorage} from 'RNProjectTools';
+import {createDrawerNavigator} from '@react-navigation/drawer';
+import MainiStack from './routes/MainStack';
 
 const Stack = createStackNavigator();
+const Drawer = createDrawerNavigator();
 
 const App = () => {
   const [isDarkTheme, setIsDarkTheme] = useState(false);
@@ -80,7 +86,7 @@ const App = () => {
     colors: {
       ...NavigationDefaultTheme.colors,
       ...PaperDefaultTheme.colors,
-      background: '#ffffff',
+      // background: '#FFB6C1',
       text: '#333333',
     },
   };
@@ -91,12 +97,13 @@ const App = () => {
     colors: {
       ...NavigationDarkTheme.colors,
       ...PaperDarkTheme.colors,
-      background: '#333333',
+      primary: '#333333',
       text: '#ffffff',
     },
   };
 
   const theme = isDarkTheme ? CustomDarkTheme : CustomDefaultTheme;
+  console.log('App.js theme=', theme);
 
   // 切换主题模块,不会因为当前控件重绘而重新创建
   const themeContext = React.useMemo(
@@ -112,19 +119,26 @@ const App = () => {
 
   useEffect(() => {
     console.log('App.js componentDidMount');
-    // setTimeout(async () => {
-    //   const [err_initialRouteName, data_initialRouteName] = await tool.to(
-    //     asyncStorage.getItem(constant.initialRouteName),
-    //   );
-    //   console.log(
-    //     'App.js componentDidMount data_initialRouteName=',
-    //     data_initialRouteName,
-    //     ' err_initialRouteName=',
-    //     err_initialRouteName,
-    //   );
-    //   if (data_initialRouteName) {
-    //   }
-    // }, 1000);
+    const get_initialRouteName = async () => {
+      const [err_initialRouteName, data_initialRouteName] = await tool.to(
+        asyncStorage.getItem(constant.initialRouteName),
+      );
+      console.log(
+        'App.js componentDidMount data_initialRouteName=',
+        data_initialRouteName,
+        ' err_initialRouteName=',
+        err_initialRouteName,
+      );
+      if (data_initialRouteName) {
+        console.log(
+          'App.js setInitialRouteName routes.MainTabNavigator.routeName',
+        );
+        setInitialRouteName(routes.MainTabNavigator.routeName);
+      } else {
+        setInitialRouteName(routes.WelcomePage.routeName);
+      }
+    };
+    get_initialRouteName().then();
   }, []);
 
   return !initialRouteName ? (
@@ -150,27 +164,17 @@ const App = () => {
       <ThemeContext.Provider value={themeContext}>
         <NavigationContainer theme={theme}>
           {/*{loginState.userToken !== null ? ( //已登录路由栈*/}
-          {/*  <Drawer.Navigator 暂时隐藏  @react-navigation/drawer 的使用,以后要用再打开*/}
-          {/*    minSwipeDistance={0}*/}
-          {/*    drawerContent={props => <DrawerContent {...props} />}>*/}
-          {/*    <Drawer.Screen name="HomeDrawer" component={MainTabScreen} />*/}
-          {/*    <Drawer.Screen name="SupportScreen" component={SupportScreen} />*/}
-          {/*    <Drawer.Screen name="SettingsScreen" component={SettingsScreen} />*/}
-          {/*    <Drawer.Screen name="BookmarkScreen" component={BookmarkScreen} />*/}
-          {/*  </Drawer.Navigator>*/}
+          {/*暂时隐藏  @react-navigation/drawer 的使用,以后要用再打开*/}
+          {/*<Drawer.Navigator*/}
+          {/*  minSwipeDistance={0}*/}
+          {/*  drawerContent={(props) => null}>*/}
+          {/*  <Drawer.Screen name="HomeDrawer" component={MainTabNavigator} />*/}
+          {/*</Drawer.Navigator>*/}
           {/*) : (*/}
           {/*  //未登录路由栈*/}
           {/*  <RootStackScreen />*/}
           {/*)}*/}
-          <Stack.Navigator initialRouteName={initialRouteName}>
-            <Stack.Screen
-              name={routes.MainTabNavigator.routeName}
-              component={MainTabNavigator}
-              options={({route}) => ({
-                // headerShown: false
-              })}
-            />
-          </Stack.Navigator>
+          <MainiStack initialRouteName={initialRouteName} />
         </NavigationContainer>
       </ThemeContext.Provider>
     </PaperProvider>
