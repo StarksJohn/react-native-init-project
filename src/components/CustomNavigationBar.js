@@ -16,6 +16,7 @@ import {Appbar, Menu} from 'react-native-paper';
 
 /**
  * 基于 react-native-paper 的自定义导航栏 https://callstack.github.io/react-native-paper/integrate-app-bar-with-react-navigation.html
+ * 坑: 无法跟着页面做Push进来的动画
  * @param props
  * @param parentRef
  * @returns {*}

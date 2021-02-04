@@ -6,6 +6,7 @@ import WelcomePage from '../pages/WelcomePage';
 import CustomNavigationBar from '../components/CustomNavigationBar';
 import MainTabNavigator from './MainTabNavigator';
 import DetailsPage from '../pages/DetailsPage';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 const Stack = createStackNavigator();
 
@@ -15,15 +16,20 @@ const MainStack = ({initialRouteName}) => {
   return (
     <Stack.Navigator
       initialRouteName={initialRouteName}
-      // 通用的导航栏的样式,可根据暗黑模式改变背景色和title颜色
+      // 通用的导航栏的样式,可根据暗黑模式改变背景色和title颜色 https://www.jianshu.com/p/a2582f8b16fd
       screenOptions={{
         headerStyle: {
           backgroundColor: colors.primary,
         },
-        headerTintColor: '#fff',
+        headerTintColor: colors.text,
         headerTitleStyle: {
           fontWeight: 'bold',
         },
+        headerBackTitleVisible: false,
+        // headerLeft: () => (
+        //   //自定义左上角返回按钮
+        //   <Icon.Button name="ios-menu" size={25} backgroundColor="#009387" />
+        // ),
       }}>
       {/*所有 Stack.Screen 共用 Stack.Navigator里的同一个 导航栏*/}
       <Stack.Screen

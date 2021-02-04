@@ -86,7 +86,8 @@ const App = () => {
     colors: {
       ...NavigationDefaultTheme.colors,
       ...PaperDefaultTheme.colors,
-      // background: '#FFB6C1',
+      accent: appStyle.appThemeColor,
+      primary: appStyle.pageBackgroundColor,
       text: '#333333',
     },
   };
@@ -98,6 +99,7 @@ const App = () => {
       ...NavigationDarkTheme.colors,
       ...PaperDarkTheme.colors,
       primary: '#333333',
+      accent: appStyle.appThemeColor,
       text: '#ffffff',
     },
   };

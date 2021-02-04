@@ -25,7 +25,6 @@ const MainTabNavigator = (props) => {
     /*The async keyword cannot be added to the first parameter https://juejin.im/post/6844903985338400782#heading-27 */
     () => {
       //todo
-
       //componentWillUnmount
       return () => {
         console.log('MainTabNavigator componentWillUnmount');
@@ -66,9 +65,12 @@ const MainTabNavigator = (props) => {
   const tabBarColor = colors.primary;
 
   return (
+    // https://reactnavigation.org/docs/material-bottom-tab-navigator/
     <Tab.Navigator
       initialRouteName={routes.HomePage.routeName}
-      activeColor="#fff">
+      shifting={true} //是否开启动效,也就是选中时 不显示text
+      activeColor={colors.accent}
+      inactiveColor={colors.text}>
       <Tab.Screen
         key={routes.HomePage.routeName}
         name={routes.HomePage.routeName}

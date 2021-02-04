@@ -1,9 +1,9 @@
 import React, {useEffect} from 'react';
 import {View, Text, Button, StyleSheet, StatusBar} from 'react-native';
 import {useTheme} from '@react-navigation/native';
-import CustomNavigationBar from '../components/CustomNavigationBar';
 import useNavFocusListener from '../components/useNavFocusListener';
 import routes from '../routes/routes';
+import SafeView from '../components/SafeView';
 
 const HomePage = ({navigation}) => {
   const {colors} = useTheme();
@@ -40,7 +40,7 @@ const HomePage = ({navigation}) => {
   );
 
   return (
-    <View style={styles.container}>
+    <SafeView>
       {/*<StatusBar barStyle={theme.dark ? 'light-content' : 'dark-content'} />*/}
       <Text style={{color: colors.text}}>HomePage</Text>
       <Button
@@ -49,7 +49,7 @@ const HomePage = ({navigation}) => {
           routes.push(navigation, routes.DetailsPage.routeName);
         }}
       />
-    </View>
+    </SafeView>
   );
 };
 

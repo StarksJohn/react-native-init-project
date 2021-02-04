@@ -13,7 +13,7 @@ export default {
     headerTitle: '我的',
     rightComp: (
       <Button
-        color="#fff"
+        color="red"
         title="右按钮"
         onPress={(e) => {
           console.log('routes.js MinePage rightComp onPress e=', e);

@@ -7,6 +7,7 @@ import routes from '../routes/routes';
 import {EventListener} from 'RNProjectTools';
 import constant from '../constants/constant';
 import {ThemeContext} from '../context/themeContext';
+import SafeView from '../components/SafeView';
 
 const MinePage = (props) => {
   const {navigation, route} = props;
@@ -42,14 +43,14 @@ const MinePage = (props) => {
   );
 
   return (
-    <View style={styles.container}>
+    <SafeView>
       {/*<StatusBar barStyle={theme.dark ? 'light-content' : 'dark-content'} />*/}
       <Text style={{color: colors.text}}>MinePage</Text>
       {/*<Button*/}
       {/*  title="Go to details screen"*/}
       {/*  onPress={() => navigation.navigate('Details')}*/}
       {/*/>*/}
-    </View>
+    </SafeView>
   );
 };
 

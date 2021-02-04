@@ -2,6 +2,7 @@ import React, {useEffect, useCallback} from 'react';
 import {StatusBar, Platform} from 'react-native';
 import {appStyle} from 'RNProjectTools';
 import {useFocusEffect} from '@react-navigation/native';
+import {useTheme} from '@react-navigation/native';
 
 useNavFocusListener.propTypes = {};
 
@@ -24,9 +25,10 @@ export default function useNavFocusListener(props) {
     onFocus,
     unfocused,
     isDarkStatusBar,
-    isLightStatusBar = true,
+    isLightStatusBar,
     statusBarBackgroundColor = appStyle.appThemeColor,
   } = props;
+  const theme = useTheme();
 
   // https://blog.csdn.net/Cui_xing_tian/article/details/105294567
   useFocusEffect(
@@ -45,11 +47,17 @@ export default function useNavFocusListener(props) {
 
   const _onFocus = useCallback(() => {
     console.log('useNavFocusListener useCallback,onFocus');
+    let _isLightStatusBar = isLightStatusBar,
+      _isDarkStatusBar = isDarkStatusBar;
+    if (theme.dark) {
+      //暗黑模式
+      _isLightStatusBar = true;
+    }
 
-    if (isLightStatusBar) {
+    if (_isLightStatusBar) {
       Platform.OS === 'android' && StatusBar.setTranslucent(false);
       StatusBar.setBarStyle('light-content', true);
-    } else if (isDarkStatusBar) {
+    } else if (_isDarkStatusBar) {
       Platform.OS === 'android' && StatusBar.setTranslucent(false);
       StatusBar.setBarStyle('dark-content', true);
     }

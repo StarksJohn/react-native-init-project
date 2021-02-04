@@ -4,6 +4,7 @@ import {useTheme} from '@react-navigation/native';
 import useNavFocusListener from '../components/useNavFocusListener';
 import CustomNavigationBar from '../components/CustomNavigationBar';
 import routes from '../routes/routes';
+import SafeView from '../components/SafeView';
 
 const DetailsPage = ({navigation}) => {
   const {setOptions} = navigation; //在具体页面内设置 ScreenOptions https://www.jianshu.com/p/a2582f8b16fd
@@ -41,9 +42,9 @@ const DetailsPage = ({navigation}) => {
   );
 
   return (
-    <View style={styles.container}>
+    <SafeView>
       <Text>Details Screen</Text>
-    </View>
+    </SafeView>
   );
 };
 
