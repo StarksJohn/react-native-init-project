@@ -29,51 +29,21 @@ import WelcomePage from './pages/WelcomePage';
 import {appStyle, tool, asyncStorage} from 'RNProjectTools';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import MainiStack from './routes/MainStack';
+import dva from './dva/dva';
+import models from './dva/models/models';
 
-const Stack = createStackNavigator();
-const Drawer = createDrawerNavigator();
+// const Drawer = createDrawerNavigator();
+
+const dvaApp = dva.createApp({
+  initialState: {},
+  models: models,
+  enableLog: false,
+});
+const store = dvaApp.getStore();
 
 const App = () => {
   const [isDarkTheme, setIsDarkTheme] = useState(false);
   const [initialRouteName, setInitialRouteName] = useState(null);
-
-  // const initialRootState = {
-  //   isLoading: true,
-  //   userName: null,
-  //   userToken: null,
-  // };
-  // const rootReducer = (prevState, action) => {
-  //   switch (action.type) {
-  //     case 'RETRIEVE_TOKEN':
-  //       return {
-  //         ...prevState,
-  //         userToken: action.token,
-  //         isLoading: false,
-  //       };
-  //     case 'LOGIN':
-  //       return {
-  //         ...prevState,
-  //         userName: action.id,
-  //         userToken: action.token,
-  //         isLoading: false,
-  //       };
-  //     case 'LOGOUT':
-  //       return {
-  //         ...prevState,
-  //         userName: null,
-  //         userToken: null,
-  //         isLoading: false,
-  //       };
-  //     case 'REGISTER':
-  //       return {
-  //         ...prevState,
-  //         userName: action.id,
-  //         userToken: action.token,
-  //         isLoading: false,
-  //       };
-  //   }
-  // };
-  // const [rootState, dispatch] = useReducer(rootReducer, initialRootState);
 
   /**
    * https://callstack.github.io/react-native-paper/theming-with-react-navigation.html
@@ -110,7 +80,7 @@ const App = () => {
   // 切换主题模块,不会因为当前控件重绘而重新创建
   const themeContext = React.useMemo(
     () => ({
-      //切换 正常 | 暗黑 模式的方法
+      //切换 正常 | 暗黑 模式 Toggle normal | dark mode
       toggleTheme: () => {
         console.log('App.js toggleTheme 切换了主题');
         setIsDarkTheme((isDarkTheme) => !isDarkTheme);
@@ -155,31 +125,22 @@ const App = () => {
       <ActivityIndicator size="large" />
     </View>
   ) : (
-    <PaperProvider theme={theme}>
-      {/*https://callstack.github.io/react-native-paper/theming-with-react-navigation.html
+    <StoreProvider store={store}>
+      <PaperProvider theme={theme}>
+        {/*https://callstack.github.io/react-native-paper/theming-with-react-navigation.html
           Context Provider should be imported also at the entry point, as we want it to wrap the whole app, for the theme values to be accessible at
            every component that we have.
           上下文提供者也应该在入口点导入，因为我们希望它包装整个应用程序，以便在我们拥有的每个组件上都可以访问主题值。
           Context is wired into the local state of our main component, so that its values could be propagated throughout the entire application 上下文被连接到我们的主要组件的本地状态中，因此它的值可以在整个应用程序中传播
           eg: 在 DrawerContent.js 可以 调 toggleTheme 方法: const { toggleTheme } = React.useContext(ThemeContext);
           */}
-      <ThemeContext.Provider value={themeContext}>
-        <NavigationContainer theme={theme}>
-          {/*{loginState.userToken !== null ? ( //已登录路由栈*/}
-          {/*暂时隐藏  @react-navigation/drawer 的使用,以后要用再打开*/}
-          {/*<Drawer.Navigator*/}
-          {/*  minSwipeDistance={0}*/}
-          {/*  drawerContent={(props) => null}>*/}
-          {/*  <Drawer.Screen name="HomeDrawer" component={MainTabNavigator} />*/}
-          {/*</Drawer.Navigator>*/}
-          {/*) : (*/}
-          {/*  //未登录路由栈*/}
-          {/*  <RootStackScreen />*/}
-          {/*)}*/}
-          <MainiStack initialRouteName={initialRouteName} />
-        </NavigationContainer>
-      </ThemeContext.Provider>
-    </PaperProvider>
+        <ThemeContext.Provider value={themeContext}>
+          <NavigationContainer theme={theme}>
+            <MainiStack initialRouteName={initialRouteName} />
+          </NavigationContainer>
+        </ThemeContext.Provider>
+      </PaperProvider>
+    </StoreProvider>
   );
 };
 
