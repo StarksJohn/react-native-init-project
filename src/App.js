@@ -18,16 +18,11 @@ import {
   DefaultTheme as PaperDefaultTheme,
   DarkTheme as PaperDarkTheme,
 } from 'react-native-paper';
-import MainTabNavigator from './routes/MainTabNavigator';
 import {ThemeContext} from './context/themeContext';
 import {Provider as StoreProvider} from 'react-redux';
-import {createStackNavigator} from '@react-navigation/stack';
 import routes from './routes/routes';
 import constant from './constants/constant';
-import CustomNavigationBar from './components/CustomNavigationBar';
-import WelcomePage from './pages/WelcomePage';
 import {appStyle, tool, asyncStorage} from 'RNProjectTools';
-import {createDrawerNavigator} from '@react-navigation/drawer';
 import MainiStack from './routes/MainStack';
 import dva from './dva/dva';
 import models from './dva/models/models';

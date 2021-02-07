@@ -83,12 +83,13 @@ const WelcomePage = (props) => {
       );
 
       //todo
-      asyncStorage
-        .setItem(constant.initialRouteName, routes.MainTabNavigator.routeName)
-        .then();
+
       setTimeout(() => {
         routes.reset(navigation, routes.MainTabNavigator.routeName);
-      }, 3000);
+        asyncStorage
+          .setItem(constant.initialRouteName, routes.MainTabNavigator.routeName)
+          .then();
+      }, 5000);
       //componentWillUnmount
       return () => {
         console.log('WelcomePage componentWillUnmount');

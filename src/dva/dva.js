@@ -1,6 +1,4 @@
 import {create} from 'dva-core';
-// import {createLogger} from "redux-logger";
-import immer from 'dva-immer';
 
 let app;
 let store;
@@ -13,21 +11,23 @@ function createApp(opt) {
   //   opt.onAction = [createLogger()]
   // }
   app = create(opt);
-  app.use(immer());
 
   if (!registered) {
     opt.models.forEach((model) => app.model(model));
   }
   registered = true;
+
+  //https://dvajs.com/api/#app-dva-opts
+  app.use({
+    onError(err) {
+      console.log('dva.js onError=', err);
+    },
+  });
+
   app.start();
 
   store = app._store;
   app.getStore = () => store;
-  app.use({
-    onError(err) {
-      console.log(err);
-    },
-  });
 
   dispatch = store.dispatch;
   app.dispatch = dispatch;
@@ -36,7 +36,14 @@ function createApp(opt) {
 
 export default {
   createApp,
-  getDispatch() {
-    return app.dispatch;
+  //任何地方都可以访问到dispatch
+  getDispatch(p) {
+    return app.dispatch(p);
+  },
+  //任何地方都可访问到的所有model的 集合
+  getState: () => {
+    let state = app.getStore().getState();
+    console.log('dva.js getState=', state);
+    return state;
   },
 };
