@@ -28,12 +28,16 @@ const SafeView = ({children}) => {
   // render
   return (
     <SafeAreaView
-      style={[appStyle.safeAreaView, {backgroundColor: colors.primary}]}>
+      style={[
+        appStyle.safeAreaView,
+        {backgroundColor: /* colors.primary*/ 'red'},
+      ]}>
       {
         avoidBlankSpaceAtTheBottomOfSafeAreaView({})
         // appStyle.pageStyle.backgroundColor,
       }
-      <View style={[Styles.page, {backgroundColor: colors.primary}]}>
+      <View
+        style={[Styles.page, {backgroundColor: /*colors.primary*/ '#F5F500'}]}>
         {children}
       </View>
     </SafeAreaView>
@@ -53,10 +57,10 @@ export const avoidBlankSpaceAtTheBottomOfSafeAreaView = ({color = '#fff'}) => {
     <View
       style={{
         width: '100%',
-        height: dp(200),
+        height: dp(100),
         position: 'absolute',
         bottom: 0,
-        backgroundColor: colors.primary,
+        backgroundColor: 'blue', // colors.primary,
       }}
     />
   );

@@ -9,6 +9,10 @@
 import React, {useEffect, useState, useReducer} from 'react';
 import {View, ActivityIndicator} from 'react-native';
 import {
+  SafeAreaProvider,
+  useSafeAreaInsets,
+} from 'react-native-safe-area-context';
+import {
   NavigationContainer,
   DefaultTheme as NavigationDefaultTheme,
   DarkTheme as NavigationDarkTheme,
@@ -25,7 +29,7 @@ import constant from './constants/constant';
 import {appStyle, tool, asyncStorage} from 'RNProjectTools';
 import MainiStack from './routes/MainStack';
 import dva from './dva/dva';
-import models from './dva/models/models';
+import models from './dva/models';
 
 // const Drawer = createDrawerNavigator();
 

@@ -5,8 +5,7 @@ import useNavFocusListener from '../components/useNavFocusListener';
 import routes from '../routes/routes';
 import SafeView from '../components/SafeView';
 import {useSelector, useDispatch} from 'react-redux';
-import {effects as testModel_effects, action} from '../dva/models/testModel';
-import dva from '../dva/dva';
+import {effects as testModel_effects, action} from '../dva/testModel';
 
 const HomePage = ({navigation}) => {
   const testModel = useSelector((state) => state.testModel);
@@ -18,7 +17,7 @@ const HomePage = ({navigation}) => {
   const test = useCallback(
     (payload) =>
       dispatch({
-        type: testModel_effects.test,
+        type: testModel_effects.saveSomeThing,
         action: action.pageName,
         payload,
         callback: (result) => {
@@ -49,18 +48,18 @@ const HomePage = ({navigation}) => {
       //todo
       console.log('HomePage componentDidMount ');
       setTimeout(() => {
-        test('首页111');
+        test('首页');
       }, 3000);
 
-      setTimeout(() => {
-        dva.getDispatch({
-          type: testModel_effects.test,
-          action: action.pageName,
-          payload: '445',
-          callback: (result) => {},
-        });
-        dva.getState();
-      }, 6000);
+      // setTimeout(() => {
+      //   dva.getDispatch({
+      //     type: testModel_effects.test,
+      //     action: action.pageName,
+      //     payload: '445',
+      //     callback: (result) => {},
+      //   });
+      //   dva.getState();
+      // }, 6000);
 
       //componentWillUnmount
       return () => {
