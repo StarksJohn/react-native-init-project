@@ -1,7 +1,6 @@
 /**
  * Sample React Native App
  * https://github.com/facebook/react-native
- *
  * @format
  * @flow
  */
@@ -30,8 +29,7 @@ import {appStyle, tool, asyncStorage} from 'RNProjectTools';
 import MainiStack from './routes/MainStack';
 import dva from './dva/dva';
 import models from './dva/models';
-
-// const Drawer = createDrawerNavigator();
+// const Drawer = createDrawerNavigator();保留 抽屉功能,以后使用; Keep the drawer function for later use
 
 const dvaApp = dva.createApp({
   initialState: {},
@@ -134,9 +132,11 @@ const App = () => {
           eg: 在 DrawerContent.js 可以 调 toggleTheme 方法: const { toggleTheme } = React.useContext(ThemeContext);
           */}
         <ThemeContext.Provider value={themeContext}>
-          <NavigationContainer theme={theme}>
-            <MainiStack initialRouteName={initialRouteName} />
-          </NavigationContainer>
+          <SafeAreaProvider>
+            <NavigationContainer theme={theme}>
+              <MainiStack initialRouteName={initialRouteName} />
+            </NavigationContainer>
+          </SafeAreaProvider>
         </ThemeContext.Provider>
       </PaperProvider>
     </StoreProvider>

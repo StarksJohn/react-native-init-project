@@ -1,14 +1,14 @@
 import React, {useEffect} from 'react';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
-import {createStackNavigator} from '@react-navigation/stack';
 import Icon from 'react-native-vector-icons/Ionicons';
 import HomePage from '../pages/HomePage';
 import MinePage from '../pages/MinePage';
 import routes from './routes';
 import CustomNavigationBar from '../components/CustomNavigationBar';
-import useNavFocusListener from '../components/useNavFocusListener';
 import {useTheme} from '@react-navigation/native';
-const HomeStack = createStackNavigator();
+import {Text} from 'react-native';
+import SafeView from '../components/SafeView';
+import {useAndroidBackHandler} from 'RNProjectTools';
 const Tab = createMaterialBottomTabNavigator();
 
 const MainTabNavigator = (props) => {
@@ -17,6 +17,14 @@ const MainTabNavigator = (props) => {
   const {state} = route;
   const {setOptions} = navigation; //在具体页面内设置 ScreenOptions https://www.jianshu.com/p/a2582f8b16fd
   const {colors} = useTheme();
+
+  /**
+   * 避免安卓用户在首页时按后退按键后直接退出app
+   * Prevent Android users from exiting the app directly after pressing the back button on the homepage
+   */
+  useAndroidBackHandler({
+    navigation,
+  });
 
   /**
    * componentDidMount && componentWillUnmount
@@ -78,9 +86,13 @@ const MainTabNavigator = (props) => {
         options={{
           tabBarLabel: '首页',
           tabBarColor: tabBarColor,
-          tabBarIcon: ({color}) => (
-            <Icon name="ios-home" color={color} size={22} />
-          ),
+          tabBarIcon: ({color, focused}) => {
+            console.log(
+              'MainTabNavigator.js HomePage tabBarIcon focused=',
+              focused,
+            );
+            return <Icon name="ios-home" color={color} size={22} />;
+          },
         }}
       />
       <Tab.Screen
@@ -92,30 +104,6 @@ const MainTabNavigator = (props) => {
           tabBarColor: tabBarColor,
           tabBarIcon: ({color}) => (
             <Icon name="ios-home" color={color} size={22} />
-          ),
-        }}
-      />
-      <Tab.Screen
-        key={routes.MinePage.routeName}
-        name={'1'}
-        component={MinePage}
-        options={{
-          tabBarLabel: '我的',
-          tabBarColor: '#009387',
-          tabBarIcon: ({color}) => (
-            <Icon name="ios-home" color={color} size={26} />
-          ),
-        }}
-      />
-      <Tab.Screen
-        key={routes.MinePage.routeName}
-        name={'2'}
-        component={MinePage}
-        options={{
-          tabBarLabel: '我的',
-          tabBarColor: '#009387',
-          tabBarIcon: ({color}) => (
-            <Icon name="ios-home" color={color} size={26} />
           ),
         }}
       />

@@ -25,19 +25,16 @@ const {dp} = appStyle;
 const SafeView = ({children}) => {
   const {colors} = useTheme();
 
-  // render
+  // SafeAreaView: 安全区外层的根视图
   return (
     <SafeAreaView
-      style={[
-        appStyle.safeAreaView,
-        {backgroundColor: /* colors.primary*/ 'red'},
-      ]}>
+      style={[appStyle.safeAreaView, {backgroundColor: colors.primary}]}>
       {
         avoidBlankSpaceAtTheBottomOfSafeAreaView({})
         // appStyle.pageStyle.backgroundColor,
       }
-      <View
-        style={[Styles.page, {backgroundColor: /*colors.primary*/ '#F5F500'}]}>
+      {/*安全区域*/}
+      <View style={[Styles.page, {backgroundColor: colors.primary}]}>
         {children}
       </View>
     </SafeAreaView>
@@ -46,6 +43,7 @@ const SafeView = ({children}) => {
 
 /**
  * Avoid a background color that is not white at the bottom on bangs devices such as ipx
+ * 避免在长屏手机上,安全区底部和物理屏幕底部有内边距时,内边距的背景色和安全区背景色不一致
  * @param color
  * @returns {*}
  */
@@ -57,10 +55,10 @@ export const avoidBlankSpaceAtTheBottomOfSafeAreaView = ({color = '#fff'}) => {
     <View
       style={{
         width: '100%',
-        height: dp(100),
+        height: appStyle.safeAreaInsets.bottom / 2,
         position: 'absolute',
         bottom: 0,
-        backgroundColor: 'blue', // colors.primary,
+        backgroundColor: colors.primary,
       }}
     />
   );

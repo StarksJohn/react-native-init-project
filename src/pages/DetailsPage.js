@@ -2,9 +2,8 @@ import React, {useEffect} from 'react';
 import {View, Text, Button, StyleSheet} from 'react-native';
 import {useTheme} from '@react-navigation/native';
 import useNavFocusListener from '../components/useNavFocusListener';
-import CustomNavigationBar from '../components/CustomNavigationBar';
-import routes from '../routes/routes';
 import SafeView from '../components/SafeView';
+import {useAndroidBackHandler} from 'RNProjectTools';
 
 const DetailsPage = ({navigation}) => {
   const {setOptions} = navigation; //在具体页面内设置 ScreenOptions https://www.jianshu.com/p/a2582f8b16fd
@@ -16,6 +15,14 @@ const DetailsPage = ({navigation}) => {
     },
     unfocused: () => {
       console.log('MinePage.js unfocused isFocused=', navigation.isFocused());
+    },
+  });
+
+  useAndroidBackHandler({
+    navigation,
+    handleBackPress: () => {
+      console.log('DetailsPage.js 拦截退出页面 事件');
+      return true;
     },
   });
 
@@ -43,7 +50,7 @@ const DetailsPage = ({navigation}) => {
 
   return (
     <SafeView>
-      <Text>Details Screen</Text>
+      <Text style={{color: colors.text}}>Details Screen</Text>
     </SafeView>
   );
 };

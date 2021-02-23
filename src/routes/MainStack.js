@@ -7,12 +7,15 @@ import CustomNavigationBar from '../components/CustomNavigationBar';
 import MainTabNavigator from './MainTabNavigator';
 import DetailsPage from '../pages/DetailsPage';
 import Icon from 'react-native-vector-icons/Ionicons';
+import {appStyle} from 'RNProjectTools';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 const Stack = createStackNavigator();
 
 const MainStack = ({initialRouteName}) => {
   const {colors} = useTheme();
-
+  appStyle.safeAreaInsets = useSafeAreaInsets();
+  console.log('MainStack.js safeAreaInsets =', appStyle.safeAreaInsets);
   return (
     <Stack.Navigator
       initialRouteName={initialRouteName}

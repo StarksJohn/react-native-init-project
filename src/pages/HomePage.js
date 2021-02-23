@@ -48,7 +48,7 @@ const HomePage = ({navigation}) => {
       //todo
       console.log('HomePage componentDidMount ');
       setTimeout(() => {
-        test('首页');
+        test('首页111');
       }, 3000);
 
       // setTimeout(() => {
