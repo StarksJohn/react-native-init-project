@@ -5,9 +5,10 @@
 import _ from 'lodash';
 import testModel from './testModel';
 import modelTools from './modelTools';
+import netInfoModel from './netInfoModel';
 
 const modelListOOTB = [];
-const customizedModelList = [testModel];
+const customizedModelList = [testModel, netInfoModel];
 let modelList = [];
 modelList = modelList.concat(modelListOOTB.filter((it) => _.isString(it)));
 modelList = modelList.concat(

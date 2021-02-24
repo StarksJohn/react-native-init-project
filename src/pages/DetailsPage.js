@@ -3,7 +3,7 @@ import {View, Text, Button, StyleSheet} from 'react-native';
 import {useTheme} from '@react-navigation/native';
 import useNavFocusListener from '../components/useNavFocusListener';
 import SafeView from '../components/SafeView';
-import {useAndroidBackHandler} from 'RNProjectTools';
+import {useAndroidBackHandler, BaseFlatList} from 'RNProjectTools';
 
 const DetailsPage = ({navigation}) => {
   const {setOptions} = navigation; //在具体页面内设置 ScreenOptions https://www.jianshu.com/p/a2582f8b16fd

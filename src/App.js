@@ -26,6 +26,7 @@ import {Provider as StoreProvider} from 'react-redux';
 import routes from './routes/routes';
 import constant from './constants/constant';
 import {appStyle, tool, asyncStorage} from 'RNProjectTools';
+import HttpConfig from './service/HttpConfig';
 import MainiStack from './routes/MainStack';
 import dva from './dva/dva';
 import models from './dva/models';

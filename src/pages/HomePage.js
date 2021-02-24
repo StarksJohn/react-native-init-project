@@ -6,9 +6,13 @@ import routes from '../routes/routes';
 import SafeView from '../components/SafeView';
 import {useSelector, useDispatch} from 'react-redux';
 import {effects as testModel_effects, action} from '../dva/testModel';
+import {HttpConfig} from 'react-native-easy-app';
 
 const HomePage = ({navigation}) => {
   const testModel = useSelector((state) => state.testModel);
+  const networkAvailable = useSelector(
+    (state) => state.netInfoModel.networkAvailable,
+  );
   const dispatch = useDispatch();
   const {colors} = useTheme();
   const {setOptions} = navigation; //在具体页面内设置 ScreenOptions https://www.jianshu.com/p/a2582f8b16fd
@@ -49,6 +53,7 @@ const HomePage = ({navigation}) => {
       console.log('HomePage componentDidMount ');
       setTimeout(() => {
         test('首页111');
+        console.log("HttpConfig['PHP']=", HttpConfig.PHP);
       }, 3000);
 
       // setTimeout(() => {
@@ -70,6 +75,8 @@ const HomePage = ({navigation}) => {
   );
 
   console.log('HomePage.js render testModel=', testModel);
+  console.log('HomePage.js render networkAvailable=', networkAvailable);
+
   return (
     <SafeView>
       <Text style={{color: colors.text}}>{testModel.pageName}</Text>
@@ -79,6 +86,9 @@ const HomePage = ({navigation}) => {
           routes.push(navigation, routes.DetailsPage.routeName);
         }}
       />
+      <Text style={{color: colors.text}}>
+        networkAvailable={JSON.stringify(networkAvailable)}
+      </Text>
     </SafeView>
   );
 };
