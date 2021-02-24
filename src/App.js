@@ -26,17 +26,9 @@ import {Provider as StoreProvider} from 'react-redux';
 import routes from './routes/routes';
 import constant from './constants/constant';
 import {appStyle, tool, asyncStorage} from 'RNProjectTools';
-import HttpConfig from './service/HttpConfig';
+import HttpConfig from './service/HttpConfig'; //创建默认的 HTTP配置实例
 import MainiStack from './routes/MainStack';
-import dva from './dva/dva';
-import models from './dva/models';
-// const Drawer = createDrawerNavigator();保留 抽屉功能,以后使用; Keep the drawer function for later use
-
-const dvaApp = dva.createApp({
-  initialState: {},
-  models: models,
-  enableLog: false,
-});
+import dvaApp from './dva/dvaApp';
 const store = dvaApp.getStore();
 
 const App = () => {

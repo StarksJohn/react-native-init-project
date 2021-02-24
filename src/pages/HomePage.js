@@ -52,7 +52,7 @@ const HomePage = ({navigation}) => {
       //todo
       console.log('HomePage componentDidMount ');
       setTimeout(() => {
-        test('首页111');
+        test('首页');
         console.log("HttpConfig['PHP']=", HttpConfig.PHP);
       }, 3000);
 

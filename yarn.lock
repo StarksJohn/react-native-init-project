@@ -664,9 +664,9 @@
     regenerator-transform "^0.14.2"
 
 "@babel/plugin-transform-runtime@^7.0.0":
-  version "7.13.6"
-  resolved "https://registry.npm.taobao.org/@babel/plugin-transform-runtime/download/@babel/plugin-transform-runtime-7.13.6.tgz?cache=0&sync_timestamp=1614102394496&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40babel%2Fplugin-transform-runtime%2Fdownload%2F%40babel%2Fplugin-transform-runtime-7.13.6.tgz#c11c806f023d2065bbcc9b751702f4008245951c"
-  integrity sha1-wRyAbwI9IGW7zJt1FwL0AIJFlRw=
+  version "7.13.7"
+  resolved "https://registry.npm.taobao.org/@babel/plugin-transform-runtime/download/@babel/plugin-transform-runtime-7.13.7.tgz#a856b53681da9193d98dfb03d8192b0a3f4cdd8a"
+  integrity sha1-qFa1NoHakZPZjfsD2BkrCj9M3Yo=
   dependencies:
     "@babel/helper-module-imports" "^7.12.13"
     "@babel/helper-plugin-utils" "^7.13.0"
@@ -733,9 +733,9 @@
     source-map-support "^0.5.16"
 
 "@babel/runtime@^7.0.0", "@babel/runtime@^7.8.4":
-  version "7.13.6"
-  resolved "https://registry.npm.taobao.org/@babel/runtime/download/@babel/runtime-7.13.6.tgz#86e0fad6cbb46a680e21c1aa4748717a058d345a"
-  integrity sha1-huD61su0amgOIcGqR0hxegWNNFo=
+  version "7.13.7"
+  resolved "https://registry.npm.taobao.org/@babel/runtime/download/@babel/runtime-7.13.7.tgz#d494e39d198ee9ca04f4dcb76d25d9d7a1dc961a"
+  integrity sha1-1JTjnRmO6coE9Ny3bSXZ16Hclho=
   dependencies:
     regenerator-runtime "^0.13.4"
 
@@ -1594,7 +1594,7 @@
 
 "RNProjectTools@git+https://github.com/cham1985/RNProjectTools.git":
   version "0.1.1"
-  resolved "git+https://github.com/cham1985/RNProjectTools.git#cfba32fdde4e91647621cf85c1aa9cc9d3105f74"
+  resolved "git+https://github.com/cham1985/RNProjectTools.git#fab14ed9e3a353d43851f3812322fd8791dc6073"
   dependencies:
     "@react-native-community/async-storage" "^1.9.0"
     dva-core "^2.0.4"
