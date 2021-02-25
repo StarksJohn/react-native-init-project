@@ -6,7 +6,8 @@ import routes from '../routes/routes';
 import SafeView from '../components/SafeView';
 import {useSelector, useDispatch} from 'react-redux';
 import {effects as testModel_effects, action} from '../dva/testModel';
-import {HttpConfig} from 'react-native-easy-app';
+import api from '../api/api';
+import {tool} from 'RNProjectTools';
 
 const HomePage = ({navigation}) => {
   const testModel = useSelector((state) => state.testModel);
@@ -51,10 +52,16 @@ const HomePage = ({navigation}) => {
     () => {
       //todo
       console.log('HomePage componentDidMount ');
-      setTimeout(() => {
+      setTimeout(async () => {
         test('首页');
-        console.log("HttpConfig['PHP']=", HttpConfig.PHP);
-      }, 3000);
+        {
+          const [err, data] = await tool.to(api.anime());
+          // console.log('HomePage.js api.anime data=', data);
+          if (data) {
+          } else {
+          }
+        }
+      }, 1000);
 
       // setTimeout(() => {
       //   dva.getDispatch({
