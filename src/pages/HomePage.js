@@ -7,7 +7,17 @@ import SafeView from '../components/SafeView';
 import {useSelector, useDispatch} from 'react-redux';
 import {effects as testModel_effects, action} from '../dva/testModel';
 import api from '../api/api';
-import {tool} from 'RNProjectTools';
+import {
+  tool,
+  appStyle,
+  XView,
+  XWidget,
+  XText,
+  XSize,
+  XTSize,
+  ResetStyle,
+} from 'RNProjectTools';
+import MyStyleSheet from '../style/MyStyleSheet';
 
 const HomePage = ({navigation}) => {
   const testModel = useSelector((state) => state.testModel);
@@ -96,6 +106,66 @@ const HomePage = ({navigation}) => {
       <Text style={{color: colors.text}}>
         networkAvailable={JSON.stringify(networkAvailable)}
       </Text>
+      <View
+        style={ResetStyle({
+          width: '100%',
+          height: 50,
+          backgroundColor: appStyle.randomColor(),
+        })}>
+        <Text
+          style={ResetStyle({
+            color: colors.text,
+            alignSelf: 'center',
+            fontSize: 16,
+          })}>
+          ResetStyle=
+          {
+            ResetStyle({
+              width: '100%',
+              height: 50,
+              backgroundColor: appStyle.randomColor(),
+            }).height
+          }
+        </Text>
+      </View>
+      <View
+        style={{
+          width: '100%',
+          height: appStyle.dp(50),
+          backgroundColor: appStyle.randomColor(),
+        }}>
+        <Text
+          style={{
+            color: colors.text,
+            alignSelf: 'center',
+            fontSize: appStyle.dp(16),
+          }}>
+          dp={appStyle.dp(50)} dp={appStyle.dp(16)}
+        </Text>
+      </View>
+      <View style={myStyleSheet.v}>
+        <Text style={myStyleSheet.text}>
+          myStyleSheet={styles.v.height} myStyleSheet=
+          {styles.v.fontSize}
+        </Text>
+      </View>
+      <XView
+        style={{
+          width: '100%',
+          height: 50,
+          // justifyContent: 'center',
+          // alignItems: 'center',
+          backgroundColor: appStyle.randomColor(),
+        }}>
+        <XText
+          style={{
+            color: colors.text,
+            alignSelf: 'center',
+            fontSize: 16,
+          }}
+          text={'XView'}
+        />
+      </XView>
     </SafeView>
   );
 };
@@ -103,9 +173,26 @@ const HomePage = ({navigation}) => {
 export default HomePage;
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+  v: {
+    width: '100%',
+    height: XSize(50),
+    backgroundColor: appStyle.randomColor(),
+  },
+  text: {
+    color: '#333',
+    alignSelf: 'center',
+    fontSize: XTSize(16),
+  },
+});
+const myStyleSheet = MyStyleSheet.create({
+  v: {
+    width: '100%',
+    height: 50,
+    backgroundColor: appStyle.randomColor(),
+  },
+  text: {
+    color: '#333',
+    alignSelf: 'center',
+    fontSize: 16,
   },
 });
