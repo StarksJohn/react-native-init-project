@@ -18,6 +18,7 @@ import {
   ResetStyle,
 } from 'RNProjectTools';
 import MyStyleSheet from '../style/MyStyleSheet';
+import {testJsCrash, sentryLog} from '../sentry/sentry';
 
 const HomePage = ({navigation}) => {
   const testModel = useSelector((state) => state.testModel);
@@ -166,6 +167,14 @@ const HomePage = ({navigation}) => {
           text={'XView'}
         />
       </XView>
+      <Button
+        title="testJsCrash"
+        onPress={() => {
+          sentryLog('testJsCrash222');
+          sentryLog('testJsCrash333');
+          testJsCrash();
+        }}
+      />
     </SafeView>
   );
 };

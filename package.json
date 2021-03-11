@@ -18,6 +18,7 @@
     "@react-navigation/material-bottom-tabs": "^5.1.6",
     "@react-navigation/native": "^5.9.3",
     "@react-navigation/stack": "^5.14.3",
+    "@sentry/react-native": "^2.2.2",
     "RNProjectTools": "git+https://github.com/cham1985/RNProjectTools.git",
     "dva-core": "^2.0.3",
     "dva-model-extend": "^0.1.2",

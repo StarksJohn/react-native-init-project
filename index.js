@@ -3,6 +3,7 @@
  */
 import 'react-native-gesture-handler';
 import {AppRegistry} from 'react-native';
+import {sentryLog} from './src/sentry/sentry';
 import App from './src/App';
 import {name as appName} from './app.json';
 import constant from './src/constants/constant';

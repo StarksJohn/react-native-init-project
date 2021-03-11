@@ -27,7 +27,7 @@ let MyStyleSheet = {
     for (outKey in s) {
       s[outKey] = ResetStyle(s[outKey]);
     }
-    console.log('MyStyleSheet.js s=', s);
+    console.log('MyStyleSheet.js s=', JSON.stringify(s));
     return StyleSheet.create(s);
   },
 };
