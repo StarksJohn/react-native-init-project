@@ -20,15 +20,16 @@ export const captureError = (err) => {
   return Sentry.captureException(err);
 };
 
-export const captureMessage = (msg) => {
-  return Sentry.captureMessage(msg);
+/**
+ * The message to send to Sentry. Can be viewed in the backstage Issues
+ * @returns {string}
+ */
+export const captureMessage = () => {
+  return Sentry.captureMessage(JSON.stringify(sentryLogList));
 };
 
-/**
- * Simulate RN's error report, you can seen in BREADCRUMBS in the background
- */
 export const testJsCrash = () => {
-  throw new Error(JSON.stringify(sentryLogList));
+  throw new Error('');
 };
 
 export const testNativeCrash = () => {
@@ -40,7 +41,7 @@ export const captureEvent = ({message, tags}) => {
 };
 
 /**
- * Log that can be seen in BREADCRUMBS in the background
+ * Record the information to be capturedMessage
  * @param log
  */
 export const sentryLog = (log: string) => {
