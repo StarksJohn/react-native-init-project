@@ -6,6 +6,12 @@ import routes from '../routes/routes';
 import SafeView from '../components/SafeView';
 import {useSelector, useDispatch} from 'react-redux';
 import {effects as testModel_effects, action} from '../dva/testModel';
+import {
+  effects as intlModel_effects,
+  action as intlModel_action,
+} from '../react-intl/intlModel';
+import {EN, CN} from '../react-intl/locale';
+
 import api from '../api/api';
 import {
   tool,
@@ -19,9 +25,12 @@ import {
 } from 'RNProjectTools';
 import MyStyleSheet from '../style/MyStyleSheet';
 import {captureMessage, sentryLog} from '../sentry/sentry';
+import {FormattedMessage} from 'react-intl';
 
 const HomePage = ({navigation}) => {
   const testModel = useSelector((state) => state.testModel);
+  console.log('HomePage testModel=', testModel);
+
   const networkAvailable = useSelector(
     (state) => state.netInfoModel.networkAvailable,
   );
@@ -175,6 +184,39 @@ const HomePage = ({navigation}) => {
           captureMessage();
         }}
       />
+      <Text style={{color: colors.text}}>
+        当前的语言是: <FormattedMessage id="welcome" />
+      </Text>
+      <Text
+        style={{color: colors.text, fontSize: 18}}
+        onPress={() => {
+          console.log('HomePage.js 切换为中文');
+          dispatch({
+            type: intlModel_effects.saveSomeThing,
+            action: intlModel_action.locale,
+            payload: CN,
+            callback: (result) => {
+              console.log('HomePage.jsx 切换为中文 callback=', result);
+            },
+          });
+        }}>
+        切换为中文
+      </Text>
+      <Text
+        style={{color: colors.text, fontSize: 18}}
+        onPress={() => {
+          console.log('HomePage.js 切换为英文');
+          dispatch({
+            type: intlModel_effects.saveSomeThing,
+            action: intlModel_action.locale,
+            payload: EN,
+            callback: (result) => {
+              console.log('HomePage.jsx 切换为英文 callback=', result);
+            },
+          });
+        }}>
+        切换为英文
+      </Text>
     </SafeView>
   );
 };
