@@ -23,7 +23,7 @@ import {connect} from 'react-redux';
 import {compose} from 'redux';
 // import SafeView
 import {useTheme} from '@react-navigation/native';
-import {asyncStorage} from 'RNProjectTools';
+import {asyncStorage} from '@RNProjectTools';
 import constant from '../constants/constant';
 import routes from '../routes/routes';
 

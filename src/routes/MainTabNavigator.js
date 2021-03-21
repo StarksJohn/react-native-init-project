@@ -8,7 +8,7 @@ import CustomNavigationBar from '../components/CustomNavigationBar';
 import {useTheme} from '@react-navigation/native';
 import {Text} from 'react-native';
 import SafeView from '../components/SafeView';
-import {useAndroidBackHandler} from 'RNProjectTools';
+import {useAndroidBackHandler} from '@RNProjectTools';
 const Tab = createMaterialBottomTabNavigator();
 
 const MainTabNavigator = (props) => {

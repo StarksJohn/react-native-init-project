@@ -1,6 +1,6 @@
 import React, {useEffect, useCallback} from 'react';
 import {StatusBar, Platform} from 'react-native';
-import {appStyle} from 'RNProjectTools';
+import {appStyle} from '@RNProjectTools';
 import {useFocusEffect} from '@react-navigation/native';
 import {useTheme} from '@react-navigation/native';
 

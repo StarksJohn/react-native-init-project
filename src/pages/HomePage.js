@@ -22,7 +22,7 @@ import {
   XSize,
   XTSize,
   ResetStyle,
-} from 'RNProjectTools';
+} from '@RNProjectTools';
 import MyStyleSheet from '../style/MyStyleSheet';
 import {captureMessage, sentryLog} from '../sentry/sentry';
 import {FormattedMessage} from 'react-intl';

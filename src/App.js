@@ -25,7 +25,7 @@ import {ThemeContext} from './context/themeContext';
 import {Provider as StoreProvider} from 'react-redux';
 import routes from './routes/routes';
 import constant from './constants/constant';
-import {appStyle, tool, asyncStorage} from 'RNProjectTools';
+import {appStyle, tool, asyncStorage} from '@RNProjectTools';
 import MainiStack from './routes/MainStack';
 import dvaApp from './dva/dvaApp';
 const store = dvaApp.getStore();

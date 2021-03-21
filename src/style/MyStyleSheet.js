@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {ResetStyle, XWidget} from 'RNProjectTools';
+import {ResetStyle, XWidget} from '@RNProjectTools';
 console.log('MyStyleSheet.js initReferenceScreen ');
 /**
  * 因项目里用了MyStyleSheet,而MyStyleSheet编译时间早于app.js,故在此初始化屏幕适配配置

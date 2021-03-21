@@ -1,4 +1,4 @@
-import {dva, models} from 'RNProjectTools';
+import {dva, models} from '@RNProjectTools';
 import testModel, {action as testModel_Actions} from './testModel';
 import netInfoModel from './netInfoModel';
 import intlModel, {action as intlModel_Actions} from '../react-intl/intlModel';

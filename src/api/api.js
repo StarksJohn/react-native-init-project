@@ -1,4 +1,4 @@
-import {XHttp} from 'RNProjectTools';
+import {XHttp} from '@RNProjectTools';
 import Urls from './Urls';
 
 export default {

@@ -4,7 +4,7 @@ import {useTheme} from '@react-navigation/native';
 import useNavFocusListener from '../components/useNavFocusListener';
 import CustomNavigationBar from '../components/CustomNavigationBar';
 import routes from '../routes/routes';
-import {EventListener} from 'RNProjectTools';
+import {EventListener} from '@RNProjectTools';
 import constant from '../constants/constant';
 import {ThemeContext} from '../context/themeContext';
 import SafeView from '../components/SafeView';

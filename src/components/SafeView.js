@@ -9,7 +9,7 @@ import React, {
   useImperativeHandle,
 } from 'react';
 import {Image, View, SafeAreaView, StyleSheet} from 'react-native';
-import {appStyle} from 'RNProjectTools';
+import {appStyle} from '@RNProjectTools';
 import {useTheme} from '@react-navigation/native';
 
 const {dp} = appStyle;
