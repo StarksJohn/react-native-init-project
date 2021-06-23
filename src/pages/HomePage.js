@@ -5,7 +5,7 @@ import useNavFocusListener from '../components/useNavFocusListener';
 import routes from '../routes/routes';
 import SafeView from '../components/SafeView';
 import {useSelector, useDispatch} from 'react-redux';
-import {effects as testModel_effects, action} from '../dva/testModel';
+// import {effects as testModel_effects, action} from '../dva/testModel';
 import {
   effects as intlModel_effects,
   action as intlModel_action,
@@ -25,32 +25,34 @@ import {
 } from '@RNProjectTools';
 import MyStyleSheet from '../style/MyStyleSheet';
 import {captureMessage, sentryLog} from '../sentry/sentry';
-import {FormattedMessage} from 'react-intl';
+// import {FormattedMessage} from 'react-intl';
+import useBannerModel from '../dva/bannerModel/useBannerModel';
 
 const HomePage = ({navigation}) => {
-  const testModel = useSelector((state) => state.testModel);
-  console.log('HomePage testModel=', testModel);
+  // const testModel = useSelector((state) => state.testModel);
+  // console.log('HomePage testModel=', testModel);
 
-  const networkAvailable = useSelector(
-    (state) => state.netInfoModel.networkAvailable,
-  );
+  // const networkAvailable = useSelector(
+  //   (state) => state.netInfoModel.networkAvailable,
+  // );
   const dispatch = useDispatch();
   const {colors} = useTheme();
+  const {fetch_campaign_banner, campaign_banner} = useBannerModel();
   const {setOptions} = navigation; //在具体页面内设置 ScreenOptions https://www.jianshu.com/p/a2582f8b16fd
 
-  console.log('HomePage.js testModel=', testModel);
-  const test = useCallback(
-    (payload) =>
-      dispatch({
-        type: testModel_effects.saveSomeThing,
-        action: action.pageName,
-        payload,
-        callback: (result) => {
-          console.log('HomePage.jsx test callback=', result);
-        },
-      }),
-    [dispatch],
-  );
+  // console.log('HomePage.js testModel=', testModel);
+  // const test = useCallback(
+  //   (payload) =>
+  //     dispatch({
+  //       type: testModel_effects.saveSomeThing,
+  //       action: action.pageName,
+  //       payload,
+  //       callback: (result) => {
+  //         console.log('HomePage.jsx test callback=', result);
+  //       },
+  //     }),
+  //   [dispatch],
+  // );
 
   useNavFocusListener({
     onFocus: () => {
@@ -73,14 +75,14 @@ const HomePage = ({navigation}) => {
       //todo
       console.log('HomePage componentDidMount ');
       setTimeout(async () => {
-        test('首页');
-        {
-          const [err, data] = await tool.to(api.anime());
-          // console.log('HomePage.js api.anime data=', data);
-          if (data) {
-          } else {
-          }
-        }
+        // test('首页');
+        // {
+        //   const [err, data] = await tool.to(api.anime());
+        //   // console.log('HomePage.js api.anime data=', data);
+        //   if (data) {
+        //   } else {
+        //   }
+        // }
       }, 1000);
 
       // setTimeout(() => {
@@ -93,6 +95,8 @@ const HomePage = ({navigation}) => {
       //   dva.getState();
       // }, 6000);
 
+      fetch_campaign_banner();
+
       //componentWillUnmount
       return () => {
         console.log('DetailsScreen componentWillUnmount');
@@ -101,21 +105,25 @@ const HomePage = ({navigation}) => {
     [colors.text, navigation, setOptions],
   );
 
-  console.log('HomePage.js render testModel=', testModel);
-  console.log('HomePage.js render networkAvailable=', networkAvailable);
+  useEffect(() => {
+    console.log('HomePage.js useEffect campaign_banner=', campaign_banner);
+  }, [campaign_banner]);
+
+  // console.log('HomePage.js render testModel=', testModel);
+  // console.log('HomePage.js render networkAvailable=', networkAvailable);
 
   return (
     <SafeView>
-      <Text style={{color: colors.text}}>{testModel.pageName}</Text>
+      {/*<Text style={{color: colors.text}}>{testModel.pageName}</Text>*/}
       <Button
         title="Go to details screen"
         onPress={() => {
           routes.push(navigation, routes.DetailsPage.routeName);
         }}
       />
-      <Text style={{color: colors.text}}>
-        networkAvailable={JSON.stringify(networkAvailable)}
-      </Text>
+      {/*<Text style={{color: colors.text}}>*/}
+      {/*  networkAvailable={JSON.stringify(networkAvailable)}*/}
+      {/*</Text>*/}
       <View
         style={ResetStyle({
           width: '100%',
@@ -184,9 +192,9 @@ const HomePage = ({navigation}) => {
           captureMessage();
         }}
       />
-      <Text style={{color: colors.text}}>
-        当前的语言是: <FormattedMessage id="welcome" />
-      </Text>
+      {/*<Text style={{color: colors.text}}>*/}
+      {/*  当前的语言是: <FormattedMessage id="welcome" />*/}
+      {/*</Text>*/}
       <Text
         style={{color: colors.text, fontSize: 18}}
         onPress={() => {

@@ -1,14 +1,16 @@
+import baseModel from '../submodules/RNProjectTools/dva/baseModel';
+
 const testModel = 'testModel';
 const initState = {
   pageName: 'HomePages',
 };
 export const effects = {
-  saveSomeThing: `${testModel}/saveSomeThing`,
+  saveSomeThing: `testModel/${baseModel.baseEffects.saveSomeThing}`, //每个model默认的同步的直接改变此 model 的某个 state 的 effect
+  awaitSaveSomeThing: `testModel/${baseModel.baseEffects.awaitSaveSomeThing}`, //异步获取数据改变 某个 state
 };
-export const action = {
-  pageName: `${testModel}/pageName`,
-};
-const reducerName = {
+export const _action = {
+  ...baseModel.baseAction,
+
   pageName: 'pageName',
 };
 
@@ -18,14 +20,6 @@ const reducerName = {
 export default {
   namespace: testModel,
   state: initState,
+  attributesToBeCached: [_action.pageName], //被缓存的数据的key
   effects: {},
-  reducers: {
-    [reducerName.pageName](state, {payload}) {
-      console.log('testModel.js reducers pageName payload=', payload);
-      return {
-        ...state,
-        pageName: payload,
-      };
-    },
-  },
 };
