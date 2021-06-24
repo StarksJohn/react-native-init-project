@@ -1,5 +1,6 @@
 import {EN, MOMENT_LOCALE} from './locale';
-import messages from './messages/index';
+import messages from './messages/messages';
+import baseModel from '../submodules/RNProjectTools/dva/baseModel';
 
 const intlModel = 'intlModel';
 const initState = {
@@ -11,12 +12,10 @@ const initState = {
   setLocaleCompleted: false,
 };
 export const effects = {
-  saveSomeThing: `${intlModel}/saveSomeThing`,
+  saveSomeThing: `intlModel/${baseModel.baseEffects.saveSomeThing}`, //每个model默认的同步的直接改变此 model 的某个 state 的 effect
 };
 export const action = {
-  locale: `${intlModel}/locale`,
-};
-const reducerName = {
+  ...baseModel.baseAction,
   locale: 'locale',
 };
 
@@ -26,18 +25,6 @@ const reducerName = {
 export default {
   namespace: intlModel,
   state: initState,
+  attributesToBeCached: [action.locale], //被缓存的数据的key
   effects: {},
-  reducers: {
-    [reducerName.locale](state, {payload}) {
-      console.log('intlModel.js reducers locale payload=', payload);
-      const newState = {
-        ...state,
-        locale: payload,
-        messages: messages[payload],
-      };
-      console.log('intlModel.js reducers locale newState=', newState);
-
-      return newState;
-    },
-  },
 };

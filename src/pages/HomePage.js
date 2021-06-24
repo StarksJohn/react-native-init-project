@@ -1,18 +1,10 @@
-import React, {useEffect, useCallback} from 'react';
+import React, {useEffect, useState} from 'react';
 import {View, Text, Button, StyleSheet, StatusBar} from 'react-native';
 import {useTheme} from '@react-navigation/native';
 import useNavFocusListener from '../components/useNavFocusListener';
 import routes from '../routes/routes';
 import SafeView from '../components/SafeView';
 import {useSelector, useDispatch} from 'react-redux';
-// import {effects as testModel_effects, action} from '../dva/testModel';
-import {
-  effects as intlModel_effects,
-  action as intlModel_action,
-} from '../react-intl/intlModel';
-import {EN, CN} from '../react-intl/locale';
-
-import api from '../api/api';
 import {
   tool,
   appStyle,
@@ -25,34 +17,17 @@ import {
 } from '@RNProjectTools';
 import MyStyleSheet from '../style/MyStyleSheet';
 import {captureMessage, sentryLog} from '../sentry/sentry';
-// import {FormattedMessage} from 'react-intl';
+import {FormattedMessage} from 'react-intl';
 import useBannerModel from '../dva/bannerModel/useBannerModel';
+import useIntlModel from '../react-intl/useIntlModel';
 
 const HomePage = ({navigation}) => {
-  // const testModel = useSelector((state) => state.testModel);
-  // console.log('HomePage testModel=', testModel);
-
-  // const networkAvailable = useSelector(
-  //   (state) => state.netInfoModel.networkAvailable,
-  // );
+  const {networkAvailable} = useSelector((state) => state.netInfoModel);
   const dispatch = useDispatch();
   const {colors} = useTheme();
   const {fetch_campaign_banner, campaign_banner} = useBannerModel();
   const {setOptions} = navigation; //在具体页面内设置 ScreenOptions https://www.jianshu.com/p/a2582f8b16fd
-
-  // console.log('HomePage.js testModel=', testModel);
-  // const test = useCallback(
-  //   (payload) =>
-  //     dispatch({
-  //       type: testModel_effects.saveSomeThing,
-  //       action: action.pageName,
-  //       payload,
-  //       callback: (result) => {
-  //         console.log('HomePage.jsx test callback=', result);
-  //       },
-  //     }),
-  //   [dispatch],
-  // );
+  const {switchToCN, switchToEN} = useIntlModel();
 
   useNavFocusListener({
     onFocus: () => {
@@ -102,28 +77,28 @@ const HomePage = ({navigation}) => {
         console.log('DetailsScreen componentWillUnmount');
       };
     },
-    [colors.text, navigation, setOptions],
+    [colors.text, fetch_campaign_banner, navigation, setOptions],
   );
 
   useEffect(() => {
     console.log('HomePage.js useEffect campaign_banner=', campaign_banner);
   }, [campaign_banner]);
 
-  // console.log('HomePage.js render testModel=', testModel);
-  // console.log('HomePage.js render networkAvailable=', networkAvailable);
+  useEffect(() => {
+    console.log('HomePage.js useEffect networkAvailable=', networkAvailable);
+  }, [networkAvailable]);
 
   return (
     <SafeView>
-      {/*<Text style={{color: colors.text}}>{testModel.pageName}</Text>*/}
       <Button
         title="Go to details screen"
         onPress={() => {
           routes.push(navigation, routes.DetailsPage.routeName);
         }}
       />
-      {/*<Text style={{color: colors.text}}>*/}
-      {/*  networkAvailable={JSON.stringify(networkAvailable)}*/}
-      {/*</Text>*/}
+      <Text style={{color: colors.text}}>
+        networkAvailable={networkAvailable ? '开' : '关'}
+      </Text>
       <View
         style={ResetStyle({
           width: '100%',
@@ -185,28 +160,21 @@ const HomePage = ({navigation}) => {
         />
       </XView>
       <Button
-        title="captureMessage"
+        title="测试Sentry"
         onPress={() => {
           sentryLog('captureMessage3333');
           sentryLog('captureMessage4444');
           captureMessage();
         }}
       />
-      {/*<Text style={{color: colors.text}}>*/}
-      {/*  当前的语言是: <FormattedMessage id="welcome" />*/}
-      {/*</Text>*/}
+      <Text style={{color: colors.text}}>
+        当前的语言是: <FormattedMessage id="welcome" />
+      </Text>
       <Text
         style={{color: colors.text, fontSize: 18}}
         onPress={() => {
           console.log('HomePage.js 切换为中文');
-          dispatch({
-            type: intlModel_effects.saveSomeThing,
-            action: intlModel_action.locale,
-            payload: CN,
-            callback: (result) => {
-              console.log('HomePage.jsx 切换为中文 callback=', result);
-            },
-          });
+          switchToCN();
         }}>
         切换为中文
       </Text>
@@ -214,14 +182,7 @@ const HomePage = ({navigation}) => {
         style={{color: colors.text, fontSize: 18}}
         onPress={() => {
           console.log('HomePage.js 切换为英文');
-          dispatch({
-            type: intlModel_effects.saveSomeThing,
-            action: intlModel_action.locale,
-            payload: EN,
-            callback: (result) => {
-              console.log('HomePage.jsx 切换为英文 callback=', result);
-            },
-          });
+          switchToEN();
         }}>
         切换为英文
       </Text>

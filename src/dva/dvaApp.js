@@ -1,6 +1,5 @@
 import {dva, models} from '@RNProjectTools';
-import testModel from './testModel';
-// import netInfoModel from './netInfoModel';
+import netInfoModel from './netInfoModel/netInfoModel';
 import intlModel from '../react-intl/intlModel';
 import bannerModel from './bannerModel/bannerModel';
 
@@ -9,7 +8,7 @@ import bannerModel from './bannerModel/bannerModel';
  * @type {{_models: [*], _store: null, _plugin: Plugin, use: *, start: function(): void, model: function(Object): *}}
  */
 const dvaApp = dva.createApp({
-  models: models([/*testModel, netInfoModel, intlModel,*/ bannerModel]),
+  models: models([netInfoModel, intlModel, bannerModel]),
   enableLog: false,
 });
 

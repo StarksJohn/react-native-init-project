@@ -8,7 +8,6 @@ import React, {
   forwardRef,
   useImperativeHandle,
 } from 'react';
-import {Image, View, SafeAreaView, StyleSheet} from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
 import {effects, _action} from './bannerModel';
 

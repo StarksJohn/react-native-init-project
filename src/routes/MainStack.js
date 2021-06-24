@@ -9,6 +9,7 @@ import DetailsPage from '../pages/DetailsPage';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {appStyle} from '@RNProjectTools';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import useNetInfoModel from '../dva/netInfoModel/useNetInfoModel';
 
 const Stack = createStackNavigator();
 
@@ -16,6 +17,8 @@ const MainStack = ({initialRouteName}) => {
   const {colors} = useTheme();
   appStyle.safeAreaInsets = useSafeAreaInsets();
   console.log('MainStack.js safeAreaInsets =', appStyle.safeAreaInsets);
+
+  useNetInfoModel();
   return (
     <Stack.Navigator
       initialRouteName={initialRouteName}
