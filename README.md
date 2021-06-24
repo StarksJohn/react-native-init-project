@@ -9,6 +9,8 @@ Update:
     
 Push:
    git push origin main
+   
    Username for 'https://github.com.cnpmjs.org': 397866153@qq.com
+   
    Password for 'https://397866153@qq.com@github.com.cnpmjs.org': "githubPassword"
 
