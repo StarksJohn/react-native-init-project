@@ -2,7 +2,8 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@RNProjectTools": ["./src/submodules/RNProjectTools/index.js"]
+      "@RNProjectTools": ["./src/submodules/RNProjectTools/index.js"],
+      "@/AllExports": ["./src/AllExports.js"]
     }
   },
   "exclude": ["node_modules"]

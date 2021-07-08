@@ -2,11 +2,11 @@
  * @format
  */
 import 'react-native-gesture-handler';
-import {AppRegistry, Platform} from 'react-native';
-import {sentryLog} from './src/sentry/sentry'; //init sentry
+import { AppRegistry, Platform } from 'react-native';
+import { sentryLog } from './src/sentry/sentry'; //init sentry
 import App from './src/App';
-import {name as appName} from './app.json';
-import constant from './src/constants/constant';
+import { name as appName } from './app.json';
+import { constant } from '@/AllExports';
 
 if (!constant.fakeData) {
   // release package

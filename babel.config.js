@@ -9,6 +9,7 @@ module.exports = {
         root: ['./src'],
         alias: {
           '@RNProjectTools': ['./src/submodules/RNProjectTools/index.js'],
+          '@/AllExports': ['./src/AllExports.js'],
         },
       },
     ],

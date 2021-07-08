@@ -5,12 +5,9 @@
  * @flow
  */
 
-import React, {useEffect, useState, useReducer} from 'react';
-import {View, ActivityIndicator} from 'react-native';
-import {
-  SafeAreaProvider,
-  useSafeAreaInsets,
-} from 'react-native-safe-area-context';
+import React, { useEffect, useState, useReducer } from 'react';
+import { View, ActivityIndicator } from 'react-native';
+import { SafeAreaProvider, useSafeAreaInsets } from 'react-native-safe-area-context';
 import {
   NavigationContainer,
   DefaultTheme as NavigationDefaultTheme,
@@ -21,15 +18,10 @@ import {
   DefaultTheme as PaperDefaultTheme,
   DarkTheme as PaperDarkTheme,
 } from 'react-native-paper';
-import {ThemeContext} from './context/themeContext';
-import {Provider as StoreProvider} from 'react-redux';
-import routes from './routes/routes';
-import constant from './constants/constant';
-import {appStyle, tool, asyncStorage} from '@RNProjectTools';
-import MainiStack from './routes/MainStack';
-import dvaApp from './dva/dvaApp';
+import { Provider as StoreProvider } from 'react-redux';
+import { appStyle, tool, asyncStorage } from '@RNProjectTools';
+import { constant, IntlWrapper, dvaApp, MainiStack, routes, ThemeContext } from '@/AllExports';
 const store = dvaApp.getStore();
-import {IntlWrapper} from './react-intl/IntlWrapper';
 
 const App = () => {
   const [isDarkTheme, setIsDarkTheme] = useState(false);
@@ -76,25 +68,23 @@ const App = () => {
         setIsDarkTheme((isDarkTheme) => !isDarkTheme);
       },
     }),
-    [],
+    []
   );
 
   useEffect(() => {
     console.log('App.js componentDidMount');
     const get_initialRouteName = async () => {
       const [err_initialRouteName, data_initialRouteName] = await tool.to(
-        asyncStorage.getItem(constant.initialRouteName),
+        asyncStorage.getItem(constant.initialRouteName)
       );
       console.log(
         'App.js componentDidMount data_initialRouteName=',
         data_initialRouteName,
         ' err_initialRouteName=',
-        err_initialRouteName,
+        err_initialRouteName
       );
       if (data_initialRouteName) {
-        console.log(
-          'App.js setInitialRouteName routes.MainTabNavigator.routeName',
-        );
+        console.log('App.js setInitialRouteName routes.MainTabNavigator.routeName');
         setInitialRouteName(routes.MainTabNavigator.routeName);
       } else {
         setInitialRouteName(routes.WelcomePage.routeName);
@@ -111,8 +101,9 @@ const App = () => {
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: 'red',
-      }}>
-      <ActivityIndicator size="large" />
+      }}
+    >
+      <ActivityIndicator size='large' />
     </View>
   ) : (
     <StoreProvider store={store}>

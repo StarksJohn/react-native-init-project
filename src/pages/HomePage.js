@@ -14,6 +14,7 @@ import {
   XSize,
   XTSize,
   ResetStyle,
+  ahooks,
 } from '@RNProjectTools';
 import MyStyleSheet from '../style/MyStyleSheet';
 import {captureMessage, sentryLog} from '../sentry/sentry';
@@ -28,6 +29,12 @@ const HomePage = ({navigation}) => {
   const {fetch_campaign_banner, campaign_banner} = useBannerModel();
   const {setOptions} = navigation; //在具体页面内设置 ScreenOptions https://www.jianshu.com/p/a2582f8b16fd
   const {switchToCN, switchToEN} = useIntlModel();
+  const [count, setCount] = useState(0);
+  const {useInterval} = ahooks;
+
+  useInterval(() => {
+    setCount(count + 1);
+  }, 1000);
 
   useNavFocusListener({
     onFocus: () => {
@@ -185,6 +192,9 @@ const HomePage = ({navigation}) => {
           switchToEN();
         }}>
         切换为英文
+      </Text>
+      <Text style={{color: colors.text}}>
+        测试 ahooks的 useInterval = {count}
       </Text>
     </SafeView>
   );
