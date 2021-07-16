@@ -1,6 +1,10 @@
 # AwesomeProject
 Scaffolding for react native project
 
+HomePage:  
+    
+    https://github.com/StarksJohn/AwesomeProject.git
+
 Install:
 
     git clone --recurse-submodules https://github.com/StarksJohn/AwesomeProject.git 
