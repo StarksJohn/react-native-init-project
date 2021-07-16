@@ -8,7 +8,7 @@ import App from './src/App';
 import { name as appName } from './app.json';
 import { constant } from '@/AllExports';
 
-if (!constant.fakeData) {
+if (!constant.fakeData && !__DEV__) {
   // release package
   global.console = {
     info: () => {},
@@ -27,6 +27,7 @@ if (!constant.fakeData) {
 }
 
 if (Platform.OS === 'android') {
+  //用于 react-intl 这个库
   require('intl');
   require('intl/locale-data/jsonp/en');
 }
