@@ -1,40 +1,33 @@
-import React, {useEffect, useState} from 'react';
-import {View, Text, Button, StyleSheet, StatusBar} from 'react-native';
-import {useTheme} from '@react-navigation/native';
+import React, { useEffect, useState } from 'react';
+import { View, Text, Button, StyleSheet, StatusBar } from 'react-native';
+import { useTheme } from '@react-navigation/native';
 import useNavFocusListener from '../components/useNavFocusListener';
 import routes from '../routes/routes';
 import SafeView from '../components/SafeView';
-import {useSelector, useDispatch} from 'react-redux';
-import {
-  tool,
-  appStyle,
-  XView,
-  XWidget,
-  XText,
-  XSize,
-  XTSize,
-  ResetStyle,
-  ahooks,
-} from '@RNProjectTools';
+import { useSelector, useDispatch } from 'react-redux';
+import { tool, appStyle, XView, XWidget, XText, XSize, XTSize, ResetStyle, ahooks } from '@RNProjectTools';
 import MyStyleSheet from '../style/MyStyleSheet';
-import {captureMessage, sentryLog} from '../sentry/sentry';
-import {FormattedMessage} from 'react-intl';
+import { captureMessage, sentryLog } from '../sentry/sentry';
+import { FormattedMessage } from 'react-intl';
 import useBannerModel from '../dva/bannerModel/useBannerModel';
 import useIntlModel from '../react-intl/useIntlModel';
+import { useDrawerNavigator } from '@/AllExports';
+// import useDrawerNavigator from '../useHooks/useDrawerNavigator.js';
 
-const HomePage = ({navigation}) => {
-  const {networkAvailable} = useSelector((state) => state.netInfoModel);
+const HomePage = ({ navigation }) => {
+  const { networkAvailable } = useSelector((state) => state.netInfoModel);
   const dispatch = useDispatch();
-  const {colors} = useTheme();
-  const {fetch_campaign_banner, campaign_banner} = useBannerModel();
-  const {setOptions} = navigation; //在具体页面内设置 ScreenOptions https://www.jianshu.com/p/a2582f8b16fd
-  const {switchToCN, switchToEN} = useIntlModel();
+  const { colors } = useTheme();
+  const { fetch_campaign_banner, campaign_banner } = useBannerModel();
+  const { setOptions } = navigation; //在具体页面内设置 ScreenOptions https://www.jianshu.com/p/a2582f8b16fd
+  const { switchToCN, switchToEN } = useIntlModel();
   const [count, setCount] = useState(0);
-  const {useInterval} = ahooks;
+  const { useInterval } = ahooks;
+  const { openDrawer } = useDrawerNavigator({ navigation });
 
-  useInterval(() => {
-    setCount(count + 1);
-  }, 1000);
+  // useInterval(() => {
+  //   setCount(count + 1);
+  // }, 1000);
 
   useNavFocusListener({
     onFocus: () => {
@@ -84,7 +77,7 @@ const HomePage = ({navigation}) => {
         console.log('DetailsScreen componentWillUnmount');
       };
     },
-    [colors.text, fetch_campaign_banner, navigation, setOptions],
+    [colors.text, fetch_campaign_banner, navigation, setOptions]
   );
 
   useEffect(() => {
@@ -98,26 +91,26 @@ const HomePage = ({navigation}) => {
   return (
     <SafeView>
       <Button
-        title="Go to details screen"
+        title='Go to details screen'
         onPress={() => {
           routes.push(navigation, routes.DetailsPage.routeName);
         }}
       />
-      <Text style={{color: colors.text}}>
-        networkAvailable={networkAvailable ? '开' : '关'}
-      </Text>
+      <Text style={{ color: colors.text }}>networkAvailable={networkAvailable ? '开' : '关'}</Text>
       <View
         style={ResetStyle({
           width: '100%',
           height: 50,
           backgroundColor: appStyle.randomColor(),
-        })}>
+        })}
+      >
         <Text
           style={ResetStyle({
             color: colors.text,
             alignSelf: 'center',
             fontSize: 16,
-          })}>
+          })}
+        >
           ResetStyle=
           {
             ResetStyle({
@@ -133,13 +126,15 @@ const HomePage = ({navigation}) => {
           width: '100%',
           height: appStyle.dp(50),
           backgroundColor: appStyle.randomColor(),
-        }}>
+        }}
+      >
         <Text
           style={{
             color: colors.text,
             alignSelf: 'center',
             fontSize: appStyle.dp(16),
-          }}>
+          }}
+        >
           dp={appStyle.dp(50)} dp={appStyle.dp(16)}
         </Text>
       </View>
@@ -156,7 +151,8 @@ const HomePage = ({navigation}) => {
           // justifyContent: 'center',
           // alignItems: 'center',
           backgroundColor: appStyle.randomColor(),
-        }}>
+        }}
+      >
         <XText
           style={{
             color: colors.text,
@@ -167,35 +163,38 @@ const HomePage = ({navigation}) => {
         />
       </XView>
       <Button
-        title="测试Sentry"
+        title='测试Sentry'
         onPress={() => {
           sentryLog('captureMessage3333');
           sentryLog('captureMessage4444');
           captureMessage();
         }}
       />
-      <Text style={{color: colors.text}}>
-        当前的语言是: <FormattedMessage id="welcome" />
+      <Text style={{ color: colors.text }}>
+        当前的语言是: <FormattedMessage id='welcome' />
       </Text>
-      <Text
-        style={{color: colors.text, fontSize: 18}}
+      <Button
+        title="切换为中文"
         onPress={() => {
           console.log('HomePage.js 切换为中文');
           switchToCN();
-        }}>
-        切换为中文
-      </Text>
-      <Text
-        style={{color: colors.text, fontSize: 18}}
+        }}
+      />
+      <Button
+        title="切换为英文"
         onPress={() => {
           console.log('HomePage.js 切换为英文');
           switchToEN();
-        }}>
-        切换为英文
-      </Text>
-      <Text style={{color: colors.text}}>
-        测试 ahooks的 useInterval = {count}
-      </Text>
+        }}
+      />
+      <Text style={{ color: colors.text }}>测试 ahooks的 useInterval = {count}</Text>
+      <Button
+        title="show drawer"
+        onPress={() => {
+          console.log('HomePage.js openDrawer navigation=', navigation);
+          openDrawer();
+        }}
+      />
     </SafeView>
   );
 };

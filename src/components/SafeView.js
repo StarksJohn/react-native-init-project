@@ -48,7 +48,7 @@ const SafeView = ({children}) => {
  * @returns {*}
  */
 export const avoidBlankSpaceAtTheBottomOfSafeAreaView = ({color = '#fff'}) => {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
+  // eslint-disable-next-line react-useHooks/rules-of-useHooks
   const {colors} = useTheme();
 
   return (

@@ -1,4 +1,4 @@
-import baseModel from '../../submodules/RNProjectTools/dva/baseModel';
+import { baseModel } from '@RNProjectTools';
 
 /**
  * 可动态监听 网络情况

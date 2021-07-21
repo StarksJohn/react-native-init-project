@@ -5,27 +5,32 @@
  * @flow
  */
 
-import React, { useEffect, useState, useReducer } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, ActivityIndicator } from 'react-native';
-import { SafeAreaProvider, useSafeAreaInsets } from 'react-native-safe-area-context';
-import {
-  NavigationContainer,
-  DefaultTheme as NavigationDefaultTheme,
-  DarkTheme as NavigationDarkTheme,
-} from '@react-navigation/native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { DefaultTheme as NavigationDefaultTheme, DarkTheme as NavigationDarkTheme } from '@react-navigation/native';
 import {
   Provider as PaperProvider,
   DefaultTheme as PaperDefaultTheme,
   DarkTheme as PaperDarkTheme,
 } from 'react-native-paper';
-import { Provider as StoreProvider } from 'react-redux';
+import { Provider as StoreProvider, useSelector } from 'react-redux';
 import { appStyle, tool, asyncStorage } from '@RNProjectTools';
-import { constant, IntlWrapper, dvaApp, MainiStack, routes, ThemeContext } from '@/AllExports';
+import {
+  IntlWrapper,
+  // dvaApp,
+  routes,
+  ThemeContext,
+  DrawerContent,
+  SecondStack,
+  constant,
+} from '@/AllExports';
+import dvaApp from './dva/dvaApp.js';
+import NavigationContainer from './routes/NavigationContainer';
 const store = dvaApp.getStore();
 
 const App = () => {
   const [isDarkTheme, setIsDarkTheme] = useState(false);
-  const [initialRouteName, setInitialRouteName] = useState(null);
 
   /**
    * https://callstack.github.io/react-native-paper/theming-with-react-navigation.html
@@ -73,39 +78,9 @@ const App = () => {
 
   useEffect(() => {
     console.log('App.js componentDidMount');
-    const get_initialRouteName = async () => {
-      const [err_initialRouteName, data_initialRouteName] = await tool.to(
-        asyncStorage.getItem(constant.initialRouteName)
-      );
-      console.log(
-        'App.js componentDidMount data_initialRouteName=',
-        data_initialRouteName,
-        ' err_initialRouteName=',
-        err_initialRouteName
-      );
-      if (data_initialRouteName) {
-        console.log('App.js setInitialRouteName routes.MainTabNavigator.routeName');
-        setInitialRouteName(routes.MainTabNavigator.routeName);
-      } else {
-        setInitialRouteName(routes.WelcomePage.routeName);
-      }
-    };
-    get_initialRouteName().then();
   }, []);
 
-  return !initialRouteName ? (
-    // 加载各种启动时需要的缓存时 ,先显示全屏菊花
-    <View
-      style={{
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: 'red',
-      }}
-    >
-      <ActivityIndicator size='large' />
-    </View>
-  ) : (
+  return (
     <StoreProvider store={store}>
       <IntlWrapper>
         <PaperProvider theme={theme}>
@@ -118,9 +93,7 @@ const App = () => {
           */}
           <ThemeContext.Provider value={themeContext}>
             <SafeAreaProvider>
-              <NavigationContainer theme={theme}>
-                <MainiStack initialRouteName={initialRouteName} />
-              </NavigationContainer>
+              <NavigationContainer theme={theme} />
             </SafeAreaProvider>
           </ThemeContext.Provider>
         </PaperProvider>

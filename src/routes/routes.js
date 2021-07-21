@@ -1,9 +1,12 @@
 import React from 'react';
-import {View, Text, Button, StyleSheet, StatusBar} from 'react-native';
-import {sendEvent} from '@RNProjectTools';
+import { View, Text, Button, StyleSheet, StatusBar } from 'react-native';
+import { sendEvent } from '@RNProjectTools';
 import constant from '../constants/constant';
 
 export default {
+  MainStack: {
+    routeName: 'MainStack',
+  },
   HomePage: {
     routeName: 'HomePage',
     headerTitle: '首页',
@@ -13,8 +16,8 @@ export default {
     headerTitle: '我的',
     rightComp: (
       <Button
-        color="red"
-        title="右按钮"
+        color='red'
+        title='右按钮'
         onPress={(e) => {
           console.log('routes.js MinePage rightComp onPress e=', e);
 
@@ -35,6 +38,9 @@ export default {
     routeName: 'MainTabNavigator',
     headerTitle: '',
   },
+  SecondStack: {
+    routeName: 'SecondStack',
+  },
   navigate: (navigation, routeName, params) => {
     console.log('routes.js navigate routeName=', routeName, ' params=', params);
     navigation.navigate(routeName, params);
@@ -48,7 +54,7 @@ export default {
   },
   reset: (navigation, routeName) => {
     navigation.reset({
-      routes: [{name: routeName}],
+      routes: [{ name: routeName }],
     });
   },
 };

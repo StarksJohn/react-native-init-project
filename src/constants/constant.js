@@ -1,12 +1,13 @@
 import React from 'react';
-import { constant } from '@RNProjectTools';
+import { constant, objTools } from '@RNProjectTools';
 
 export default Object.freeze({
   fakeData: false, //! !__DEV__,
-  ...constant,
   sentryLog: true,
+  ...constant,
   initialRouteName: 'initialRouteName',
   event: {
+    ...constant.event,
     MinePageRightBtClicks: 'MinePageRightBtClicks',
   },
 });

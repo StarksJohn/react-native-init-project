@@ -1,5 +1,6 @@
 # AwesomeProject
-Scaffolding for react native project
+
+    The basic framework of the react native project to help you quickly build a high-quality RN project
 
 HomePage:  
     
@@ -11,8 +12,11 @@ Install:
     
 Update:
 
-    如果主项目&&子模块都有更新,执行: git pull --recurse-submodules
-    如果只更新子模块,执行: git submodule update --remote
+    If the main project and submodules are updated, execute:    
+        git pull --recurse-submodules
+    
+    If only the submodule is updated, execute:
+        git submodule update --remote
     
 Push:
     
@@ -23,11 +27,12 @@ Push:
 Main technology stack:
 
     react-navigation: V5
+        you can choose whether to use DrawerNavigator by changing useDrawer
     react-native-easy-app
-    dva : 可缓存数据的 dva
-    react-intl: 支持国际化
-    sentry: 支持崩溃监控
-    react-native-paper: 支持暗黑模式
+    dva : implemented dva that can cache data
+    react-intl: support internationalization
+    sentry: support crash monitoring
+    react-native-paper: support dark mode
     
 RUN: 
 

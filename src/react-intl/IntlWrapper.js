@@ -1,13 +1,12 @@
-import React, {useEffect, useState, useReducer} from 'react';
+import React, { useEffect, useState, useReducer } from 'react';
 import PropTypes from 'prop-types';
-import {connect, useSelector} from 'react-redux';
-import {IntlProvider} from 'react-intl';
+import { connect, useSelector } from 'react-redux';
+import { IntlProvider } from 'react-intl';
 // import {DEFAULT_LOCALE, DEFAULT_CURRENCY} from '@config/locale';
-// import {IntlContextProvider} from '@wrappers/core/hooks';
 import Messages from './messages/messages';
 
-export const IntlWrapper = ({children}) => {
-  const {locale} = useSelector((state) => state.intlModel);
+export const IntlWrapper = ({ children }) => {
+  const { locale } = useSelector((state) => state.intlModel);
   console.log('IntlWrapper.js locale=', locale);
 
   const [messages, setMessages] = useState(Messages[locale]);
