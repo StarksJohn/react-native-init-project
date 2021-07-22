@@ -1,7 +1,7 @@
 import { dva, models } from '@RNProjectTools';
 // import netInfoModel from './netInfoModel/netInfoModel';
 import bannerModel from './bannerModel/bannerModel';
-import { DrawerNavigatorModel, intlModel, netInfoModel } from '@/AllExports';
+import { DrawerNavigatorModel, intlModel, netInfoModel, ThemeContextModel } from '@/AllExports';
 console.log('dvaApp.js netInfoModel=', netInfoModel);
 
 /**
@@ -9,7 +9,7 @@ console.log('dvaApp.js netInfoModel=', netInfoModel);
  * @type {{_models: [*], _store: null, _plugin: Plugin, use: *, start: function(): void, model: function(Object): *}}
  */
 const dvaApp = dva.createApp({
-  models: models([netInfoModel, intlModel, bannerModel, DrawerNavigatorModel]),
+  models: models([netInfoModel, intlModel, bannerModel, DrawerNavigatorModel, ThemeContextModel]),
   enableLog: false,
 });
 

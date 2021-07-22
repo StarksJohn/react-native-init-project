@@ -10,4 +10,5 @@ export default Object.freeze({
     ...constant.event,
     MinePageRightBtClicks: 'MinePageRightBtClicks',
   },
+  isDarkTheme: 'isDarkTheme',
 });

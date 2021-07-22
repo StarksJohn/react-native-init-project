@@ -2,9 +2,9 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { useTheme, Avatar, Title, Caption, Paragraph, Drawer, Text, TouchableRipple, Switch } from 'react-native-paper';
 import { DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer';
-
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import routes from './routes';
+import { useThemeContext } from '@/AllExports';
 
 /**
  * PureComponent
@@ -15,6 +15,7 @@ import routes from './routes';
  */
 const DrawerContent = (props) => {
   const paperTheme = useTheme();
+  const { toggleTheme } = useThemeContext();
 
   return (
     <View style={{ flex: 1 }}>
@@ -63,7 +64,11 @@ const DrawerContent = (props) => {
             />
           </Drawer.Section>
           <Drawer.Section title='Preferences'>
-            <TouchableRipple onPress={() => {}}>
+            <TouchableRipple
+              onPress={() => {
+                toggleTheme();
+              }}
+            >
               <View style={styles.preference}>
                 <Text>Dark Theme</Text>
                 <View pointerEvents='none'>

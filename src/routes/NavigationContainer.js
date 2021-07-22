@@ -1,10 +1,11 @@
 import React, { useEffect, useRef, useState, useMemo, memo, useCallback, forwardRef, useImperativeHandle } from 'react';
 import { Image, View, SafeAreaView, StyleSheet } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
-import { DrawerContent, routes, SecondStack } from '@/AllExports';
+import { routes, SecondStack } from '@/AllExports';
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import MainStack from './MainStack';
+import DrawerContent from '../routes/DrawerContent.js';
 const Drawer = createDrawerNavigator();
 
 /**

@@ -10,14 +10,12 @@ Install:
 
     git clone --recurse-submodules https://github.com/StarksJohn/AwesomeProject.git 
     
-Update:
+Pull:
+    
+    git pull --recurse-submodules
 
-    If the main project and submodules are updated, execute:    
-        git pull --recurse-submodules
-    
-    If only the submodule is updated, execute:
-        git submodule update --remote
-    
+    it can update main project and submodules 
+
 Push:
     
     git push origin main
@@ -32,7 +30,7 @@ Main technology stack:
     dva : implemented dva that can cache data
     react-intl: support internationalization
     sentry: support crash monitoring
-    react-native-paper: support dark mode
+    react-native-paper: support dark mode and Cacheable dark mode status
     
 RUN: 
 

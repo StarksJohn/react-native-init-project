@@ -5,11 +5,13 @@ import { useDrawerNavigator } from './useHooks/useDrawerNavigator.js';
 // import MainStack from './routes/MainStack';
 import routes from './routes/routes';
 import { ThemeContext } from './context/themeContext';
-import DrawerContent from './routes/DrawerContent';
+// import DrawerContent from './routes/DrawerContent';
 import SecondStack from './routes/SecondStack';
 import DrawerNavigatorModel from './dva/DrawerNavigatorModel';
 import intlModel from '../src/react-intl/intlModel.js';
 import netInfoModel from './dva/netInfoModel/netInfoModel.js';
+import useThemeContext from './useHooks/useThemeContext.js';
+import ThemeContextModel from './dva/ThemeContextModel.js';
 
 /**
  * 因 https://plugins.jetbrains.com/plugin/7507-commonjs-autocomplete/versions 插件在新版的 WS 里无法使用,故 以后每次新增一个文件,都在此文件里 import 一次,再 export 一下,就可以避免以后 在项目的
@@ -29,12 +31,14 @@ const AllExports = {
   // MainStack,
   routes,
   ThemeContext,
-  DrawerContent,
+  // DrawerContent,
   SecondStack,
   DrawerNavigatorModel,
   intlModel,
   netInfoModel,
   useDrawerNavigator,
+  useThemeContext,
+  ThemeContextModel,
 };
 
 module.exports = AllExports;
