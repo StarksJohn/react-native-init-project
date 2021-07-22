@@ -6,7 +6,7 @@ const SecondStack = () => {
   return (
     <View style={styles.container}>
       <Text>SecondStack</Text>
-      <Button title='Click Here' onPress={() => alert('Button Clicked!')} />
+      {/*<Button title='Click Here' onPress={() => alert('Button Clicked!')} />*/}
     </View>
   );
 };

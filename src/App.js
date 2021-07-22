@@ -8,8 +8,8 @@
 import React, { useEffect } from 'react';
 import {} from 'react-native';
 import { Provider as StoreProvider } from 'react-redux';
-import { IntlWrapper } from '@/AllExports';
-import dvaApp from './dva/dvaApp.js';
+import { IntlWrapper } from '@/react_intl';
+import { dvaApp } from '@/dva';
 import AppProvider from './AppProvider.js';
 
 const store = dvaApp.getStore();

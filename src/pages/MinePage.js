@@ -8,7 +8,6 @@ import { EventListener } from '@RNProjectTools';
 import constant from '../constants/constant';
 // import { ThemeContext } from '../context/themeContext';
 import SafeView from '../components/SafeView';
-import { useThemeContext } from '@/AllExports';
 
 const MinePage = (props) => {
   const { navigation, route } = props;
@@ -16,7 +15,6 @@ const MinePage = (props) => {
   const { colors } = useTheme();
   const { setParams } = navigation; //在具体页面内设置 ScreenOptions https://www.jianshu.com/p/a2582f8b16fd
   const theme = useTheme();
-  const { toggleTheme } = useThemeContext();
 
   /**
    * componentDidMount && componentWillUnmount
@@ -30,7 +28,6 @@ const MinePage = (props) => {
         eventName: constant.event.MinePageRightBtClicks,
         eventCallback: ({}) => {
           console.log('MinePage.js MinePageRightBtClicks toggleTheme=', toggleTheme);
-          toggleTheme();
         },
       });
 
@@ -40,7 +37,7 @@ const MinePage = (props) => {
         MinePageRightBtClicks.removeEventListener();
       };
     },
-    []
+    [navigation]
   );
 
   return (

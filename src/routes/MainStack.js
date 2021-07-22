@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { ActivityIndicator, View } from 'react-native';
 import { useTheme } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import routes from './routes';
 import WelcomePage from '../pages/WelcomePage';
 import CustomNavigationBar from '../components/CustomNavigationBar';
 import MainTabNavigator from './MainTabNavigator';
@@ -10,8 +9,8 @@ import DetailsPage from '../pages/DetailsPage';
 import { appStyle, asyncStorage, tool } from '@RNProjectTools';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import useNetInfoModel from '../dva/netInfoModel/useNetInfoModel';
-import {} from '@/AllExports';
 import constant from '../constants/constant'; //此文件通过 @/AllExports 拿到的 constant 是Undefine,所以需要指定路径import
+import routes from './routes.js';
 
 const Stack = createStackNavigator();
 

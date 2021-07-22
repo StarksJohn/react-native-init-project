@@ -1,4 +1,4 @@
-import { Text, Button, baseModel } from '@RNProjectTools';
+import { baseModel } from '@RNProjectTools';
 
 const ThemeContextModel = 'ThemeContextModel';
 const initState = {
@@ -31,6 +31,7 @@ export default {
   namespace: ThemeContextModel,
   state: initState,
   attributesToBeCached: [_action.isDarkTheme], //当前model需要被缓存的数据的key
-  effects: {},
+  effects,
   reducers: {},
+  _action,
 };

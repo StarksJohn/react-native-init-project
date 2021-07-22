@@ -1,8 +1,9 @@
 import { dva, models } from '@RNProjectTools';
 // import netInfoModel from './netInfoModel/netInfoModel';
 import bannerModel from './bannerModel/bannerModel';
-import { DrawerNavigatorModel, intlModel, netInfoModel, ThemeContextModel } from '@/AllExports';
-console.log('dvaApp.js netInfoModel=', netInfoModel);
+import { DrawerNavigatorModel, intlModel, netInfoModel } from '@/AllExports';
+import ThemeContextModel from './ThemeContextModel';
+// import { ThemeContextModel } from '@/dva';
 
 /**
  * 初始化dva 模块

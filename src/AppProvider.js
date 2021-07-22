@@ -1,9 +1,8 @@
 import React, { useEffect, useRef, useState, useMemo, memo, useCallback, forwardRef, useImperativeHandle } from 'react';
 import { Image, View, SafeAreaView, StyleSheet } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
-import { ThemeContext } from '@/AllExports';
+import { ThemeContext } from '@/context';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import NavigationContainer from './routes/NavigationContainer';
 import {
   Provider as PaperProvider,
   DefaultTheme as PaperDefaultTheme,
@@ -11,8 +10,8 @@ import {
 } from 'react-native-paper';
 import { DefaultTheme as NavigationDefaultTheme, DarkTheme as NavigationDarkTheme } from '@react-navigation/native';
 import { appStyle } from '@RNProjectTools';
-import { _action, effects } from './dva/ThemeContextModel';
-// import useThemeContext from './useHooks/useThemeContext.js';
+import { NavigationContainer } from '@/routes';
+import { ThemeContextModel } from '@/dva';
 
 /**
  * PureComponent
@@ -35,8 +34,8 @@ const AppProvider = ({}, parentRef) => {
       console.log('AppProvider.js toggleTheme Start to change ThemeContextModel.isDarkTheme');
 
       return dispatch({
-        type: effects.saveSomeThing, //对应bannerModel里的某个effect
-        action: _action.isDarkTheme, //对应某个reducer
+        type: ThemeContextModel.effects.saveSomeThing, //对应bannerModel里的某个effect
+        action: ThemeContextModel._action.isDarkTheme, //对应某个reducer
         payload: {
           isDarkTheme: !_isDarkTheme,
         },
