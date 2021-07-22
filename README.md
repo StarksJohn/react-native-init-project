@@ -11,14 +11,12 @@ Install:
     git clone --recurse-submodules https://github.com/StarksJohn/AwesomeProject.git 
     
 Pull:
-    
-    git submodule update --remote  
-    
-    then  commit the changed commit
 
-    last, git pull --recurse-submodules
-
-    it can update main project and submodules 
+    First update the latest code of the submodule :
+        git submodule update --remote  
+    If you update to the latest commit of the submodule, You need to commit first
+    at end :
+        git pull --recurse-submodules
 
 Push:
     
