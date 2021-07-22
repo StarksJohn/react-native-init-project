@@ -12,7 +12,11 @@ Install:
     
 Pull:
     
-    git pull --recurse-submodules
+    git submodule update --remote  
+    
+    then  commit the changed code
+
+    last, git pull --recurse-submodules
 
     it can update main project and submodules 
 
