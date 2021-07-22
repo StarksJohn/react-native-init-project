@@ -1,4 +1,5 @@
 import useThemeContext from './useThemeContext.js';
+import useNetInfoModel from './useNetInfoModel.js';
 
 /**
  * import { useThemeContext } from '@/useHooks';
@@ -6,4 +7,5 @@ import useThemeContext from './useThemeContext.js';
  */
 module.exports = {
   useThemeContext,
+  useNetInfoModel,
 };

@@ -1,6 +1,7 @@
 import dvaApp from './dvaApp.js';
 import ThemeContextModel from './ThemeContextModel';
 import DrawerNavigatorModel from './DrawerNavigatorModel.js';
+import netInfoModel from './netInfoModel/netInfoModel.js';
 
 /**
  * import { dvaApp } from '@/dva';
@@ -11,4 +12,5 @@ module.exports = {
   dvaApp,
   ThemeContextModel,
   DrawerNavigatorModel,
+  netInfoModel,
 };
