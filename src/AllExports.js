@@ -3,8 +3,6 @@ import constant from './constants/constant';
 import { useDrawerNavigator } from './useHooks/useDrawerNavigator.js';
 // import DrawerContent from './routes/DrawerContent';
 import SecondStack from './routes/SecondStack';
-import DrawerNavigatorModel from './dva/DrawerNavigatorModel';
-import intlModel from '../src/react-intl/intlModel.js';
 import netInfoModel from './dva/netInfoModel/netInfoModel.js';
 
 /**
@@ -20,10 +18,7 @@ import netInfoModel from './dva/netInfoModel/netInfoModel.js';
  */
 const AllExports = {
   constant,
-  // DrawerContent,
   SecondStack,
-  DrawerNavigatorModel,
-  intlModel,
   netInfoModel,
   useDrawerNavigator,
 };

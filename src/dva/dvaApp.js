@@ -1,9 +1,10 @@
 import { dva, models } from '@RNProjectTools';
 // import netInfoModel from './netInfoModel/netInfoModel';
 import bannerModel from './bannerModel/bannerModel';
-import { DrawerNavigatorModel, intlModel, netInfoModel } from '@/AllExports';
+import { netInfoModel } from '@/AllExports';
 import ThemeContextModel from './ThemeContextModel';
-// import { ThemeContextModel } from '@/dva';
+import DrawerNavigatorModel from './DrawerNavigatorModel.js';
+import { intlModel } from '@/react_intl';
 
 /**
  * 初始化dva 模块

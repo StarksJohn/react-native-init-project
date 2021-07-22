@@ -1,4 +1,4 @@
-import {EN, MOMENT_LOCALE} from './locale';
+import { EN, MOMENT_LOCALE } from './locale';
 import messages from './messages/messages';
 import baseModel from '../submodules/RNProjectTools/dva/baseModel';
 
@@ -11,10 +11,10 @@ const initState = {
   initialNow: Date.now(),
   setLocaleCompleted: false,
 };
-export const effects = {
+const effects = {
   saveSomeThing: `intlModel/${baseModel.baseEffects.saveSomeThing}`, //每个model默认的同步的直接改变此 model 的某个 state 的 effect
 };
-export const action = {
+const action = {
   ...baseModel.baseAction,
   locale: 'locale',
 };
@@ -26,5 +26,6 @@ export default {
   namespace: intlModel,
   state: initState,
   attributesToBeCached: [action.locale], //被缓存的数据的key
-  effects: {},
+  effects,
+  action,
 };

@@ -1,18 +1,8 @@
-import React, {
-  useEffect,
-  useCallback,
-  forwardRef,
-  useImperativeHandle,
-  useRef,
-  memo,
-  useState,
-} from 'react';
-import {useSelector, useDispatch} from 'react-redux';
-import {
-  action as intlModel_action,
-  effects as intlModel_effects,
-} from './intlModel';
-import {CN, EN} from './locale';
+import React, { useEffect, useCallback, forwardRef, useImperativeHandle, useRef, memo, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+// import { action as intlModel_action, effects as intlModel_effects } from './intlModel';
+import intlModel from './intlModel.js';
+import { CN, EN } from './locale';
 import messages from './messages/messages';
 
 export default () => {
@@ -23,15 +13,15 @@ export default () => {
     (payload) => {
       console.log('useIntlModel switchToCN payload=', payload);
       return dispatch({
-        type: intlModel_effects.saveSomeThing,
-        action: intlModel_action.locale,
-        payload: {locale: CN},
+        type: intlModel.effects.saveSomeThing,
+        action: intlModel.action.locale,
+        payload: { locale: CN },
         callback: (result) => {
           console.log('useIntlModel.js 切换为中文 locale callback=', result);
         },
       });
     },
-    [dispatch],
+    [dispatch]
   );
 
   const switchToEN = useCallback(
@@ -40,14 +30,14 @@ export default () => {
       return dispatch({
         type: intlModel_effects.saveSomeThing,
         action: intlModel_action.locale,
-        payload: {locale: EN},
+        payload: { locale: EN },
         callback: (result) => {
           console.log('useIntlModel.js 切换为EN callback=', result);
         },
       });
     },
-    [dispatch],
+    [dispatch]
   );
 
-  return {switchToCN, switchToEN};
+  return { switchToCN, switchToEN };
 };
