@@ -14,7 +14,7 @@ Pull:
     
     git submodule update --remote  
     
-    then  commit the changed code
+    then  commit the changed commit
 
     last, git pull --recurse-submodules
 
