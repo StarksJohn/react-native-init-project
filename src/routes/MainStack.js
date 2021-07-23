@@ -8,8 +8,8 @@ import MainTabNavigator from './MainTabNavigator';
 import DetailsPage from '../pages/DetailsPage';
 import { appStyle, asyncStorage, tool } from '@RNProjectTools';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { useNetInfoModel } from '@/useHooks';
-import constant from '../constants/constant'; //此文件通过 @/AllExports 拿到的 constant 是Undefine,所以需要指定路径import
+import { useNetInfoModel } from '@useHooks';
+import { constant } from '@/constant';
 import routes from './routes.js';
 
 const Stack = createStackNavigator();

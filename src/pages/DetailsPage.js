@@ -1,13 +1,14 @@
-import React, {useEffect} from 'react';
-import {View, Text, Button, StyleSheet} from 'react-native';
-import {useTheme} from '@react-navigation/native';
-import useNavFocusListener from '../components/useNavFocusListener';
-import SafeView from '../components/SafeView';
-import {useAndroidBackHandler, BaseFlatList} from '@RNProjectTools';
+import React, { useEffect } from 'react';
+import { View, Text, Button, StyleSheet } from 'react-native';
+import { useTheme } from '@react-navigation/native';
+// import SafeView from '../components/SafeView';
+import { SafeView } from '@components';
+import { useAndroidBackHandler } from '@RNProjectTools';
+import { useNavFocusListener } from '@useHooks';
 
-const DetailsPage = ({navigation}) => {
-  const {setOptions} = navigation; //在具体页面内设置 ScreenOptions https://www.jianshu.com/p/a2582f8b16fd
-  const {colors} = useTheme();
+const DetailsPage = ({ navigation }) => {
+  const { setOptions } = navigation; //在具体页面内设置 ScreenOptions https://www.jianshu.com/p/a2582f8b16fd
+  const { colors } = useTheme();
 
   useNavFocusListener({
     onFocus: () => {
@@ -45,12 +46,12 @@ const DetailsPage = ({navigation}) => {
         console.log('DetailsScreen componentWillUnmount');
       };
     },
-    [colors.text, navigation, setOptions],
+    [colors.text, navigation, setOptions]
   );
 
   return (
     <SafeView>
-      <Text style={{color: colors.text}}>Details Screen</Text>
+      <Text style={{ color: colors.text }}>Details Screen</Text>
     </SafeView>
   );
 };

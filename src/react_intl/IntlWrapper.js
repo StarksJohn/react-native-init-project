@@ -4,6 +4,7 @@ import { connect, useSelector } from 'react-redux';
 import { IntlProvider } from 'react-intl';
 // import {DEFAULT_LOCALE, DEFAULT_CURRENCY} from '@config/locale';
 import Messages from './messages/messages';
+console.log('IntlWrapper.js IntlProvider=', IntlProvider);
 
 export const IntlWrapper = ({ children }) => {
   const { locale } = useSelector((state) => state.intlModel);

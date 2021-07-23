@@ -3,18 +3,19 @@
     "baseUrl": ".",
     "paths": {
       "@RNProjectTools": ["./src/submodules/RNProjectTools/index.js"],
-      "@/AllExports": ["./src/AllExports.js"],
-      "@/dva": ["./src/dva/index.js"],
-      "@/react_intl": [
-        "./src/react-intl/index.js"
+      "@dva": ["./src/dva/index.js"],
+      "@react_intl": [
+        "./src/react_intl/index.js"
       ],
-      "@/context": [
+      "@context": [
         "./src/context/index.js"
       ],
-      "@/routes": [
+      "@routes": [
         "./src/routes/index.js"
       ],
-      "@/useHooks": ["./src/useHooks/index.js"]
+      "@useHooks": ["./src/useHooks/index.js"],
+      "@/constant": ["./src/constants/index.js"],
+      "@components": ["./src/components/index.js"]
     }
   },
   "exclude": ["node_modules"]

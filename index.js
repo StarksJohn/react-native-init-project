@@ -3,9 +3,9 @@
 import 'react-native-gesture-handler';
 import { AppRegistry, Platform } from 'react-native';
 import { sentryLog } from './src/sentry/sentry'; //init sentry
-import { constant } from '@/AllExports';
 import App from './src/App';
 import { name as appName } from './app.json';
+import { constant } from '@/constant';
 
 if (!constant.fakeData && !__DEV__) {
   // release package
@@ -26,7 +26,7 @@ if (!constant.fakeData && !__DEV__) {
 }
 
 if (Platform.OS === 'android') {
-  //for init  react-intl
+  //for init  react_intl
   require('intl');
   require('intl/locale-data/jsonp/en');
 }

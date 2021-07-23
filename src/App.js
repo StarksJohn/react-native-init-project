@@ -6,10 +6,10 @@
  */
 
 import React, { useEffect } from 'react';
-import {} from 'react-native';
+import { View } from 'react-native';
 import { Provider as StoreProvider } from 'react-redux';
-import { IntlWrapper } from '@/react_intl';
-import { dvaApp } from '@/dva';
+import { IntlWrapper } from '@react_intl';
+import { dvaApp } from '@dva';
 import AppProvider from './AppProvider.js';
 
 const store = dvaApp.getStore();

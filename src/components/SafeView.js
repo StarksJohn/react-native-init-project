@@ -1,20 +1,10 @@
-import React, {
-  useEffect,
-  useRef,
-  useState,
-  useMemo,
-  memo,
-  useCallback,
-  forwardRef,
-  useImperativeHandle,
-} from 'react';
-import {Image, View, SafeAreaView, StyleSheet} from 'react-native';
-import {appStyle} from '@RNProjectTools';
-import {useTheme} from '@react-navigation/native';
-
-const {dp} = appStyle;
+import React, { useEffect, useRef, useState, useMemo, memo, useCallback, forwardRef, useImperativeHandle } from 'react';
+import { Image, View, SafeAreaView, StyleSheet } from 'react-native';
+import { appStyle } from '@RNProjectTools';
+import { useTheme } from '@react-navigation/native';
 
 /**
+ * 安全区外层的根视图
  * PureComponent
  * @param props
  * @param parentRef
@@ -22,21 +12,18 @@ const {dp} = appStyle;
  * @constructor
  */
 // eslint-disable-next-line react/prop-types
-const SafeView = ({children}) => {
-  const {colors} = useTheme();
+const SafeView = ({ children }) => {
+  const { colors } = useTheme();
 
   // SafeAreaView: 安全区外层的根视图
   return (
-    <SafeAreaView
-      style={[appStyle.safeAreaView, {backgroundColor: colors.primary}]}>
+    <SafeAreaView style={[appStyle.safeAreaView, { backgroundColor: colors.primary }]}>
       {
         avoidBlankSpaceAtTheBottomOfSafeAreaView({})
         // appStyle.pageStyle.backgroundColor,
       }
       {/*安全区域*/}
-      <View style={[Styles.page, {backgroundColor: colors.primary}]}>
-        {children}
-      </View>
+      <View style={[Styles.page, { backgroundColor: colors.primary }]}>{children}</View>
     </SafeAreaView>
   );
 };
@@ -47,9 +34,9 @@ const SafeView = ({children}) => {
  * @param color
  * @returns {*}
  */
-export const avoidBlankSpaceAtTheBottomOfSafeAreaView = ({color = '#fff'}) => {
-  // eslint-disable-next-line react-useHooks/rules-of-useHooks
-  const {colors} = useTheme();
+export const avoidBlankSpaceAtTheBottomOfSafeAreaView = ({ color = '#fff' }) => {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const { colors } = useTheme();
 
   return (
     <View

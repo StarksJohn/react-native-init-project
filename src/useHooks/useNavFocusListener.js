@@ -1,8 +1,8 @@
-import React, {useEffect, useCallback} from 'react';
-import {StatusBar, Platform} from 'react-native';
-import {appStyle} from '@RNProjectTools';
-import {useFocusEffect} from '@react-navigation/native';
-import {useTheme} from '@react-navigation/native';
+import React, { useEffect, useCallback } from 'react';
+import { StatusBar, Platform } from 'react-native';
+import { appStyle } from '@RNProjectTools';
+import { useFocusEffect } from '@react-navigation/native';
+import { useTheme } from '@react-navigation/native';
 
 useNavFocusListener.propTypes = {};
 
@@ -42,7 +42,7 @@ export default function useNavFocusListener(props) {
         unfocused && unfocused();
         console.log('useNavFocusListener.js unfocused');
       };
-    }, [_onFocus, unfocused]),
+    }, [_onFocus, unfocused])
   );
 
   const _onFocus = useCallback(() => {

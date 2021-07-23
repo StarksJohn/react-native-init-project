@@ -1,18 +1,9 @@
-import React, {
-  useEffect,
-  useRef,
-  useState,
-  useMemo,
-  memo,
-  useCallback,
-  forwardRef,
-  useImperativeHandle,
-} from 'react';
-import {Image, View, SafeAreaView, StyleSheet} from 'react-native';
-import {connect} from 'react-redux';
-import {compose} from 'redux';
+import React, { useEffect, useRef, useState, useMemo, memo, useCallback, forwardRef, useImperativeHandle } from 'react';
+import { Image, View, SafeAreaView, StyleSheet } from 'react-native';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
 import PropTypes from 'prop-types';
-import {Appbar, Menu} from 'react-native-paper';
+import { Appbar, Menu } from 'react-native-paper';
 
 /**
  * 基于 react-native-paper 的自定义导航栏 https://callstack.github.io/react-native-paper/integrate-app-bar-with-react-navigation.html
@@ -48,7 +39,7 @@ const CustomNavigationBar = (props) => {
         console.log('CustomNavigationBar componentWillUnmount');
       };
     },
-    [navigation, props],
+    [navigation, props]
   );
 
   /*

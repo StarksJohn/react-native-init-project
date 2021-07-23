@@ -1,39 +1,21 @@
-import React, {
-  useEffect,
-  useRef,
-  useState,
-  useMemo,
-  useCallback,
-  memo,
-} from 'react';
-import {Image, View, SafeAreaView, StyleSheet, Text} from 'react-native';
-// import Text
-// import Button
-// import appStyle
-// import ViewPropTypes
-// import bizComp
-// import NavBar
+import React, { useEffect, useRef, useState, useMemo, useCallback, memo } from 'react';
+import { Image, View, SafeAreaView, StyleSheet, Text } from 'react-native';
 import PropTypes from 'prop-types';
-// import TextBt
-// import useNavFocusListener
-// import useAppStateListener
-// import useSubscribeKeyboard
-// import useAndroidBackHandler
-import {connect} from 'react-redux';
-import {compose} from 'redux';
-// import SafeView
-import {useTheme} from '@react-navigation/native';
-import {asyncStorage} from '@RNProjectTools';
-import constant from '../constants/constant';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
+import { useTheme } from '@react-navigation/native';
+import { asyncStorage } from '@RNProjectTools';
+// import constant from '../constants/constant';
+import { constant } from '@/constant';
 import routes from '../routes/routes';
 
 // const { dp } = appStyle;
 
 const WelcomePage = (props) => {
   // const r_nav = useRef();
-  const {navigation, route} = props;
-  const {setOptions} = navigation; //在具体页面内设置 ScreenOptions https://www.jianshu.com/p/a2582f8b16fd
-  const {colors} = useTheme();
+  const { navigation, route } = props;
+  const { setOptions } = navigation; //在具体页面内设置 ScreenOptions https://www.jianshu.com/p/a2582f8b16fd
+  const { colors } = useTheme();
 
   // useNavFocusListener({
   //   navigation,
@@ -75,27 +57,20 @@ const WelcomePage = (props) => {
   useEffect(
     /*The async keyword cannot be added to the first parameter https://juejin.im/post/6844903985338400782#heading-27 */
     () => {
-      console.log(
-        'WelcomePage componentDidMount,props=',
-        props,
-        ' isFocused=',
-        navigation.isFocused(),
-      );
+      console.log('WelcomePage componentDidMount,props=', props, ' isFocused=', navigation.isFocused());
 
       //todo
 
       setTimeout(() => {
         routes.reset(navigation, routes.MainTabNavigator.routeName);
-        asyncStorage
-          .setItem(constant.initialRouteName, routes.MainTabNavigator.routeName)
-          .then();
+        asyncStorage.setItem(constant.initialRouteName, routes.MainTabNavigator.routeName).then();
       }, 5000);
       //componentWillUnmount
       return () => {
         console.log('WelcomePage componentWillUnmount');
       };
     },
-    [],
+    []
   );
 
   /*
@@ -117,10 +92,7 @@ const WelcomePage = (props) => {
 
   //render
   return (
-    // <SafeView>
-    //   <>{renderNav()}</>
-    // </SafeView>
-    <View style={[styles.container, {backgroundColor: colors.background}]}>
+    <View style={[styles.container, { backgroundColor: colors.background }]}>
       <Text>WelcomePage</Text>
     </View>
   );

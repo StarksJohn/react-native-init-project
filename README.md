@@ -8,7 +8,9 @@ HomePage:
 
 Install:
 
-    git clone --recurse-submodules https://github.com/StarksJohn/AwesomeProject.git 
+    git clone --recurse-submodules https://github.com/StarksJohn/AwesomeProject.git
+    yarn
+    cd ios && pod install
     
 Pull:
 
