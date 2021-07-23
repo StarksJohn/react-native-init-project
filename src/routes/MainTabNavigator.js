@@ -1,12 +1,10 @@
 import React, { useEffect } from 'react';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import Icon from 'react-native-vector-icons/Ionicons';
-import HomePage from '../pages/HomePage';
-import MinePage from '../pages/MinePage';
+import { HomePage, MinePage } from '@pages';
 import routes from './routes';
-import CustomNavigationBar from '../components/CustomNavigationBar';
+import { CustomNavigationBar } from '@components';
 import { useTheme } from '@react-navigation/native';
-import { Text } from 'react-native';
 import { useAndroidBackHandler } from '@RNProjectTools';
 const Tab = createMaterialBottomTabNavigator();
 

@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState, useMemo, memo, useCallback, forwardRef, useImperativeHandle } from 'react';
-import { Image, View, SafeAreaView, StyleSheet } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import routes from './routes.js';
 import SecondStack from './SecondStack.js';

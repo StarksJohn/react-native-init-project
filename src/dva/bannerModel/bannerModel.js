@@ -1,6 +1,5 @@
-import baseModel from '../../submodules/RNProjectTools/dva/baseModel';
-import tool from '../../submodules/RNProjectTools/tools/tool';
 import api from '../../api/api';
+import { baseModel, tool } from '@RNProjectTools';
 
 /**
  * 健康走页面 banner
@@ -27,17 +26,13 @@ export const _action = {
   campaign_banner: 'campaign_banner',
 };
 
-const awaitSaveSomeThing = ({actions}) => {
+const awaitSaveSomeThing = ({ actions }) => {
   return new Promise(async (resolve, reject) => {
     switch (actions) {
       case _action.campaign_banner:
         {
-          console.log(
-            'bannerModel.js awaitSaveSomeThing 开始异步获取 camcampaign_bannerpaign_banner 的 值',
-          );
-          const [err, campaign_banner] = await tool.to(
-            api.campaign_banner({campaign_type: 'step'}),
-          );
+          console.log('bannerModel.js awaitSaveSomeThing 开始异步获取 camcampaign_bannerpaign_banner 的 值');
+          const [err, campaign_banner] = await tool.to(api.campaign_banner({ campaign_type: 'step' }));
 
           console.log('bannerModel campaign_banner =', campaign_banner);
           if (campaign_banner && campaign_banner instanceof Array) {
@@ -58,31 +53,21 @@ export default {
   state: initState,
   attributesToBeCached: [_action.campaign_banner], //被缓存的数据的key
   effects: {
-    *[baseModel.baseEffects.awaitSaveSomeThing]( //每个model通用的异步获取数据 && 更新 某个reducer
-      {action, payload, callback},
-      {put, call, select},
-    ) {
-      console.log(
-        'bannerModel effects awaitSaveSomeThing payload=',
-        payload,
-        ' action =',
-        action,
-      );
+    *[baseModel.baseEffects.awaitSaveSomeThing]({ action, payload, callback }, { put, call, select }) {
+      //每个model通用的异步获取数据 && 更新 某个reducer
+      console.log('bannerModel effects awaitSaveSomeThing payload=', payload, ' action =', action);
       const state = yield select((state) => state); //这里就获取到了当前state
       console.log('bannerModel effects awaitSaveSomeThing 全局state=', state);
 
       //处理不同的当前model相关异步请求
-      const [err, data] = yield tool.to(awaitSaveSomeThing({actions: action}));
+      const [err, data] = yield tool.to(awaitSaveSomeThing({ actions: action }));
       console.log('bannerModel.js awaitSaveSomeThing data=', data);
 
       //更新 当前model的 initState
       const newPayload = {
         [`${action}`]: data,
       };
-      console.log(
-        'bannerModel awaitSaveSomeThing 更新 当前model的 initState  newPayload=',
-        newPayload,
-      );
+      console.log('bannerModel awaitSaveSomeThing 更新 当前model的 initState  newPayload=', newPayload);
       yield put({
         type: baseModel.baseEffects.saveSomeThing,
         action,
@@ -90,7 +75,5 @@ export default {
       });
     },
   },
-  reducers: {
-
-  },
+  reducers: {},
 };

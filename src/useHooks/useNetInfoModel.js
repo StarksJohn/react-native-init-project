@@ -2,8 +2,7 @@ import React, { useEffect, useRef, useState, useMemo, memo, useCallback, forward
 import { useSelector, useDispatch } from 'react-redux';
 import { useNetInfo } from '@react-native-community/netinfo';
 import { Platform } from 'react-native';
-
-import { action, effects } from '../dva/netInfoModel/netInfoModel';
+import { netInfoModel } from '@dva';
 
 export default () => {
   const dispatch = useDispatch();
@@ -21,8 +20,8 @@ export default () => {
       console.log('useNetInfoModel.js dispatch_networkAvailable payload=', payload);
 
       return dispatch({
-        type: effects.saveSomeThing, //
-        action: action.networkAvailable, //对应某个reducer
+        type: netInfoModel.effects.saveSomeThing, //
+        action: netInfoModel.action.networkAvailable, //对应某个reducer
         payload: { networkAvailable },
         callback: (result) => {
           console.log('useNetInfoModel.js  dispatch_networkAvailable callback=', result);

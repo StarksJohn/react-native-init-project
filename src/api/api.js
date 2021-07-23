@@ -1,6 +1,5 @@
-import {XHttp} from '@RNProjectTools';
+import { XHttp } from '@RNProjectTools';
 import Urls from './Urls';
-import tool from '../submodules/RNProjectTools/tools/tool';
 
 export default {
   anime: async (p = {}) => {
@@ -14,7 +13,7 @@ export default {
       XHttp()
         .url('https://api.jikan.moe/v3/search/anime?q=Fate/Zero')
         .param(p)
-        .get((success, {results, last_page}, msg, code) => {
+        .get((success, { results, last_page }, msg, code) => {
           console.log('api.js anime results=', results);
           if (success) {
             resolve(results);
@@ -37,7 +36,7 @@ export default {
       XHttp()
         .url(Urls.campaign_banner)
         .param(payload)
-        .get(({success, json, message, status, response}) => {
+        .get(({ success, json, message, status, response }) => {
           console.log(
             'api.js campaign_banner success=',
             success,
@@ -46,7 +45,7 @@ export default {
             ' message=',
             message,
             ' status=',
-            status,
+            status
           );
           if (success) {
             resolve(json);

@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, Button, StyleSheet, StatusBar } from 'react-native';
 import { sendEvent } from '@RNProjectTools';
-import constant from '../constants/constant';
+import { constant } from '@/constant';
 
 export default {
   MainStack: {

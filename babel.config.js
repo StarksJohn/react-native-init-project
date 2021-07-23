@@ -16,6 +16,8 @@ module.exports = {
           '@useHooks': ['./src/useHooks/index.js'],
           '@/constant': ['./src/constants/index.js'],
           '@components': ['./src/components/index.js'],
+          '@pages': ['./src/pages/index.js'],
+          '@style': ['./src/style/index.js'],
         },
       },
     ],

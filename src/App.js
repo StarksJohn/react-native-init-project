@@ -6,7 +6,6 @@
  */
 
 import React, { useEffect } from 'react';
-import { View } from 'react-native';
 import { Provider as StoreProvider } from 'react-redux';
 import { IntlWrapper } from '@react_intl';
 import { dvaApp } from '@dva';

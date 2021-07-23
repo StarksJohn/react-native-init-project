@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState, useMemo, memo, useCallback, forwardRef, useImperativeHandle } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { ThemeContext } from '../context/themeContext';
+import { ThemeContext } from '@context';
 
 /**
  * Toggle dark mode

@@ -1,9 +1,8 @@
 import React, { useEffect, useCallback, forwardRef, useImperativeHandle, useRef, memo, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 // import { action as intlModel_action, effects as intlModel_effects } from './intlModel';
-import intlModel from './intlModel.js';
-import { CN, EN } from './locale';
-import messages from './messages/messages';
+import intlModel from '../react_intl/intlModel.js';
+import { CN, EN } from '../react_intl/locale';
 
 export default () => {
   // const {locale, messages} = useSelector((state) => state.intlModel);
@@ -28,8 +27,8 @@ export default () => {
     (payload) => {
       console.log('useIntlModel switchToEN payload=', payload);
       return dispatch({
-        type: intlModel_effects.saveSomeThing,
-        action: intlModel_action.locale,
+        type: intlModel.effects.saveSomeThing,
+        action: intlModel.action.locale,
         payload: { locale: EN },
         callback: (result) => {
           console.log('useIntlModel.js 切换为EN callback=', result);

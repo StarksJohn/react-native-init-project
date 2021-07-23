@@ -1,17 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, Button, StyleSheet, StatusBar } from 'react-native';
 import { useTheme } from '@react-navigation/native';
-import routes from '../routes/routes';
-// import SafeView from '../components/SafeView';
+import { routes } from '@routes';
 import { SafeView } from '@components';
 import { useSelector, useDispatch } from 'react-redux';
 import { tool, appStyle, XView, XWidget, XText, XSize, XTSize, ResetStyle, ahooks } from '@RNProjectTools';
-import MyStyleSheet from '../style/MyStyleSheet';
+import { MyStyleSheet } from '@style';
 import { captureMessage, sentryLog } from '../sentry/sentry';
 import { FormattedMessage } from 'react-intl';
-import useBannerModel from '../dva/bannerModel/useBannerModel';
-import useIntlModel from '../react_intl/useIntlModel';
-import { useDrawerNavigator, useNavFocusListener } from '@useHooks';
+import { useDrawerNavigator, useNavFocusListener, useBannerModel, useIntlModel } from '@useHooks';
 
 const HomePage = ({ navigation }) => {
   const { networkAvailable } = useSelector((state) => state.netInfoModel);

@@ -3,8 +3,6 @@ import { View, Text, Button, StyleSheet, StatusBar } from 'react-native';
 import { useTheme } from '@react-navigation/native';
 import { EventListener } from '@RNProjectTools';
 import { constant } from '@/constant';
-// import { ThemeContext } from '../context/themeContext';
-// import SafeView from '../components/SafeView';
 import { SafeView } from '@components';
 
 const MinePage = (props) => {

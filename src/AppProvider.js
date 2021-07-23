@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState, useMemo, memo, useCallback, forwardRef, useImperativeHandle } from 'react';
-import { Image, View, SafeAreaView, StyleSheet } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import { ThemeContext } from '@context';
 import { SafeAreaProvider } from 'react-native-safe-area-context';

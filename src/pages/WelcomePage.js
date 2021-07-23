@@ -5,11 +5,8 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { useTheme } from '@react-navigation/native';
 import { asyncStorage } from '@RNProjectTools';
-// import constant from '../constants/constant';
 import { constant } from '@/constant';
-import routes from '../routes/routes';
-
-// const { dp } = appStyle;
+import { routes } from '@routes';
 
 const WelcomePage = (props) => {
   // const r_nav = useRef();

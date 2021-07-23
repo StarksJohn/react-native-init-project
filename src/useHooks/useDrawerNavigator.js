@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState, useMemo, memo, useCallback, forwardRef, useImperativeHandle } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 
 /**
  * const { openDrawer } = useDrawerNavigator({ navigation });

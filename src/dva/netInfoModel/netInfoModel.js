@@ -21,10 +21,10 @@ const initState = {
    */
   // networkInfo: undefined, //NetInfo.addEventListener方法的回调参数返回的state
 };
-export const effects = {
+const effects = {
   saveSomeThing: `netInfoModel/${baseModel.baseEffects.saveSomeThing}`, //每个model默认的同步的直接改变此 model 的某个 state 的 effect
 };
-export const action = {
+const action = {
   ...baseModel.baseAction,
   networkAvailable: 'networkAvailable',
 };
@@ -35,4 +35,6 @@ export const action = {
 export default {
   namespace: netInfoModel,
   state: initState,
+  action,
+  effects,
 };

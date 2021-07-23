@@ -1,6 +1,6 @@
 import { EN, MOMENT_LOCALE } from './locale';
 import messages from './messages/messages';
-import baseModel from '../submodules/RNProjectTools/dva/baseModel';
+import { baseModel } from '@RNProjectTools';
 
 const intlModel = 'intlModel';
 const initState = {
