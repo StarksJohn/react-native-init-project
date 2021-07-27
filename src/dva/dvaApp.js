@@ -1,5 +1,4 @@
 import { dva, models } from '@RNProjectTools';
-// import netInfoModel from './netInfoModel/netInfoModel';
 import bannerModel from './bannerModel/bannerModel';
 import ThemeContextModel from './ThemeContextModel';
 import DrawerNavigatorModel from './DrawerNavigatorModel.js';

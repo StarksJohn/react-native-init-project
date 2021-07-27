@@ -1,4 +1,4 @@
-import { baseModel } from '@RNProjectTools';
+import { baseModel } from 'react-native-common-tools';
 
 const ThemeContextModel = 'ThemeContextModel';
 const initState = {

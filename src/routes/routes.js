@@ -1,7 +1,5 @@
 import React from 'react';
 import { View, Text, Button, StyleSheet, StatusBar } from 'react-native';
-import { sendEvent } from '@RNProjectTools';
-import { constant } from '@/constant';
 
 export default {
   MainStack: {
@@ -20,8 +18,6 @@ export default {
         title='右按钮'
         onPress={(e) => {
           console.log('routes.js MinePage rightComp onPress e=', e);
-
-          sendEvent(constant.event.MinePageRightBtClicks);
         }}
       />
     ),

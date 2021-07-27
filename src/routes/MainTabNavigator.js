@@ -75,6 +75,9 @@ const MainTabNavigator = (props) => {
       <Tab.Screen
         key={routes.HomePage.routeName}
         name={routes.HomePage.routeName}
+        // 因为在页面里使用 import { routes } from '@routes'; 拿到的 routes是 undefined,故把 routes 注入到 initialParams里,在页面里就可以通过 const { routes } =
+        // props.route.params; 拿到 routes
+        initialParams={{ routes }}
         component={HomePage}
         options={{
           tabBarLabel: '首页',
@@ -88,6 +91,9 @@ const MainTabNavigator = (props) => {
       <Tab.Screen
         key={routes.MinePage.routeName}
         name={routes.MinePage.routeName}
+        // 因为在页面里使用 import { routes } from '@routes'; 拿到的 routes是 undefined,故把 routes 注入到 initialParams里,在页面里就可以通过 const { routes } =
+        // props.route.params; 拿到 routes
+        initialParams={{ routes }}
         component={MinePage}
         options={{
           tabBarLabel: '我的',

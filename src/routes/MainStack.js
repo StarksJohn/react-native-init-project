@@ -79,6 +79,9 @@ const MainStack = ({}) => {
     >
       {/*所有 Stack.Screen 共用 Stack.Navigator里的同一个 导航栏*/}
       <Stack.Screen
+        // 因为在页面里使用 import { routes } from '@routes'; 拿到的 routes是 undefined,故把 routes 注入到 initialParams里,在页面里就可以通过 const { routes } =
+        // props.route.params; 拿到 routes
+        initialParams={{ routes }}
         name={routes.WelcomePage.routeName}
         component={WelcomePage}
         options={{
@@ -91,6 +94,9 @@ const MainStack = ({}) => {
       <Stack.Screen
         name={routes.DetailsPage.routeName}
         component={DetailsPage}
+        // 因为在页面里使用 import { routes } from '@routes'; 拿到的 routes是 undefined,故把 routes 注入到 initialParams里,在页面里就可以通过 const { routes } =
+        // props.route.params; 拿到 routes
+        initialParams={{ routes }}
         options={{
           headerTitle: routes.DetailsPage.headerTitle,
           // header: (props) => <CustomNavigationBar {...props} />,

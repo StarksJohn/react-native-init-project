@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, Button, StyleSheet, StatusBar } from 'react-native';
 import { useTheme } from '@react-navigation/native';
-import { routes } from '@routes';
 import { SafeView } from '@components';
 import { useSelector, useDispatch } from 'react-redux';
 import { tool, appStyle, XView, XWidget, XText, XSize, XTSize, ResetStyle, ahooks } from '@RNProjectTools';
@@ -10,9 +9,11 @@ import { captureMessage, sentryLog } from '../sentry/sentry';
 import { FormattedMessage } from 'react-intl';
 import { useDrawerNavigator, useNavFocusListener, useBannerModel, useIntlModel } from '@useHooks';
 
-const HomePage = ({ navigation }) => {
+const HomePage = ({ navigation, route }) => {
   const { networkAvailable } = useSelector((state) => state.netInfoModel);
   const dispatch = useDispatch();
+  const { routes } = route.params;
+
   const { colors } = useTheme();
   const { fetch_campaign_banner, campaign_banner } = useBannerModel();
   const { setOptions } = navigation; //在具体页面内设置 ScreenOptions https://www.jianshu.com/p/a2582f8b16fd

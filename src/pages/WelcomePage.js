@@ -6,11 +6,12 @@ import { compose } from 'redux';
 import { useTheme } from '@react-navigation/native';
 import { asyncStorage } from '@RNProjectTools';
 import { constant } from '@/constant';
-import { routes } from '@routes';
 
 const WelcomePage = (props) => {
   // const r_nav = useRef();
   const { navigation, route } = props;
+  const { routes } = route.params;
+  console.log('WelcomePage.js routes=', routes);
   const { setOptions } = navigation; //在具体页面内设置 ScreenOptions https://www.jianshu.com/p/a2582f8b16fd
   const { colors } = useTheme();
 
@@ -54,14 +55,12 @@ const WelcomePage = (props) => {
   useEffect(
     /*The async keyword cannot be added to the first parameter https://juejin.im/post/6844903985338400782#heading-27 */
     () => {
-      console.log('WelcomePage componentDidMount,props=', props, ' isFocused=', navigation.isFocused());
-
-      //todo
+      console.log('WelcomePage componentDidMount,props=', props);
 
       setTimeout(() => {
         routes.reset(navigation, routes.MainTabNavigator.routeName);
         asyncStorage.setItem(constant.initialRouteName, routes.MainTabNavigator.routeName).then();
-      }, 5000);
+      }, 3000);
       //componentWillUnmount
       return () => {
         console.log('WelcomePage componentWillUnmount');
