@@ -35,6 +35,7 @@ Main technology stack:
     react-intl: support internationalization
     sentry: support crash monitoring
     react-native-paper: support dark mode and Cacheable dark mode status
+    react-native-config: a .env file can configure all of the project
     
 RUN: 
 
