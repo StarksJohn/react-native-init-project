@@ -1,4 +1,4 @@
-import { dva, models } from '@RNProjectTools';
+import { dva, models } from 'react-native-common-tools';
 import bannerModel from './bannerModel/bannerModel';
 import ThemeContextModel from './ThemeContextModel';
 import DrawerNavigatorModel from './DrawerNavigatorModel.js';

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { View, Text, Button, StyleSheet, StatusBar } from 'react-native';
 import { useTheme } from '@react-navigation/native';
-import { EventListener } from '@RNProjectTools';
+import { EventListener } from 'react-native-common-tools';
 import { constant } from '@/constant';
 import { SafeView } from '@components';
 

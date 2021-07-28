@@ -1,5 +1,4 @@
-import { baseModel } from '@RNProjectTools';
-
+import { baseModel } from 'react-native-common-tools';
 /**
  * 可动态监听 网络情况
  * @type {string}

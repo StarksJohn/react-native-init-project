@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { useTheme } from '@react-navigation/native';
-import { asyncStorage } from '@RNProjectTools';
+import { asyncStorage } from 'react-native-common-tools';
 import { constant } from '@/constant';
 
 const WelcomePage = (props) => {

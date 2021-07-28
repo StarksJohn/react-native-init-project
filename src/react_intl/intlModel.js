@@ -1,6 +1,6 @@
 import { EN, MOMENT_LOCALE } from './locale';
 import messages from './messages/messages';
-import { baseModel } from '@RNProjectTools';
+import { baseModel } from 'react-native-common-tools';
 
 const intlModel = 'intlModel';
 const initState = {

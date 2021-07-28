@@ -5,7 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { CustomNavigationBar } from '@components';
 import MainTabNavigator from './MainTabNavigator';
 import { DetailsPage, WelcomePage } from '@pages';
-import { appStyle, asyncStorage, tool } from '@RNProjectTools';
+import { appStyle, asyncStorage, tool } from 'react-native-common-tools';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useNetInfoModel } from '@useHooks';
 import { constant } from '@/constant';

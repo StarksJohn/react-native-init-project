@@ -5,7 +5,7 @@ import { HomePage, MinePage } from '@pages';
 import routes from './routes';
 import { CustomNavigationBar } from '@components';
 import { useTheme } from '@react-navigation/native';
-import { useAndroidBackHandler } from '@RNProjectTools';
+import { useAndroidBackHandler } from 'react-native-common-tools';
 const Tab = createMaterialBottomTabNavigator();
 
 const MainTabNavigator = (props) => {

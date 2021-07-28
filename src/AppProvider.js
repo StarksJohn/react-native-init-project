@@ -8,7 +8,7 @@ import {
   DarkTheme as PaperDarkTheme,
 } from 'react-native-paper';
 import { DefaultTheme as NavigationDefaultTheme, DarkTheme as NavigationDarkTheme } from '@react-navigation/native';
-import { appStyle } from '@RNProjectTools';
+import { appStyle } from 'react-native-common-tools';
 import { NavigationContainer } from '@routes';
 import { ThemeContextModel } from '@dva';
 

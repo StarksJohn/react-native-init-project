@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { View, Text, Button, StyleSheet } from 'react-native';
 import { useTheme } from '@react-navigation/native';
 import { SafeView } from '@components';
-import { useAndroidBackHandler } from '@RNProjectTools';
+import { useAndroidBackHandler } from 'react-native-common-tools';
 import { useNavFocusListener } from '@useHooks';
 
 const DetailsPage = ({ navigation }) => {

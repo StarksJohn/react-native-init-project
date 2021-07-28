@@ -2,7 +2,6 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@RNProjectTools": ["./src/submodules/RNProjectTools/index.js"],
       "@dva": ["./src/dva/index.js"],
       "@react_intl": [
         "./src/react_intl/index.js"

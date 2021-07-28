@@ -8,7 +8,6 @@ module.exports = {
       {
         root: ['./src'],
         alias: {
-          '@RNProjectTools': ['./src/submodules/RNProjectTools/index.js'],
           '@dva': ['./src/dva/index.js'],
           '@react_intl': ['./src/react_intl/index.js'],
           '@context': ['./src/context/index.js'],

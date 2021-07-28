@@ -1,6 +1,5 @@
 import api from '../../api/api';
-import { baseModel, tool } from '@RNProjectTools';
-
+import { baseModel, tool } from 'react-native-common-tools';
 /**
  * 健康走页面 banner
  * @type {string}

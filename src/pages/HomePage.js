@@ -3,7 +3,7 @@ import { View, Text, Button, StyleSheet, StatusBar } from 'react-native';
 import { useTheme } from '@react-navigation/native';
 import { SafeView } from '@components';
 import { useSelector, useDispatch } from 'react-redux';
-import { tool, appStyle, XView, XWidget, XText, XSize, XTSize, ResetStyle, ahooks } from '@RNProjectTools';
+import { tool, appStyle, XView, XWidget, XText, XSize, XTSize, ResetStyle, ahooks  } from 'react-native-common-tools';
 import { MyStyleSheet } from '@style';
 import { captureMessage, sentryLog } from '../sentry/sentry';
 import { FormattedMessage } from 'react-intl';
