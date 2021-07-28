@@ -14,7 +14,7 @@ Install:
 
 push: 
 
-    git push origin main
+    open vpn and git push origin main
 
 Main technology stack:
 
