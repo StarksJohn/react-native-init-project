@@ -1,7 +1,9 @@
 import React from 'react';
 import { View, Text, Button, StyleSheet, StatusBar } from 'react-native';
+import { routes } from 'react-native-common-tools';
 
 export default {
+  ...routes,
   MainStack: {
     routeName: 'MainStack',
   },
@@ -36,21 +38,5 @@ export default {
   },
   SecondStack: {
     routeName: 'SecondStack',
-  },
-  navigate: (navigation, routeName, params) => {
-    console.log('routes.js navigate routeName=', routeName, ' params=', params);
-    navigation.navigate(routeName, params);
-  },
-  push: (navigation, routeName, params) => {
-    console.log('routes.js push routeName=', routeName, ' params=', params);
-    navigation.push(routeName, params);
-  },
-  goBack: (navigation) => {
-    navigation.goBack();
-  },
-  reset: (navigation, routeName) => {
-    navigation.reset({
-      routes: [{ name: routeName }],
-    });
   },
 };
