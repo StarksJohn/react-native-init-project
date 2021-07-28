@@ -1,7 +1,7 @@
 {
-  "name": "AwesomeProject",
+  "name": "react-native-init-project",
   "version": "0.0.1",
-  "private": true,
+  "private": false,
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
@@ -64,7 +64,8 @@
     "jest": "^26.6.3",
     "metro-react-native-babel-preset": "^0.65.0",
     "prettier": "^2.3.2",
-    "react-test-renderer": "16.13.1"
+    "react-test-renderer": "16.13.1",
+    "stylelint-config-standard": "^22.0.0"
   },
   "jest": {
     "preset": "react-native"
