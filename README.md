@@ -12,6 +12,10 @@ Install:
     yarn
     cd ios && pod install
 
+push: 
+
+    git push origin main
+
 Main technology stack:
 
     react-navigation V5 : you can choose whether to use DrawerNavigator by changing useDrawer
@@ -28,7 +32,7 @@ Main technology stack:
 
     react-native-config: a .env file can configure all of the project
     
-RUN: 
+run: 
 
     yarn ios
     yarn android
