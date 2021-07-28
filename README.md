@@ -8,7 +8,7 @@ HomePage:
 
 Install:
 
-    git clone  thtps://github.com/StarksJohn/AwesomeProject.git
+    git clone  https://github.com/StarksJohn/react-native-init-project.git
     yarn
     cd ios && pod install
 
