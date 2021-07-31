@@ -5,18 +5,18 @@
  * @flow
  */
 
-import React, { useEffect } from 'react';
-import { Provider as StoreProvider } from 'react-redux';
-import { IntlWrapper } from '@react_intl';
-import { dvaApp } from '@dva';
-import AppProvider from './AppProvider.js';
+import React, { useEffect } from 'react'
+import { Provider as StoreProvider } from 'react-redux'
+import { IntlWrapper } from '@react_intl'
+import { dvaApp } from '@dva'
+import AppProvider from './AppProvider.js'
 
-const store = dvaApp.getStore();
+const store = dvaApp.getStore()
 
 const App = () => {
   useEffect(() => {
-    console.log('App.js componentDidMount');
-  }, []);
+    console.log('App.js componentDidMount')
+  }, [])
 
   return (
     <StoreProvider store={store}>
@@ -24,7 +24,7 @@ const App = () => {
         <AppProvider />
       </IntlWrapper>
     </StoreProvider>
-  );
-};
+  )
+}
 
-export default App;
+export default App
