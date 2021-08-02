@@ -1,6 +1,6 @@
 # react-native-init-project
 
-    The basic framework of the react native project to help you quickly build a high-quality RN project
+    This project will help you quickly build a fully functional and high-quality react native project
 
 HomePage:  
     
