@@ -1,5 +1,5 @@
-import SafeView from './SafeView';
-import CustomNavigationBar from './CustomNavigationBar.js';
+import SafeView from './SafeView'
+import CustomNavigationBar from './CustomNavigationBar.js'
 
 /**
  * import {  } from '@components';
@@ -7,5 +7,5 @@ import CustomNavigationBar from './CustomNavigationBar.js';
  */
 module.exports = {
   SafeView,
-  CustomNavigationBar,
-};
+  CustomNavigationBar
+}

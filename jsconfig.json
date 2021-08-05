@@ -18,7 +18,8 @@
       "@pages": [
         "./src/pages/index.js"
       ],
-      "@style": ["./src/style/index.js"]
+      "@style": ["./src/style/index.js"],
+      "@api": ["./src/api/index.js"]
     }
   },
   "exclude": ["node_modules"]

@@ -17,8 +17,9 @@ module.exports = {
           '@components': ['./src/components/index.js'],
           '@pages': ['./src/pages/index.js'],
           '@style': ['./src/style/index.js'],
-        },
-      },
-    ],
-  ],
-};
+          '@api': ['./src/api/index.js']
+        }
+      }
+    ]
+  ]
+}

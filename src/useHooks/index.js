@@ -1,9 +1,9 @@
-import useThemeContext from './useThemeContext.js';
-import useNetInfoModel from './useNetInfoModel.js';
-import { useDrawerNavigator } from './useDrawerNavigator.js';
-import useNavFocusListener from './useNavFocusListener.js';
-import useBannerModel from './useBannerModel.js';
-import useIntlModel from './useIntlModel.js';
+import useThemeContext from './useThemeContext.js'
+import useNetInfoModel from './useNetInfoModel.js'
+import { useDrawerNavigator } from './useDrawerNavigator.js'
+import useNavFocusListener from './useNavFocusListener.js'
+import useBannerModel from './useBannerModel.js'
+import useIntlModel from './useIntlModel.js'
 
 /**
  * import { useThemeContext } from '@useHooks';
@@ -15,5 +15,5 @@ module.exports = {
   useDrawerNavigator,
   useNavFocusListener,
   useBannerModel,
-  useIntlModel,
-};
+  useIntlModel
+}

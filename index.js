@@ -7,7 +7,7 @@ import App from './src/App'
 import { name as appName } from './app.json'
 import { constant } from '@/constant'
 
-if (!constant.fakeData && !__DEV__) {
+if (!constant.fakeData && process.env.NODE_ENV === 'production') {
   // release package
   global.console = {
     info: () => {},

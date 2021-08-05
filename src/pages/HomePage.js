@@ -1,26 +1,26 @@
-import React, { useEffect, useState } from 'react';
-import { View, Text, Button, StyleSheet, StatusBar } from 'react-native';
-import { useTheme } from '@react-navigation/native';
-import { SafeView } from '@components';
-import { useSelector, useDispatch } from 'react-redux';
-import { tool, appStyle, XView, XWidget, XText, XSize, XTSize, ResetStyle, ahooks  } from 'react-native-common-tools';
-import { MyStyleSheet } from '@style';
-import { captureMessage, sentryLog } from '../sentry/sentry';
-import { FormattedMessage } from 'react-intl';
-import { useDrawerNavigator, useNavFocusListener, useBannerModel, useIntlModel } from '@useHooks';
+import React, { useEffect, useState } from 'react'
+import { View, Text, Button, StyleSheet, StatusBar } from 'react-native'
+import { useTheme } from '@react-navigation/native'
+import { SafeView } from '@components'
+import { useSelector, useDispatch } from 'react-redux'
+import { tool, appStyle, XView, XWidget, XText, XSize, XTSize, ResetStyle, ahooks } from 'react-native-common-tools'
+import { MyStyleSheet } from '@style'
+import { captureMessage, sentryLog } from '../sentry/sentry'
+import { FormattedMessage } from 'react-intl'
+import { useDrawerNavigator, useNavFocusListener, useBannerModel, useIntlModel } from '@useHooks'
 
 const HomePage = ({ navigation, route }) => {
-  const { networkAvailable } = useSelector((state) => state.netInfoModel);
-  const dispatch = useDispatch();
-  const { routes } = route.params;
+  const { networkAvailable } = useSelector((state) => state.netInfoModel)
+  const dispatch = useDispatch()
+  const { routes } = route.params
 
-  const { colors } = useTheme();
-  const { fetch_campaign_banner, campaign_banner } = useBannerModel();
-  const { setOptions } = navigation; //在具体页面内设置 ScreenOptions https://www.jianshu.com/p/a2582f8b16fd
-  const { switchToCN, switchToEN } = useIntlModel();
-  const [count, setCount] = useState(0);
-  const { useInterval } = ahooks;
-  const { openDrawer } = useDrawerNavigator({ navigation });
+  const { colors } = useTheme()
+  const { fetch_campaign_banner, campaign_banner } = useBannerModel()
+  const { setOptions } = navigation // 在具体页面内设置 ScreenOptions https://www.jianshu.com/p/a2582f8b16fd
+  const { switchToCN, switchToEN } = useIntlModel()
+  const [count, setCount] = useState(0)
+  const { useInterval } = ahooks
+  const { openDrawer } = useDrawerNavigator({ navigation })
 
   // useInterval(() => {
   //   setCount(count + 1);
@@ -28,34 +28,34 @@ const HomePage = ({ navigation, route }) => {
 
   useNavFocusListener({
     onFocus: () => {
-      console.log('HomePage.js onFocus isFocused=', navigation.isFocused());
+      console.log('HomePage.js onFocus isFocused=', navigation.isFocused())
       // setOptions({ no effect
       //   headerShown: false,
       // });
     },
     unfocused: () => {
-      console.log('MinePage.js unfocused isFocused=', navigation.isFocused());
-    },
-  });
+      console.log('MinePage.js unfocused isFocused=', navigation.isFocused())
+    }
+  })
 
   /**
    * componentDidMount && componentWillUnmount
    */
   useEffect(
-    /*The async keyword cannot be added to the first parameter https://juejin.im/post/6844903985338400782#heading-27 */
+    /* The async keyword cannot be added to the first parameter https://juejin.im/post/6844903985338400782#heading-27 */
     () => {
-      //todo
-      console.log('HomePage componentDidMount ');
-      setTimeout(async () => {
-        // test('首页');
-        // {
-        //   const [err, data] = await tool.to(api.anime());
-        //   // console.log('HomePage.js api.anime data=', data);
-        //   if (data) {
-        //   } else {
-        //   }
-        // }
-      }, 1000);
+      // todo
+      console.log('HomePage componentDidMount ')
+      // setTimeout(async () => {
+      //   // test('首页');
+      //   // {
+      //   //   const [err, data] = await tool.to(api.anime());
+      //   //   // console.log('HomePage.js api.anime data=', data);
+      //   //   if (data) {
+      //   //   } else {
+      //   //   }
+      //   // }
+      // }, 1000)
 
       // setTimeout(() => {
       //   dva.getDispatch({
@@ -67,30 +67,30 @@ const HomePage = ({ navigation, route }) => {
       //   dva.getState();
       // }, 6000);
 
-      fetch_campaign_banner();
+      fetch_campaign_banner()
 
-      //componentWillUnmount
+      // componentWillUnmount
       return () => {
-        console.log('DetailsScreen componentWillUnmount');
-      };
+        console.log('DetailsScreen componentWillUnmount')
+      }
     },
     [colors.text, fetch_campaign_banner, navigation, setOptions]
-  );
+  )
 
   useEffect(() => {
-    console.log('HomePage.js useEffect campaign_banner=', campaign_banner);
-  }, [campaign_banner]);
+    console.log('HomePage.js useEffect campaign_banner=', campaign_banner)
+  }, [campaign_banner])
 
   useEffect(() => {
-    console.log('HomePage.js useEffect networkAvailable=', networkAvailable);
-  }, [networkAvailable]);
+    console.log('HomePage.js useEffect networkAvailable=', networkAvailable)
+  }, [networkAvailable])
 
   return (
     <SafeView>
       <Button
         title='Go to details screen'
         onPress={() => {
-          routes.push(navigation, routes.DetailsPage.routeName);
+          routes.push(navigation, routes.DetailsPage.routeName)
         }}
       />
       <Text style={{ color: colors.text }}>networkAvailable={networkAvailable ? '开' : '关'}</Text>
@@ -98,14 +98,14 @@ const HomePage = ({ navigation, route }) => {
         style={ResetStyle({
           width: '100%',
           height: 50,
-          backgroundColor: appStyle.randomColor(),
+          backgroundColor: appStyle.randomColor()
         })}
       >
         <Text
           style={ResetStyle({
             color: colors.text,
             alignSelf: 'center',
-            fontSize: 16,
+            fontSize: 16
           })}
         >
           ResetStyle=
@@ -113,7 +113,7 @@ const HomePage = ({ navigation, route }) => {
             ResetStyle({
               width: '100%',
               height: 50,
-              backgroundColor: appStyle.randomColor(),
+              backgroundColor: appStyle.randomColor()
             }).height
           }
         </Text>
@@ -122,14 +122,14 @@ const HomePage = ({ navigation, route }) => {
         style={{
           width: '100%',
           height: appStyle.dp(50),
-          backgroundColor: appStyle.randomColor(),
+          backgroundColor: appStyle.randomColor()
         }}
       >
         <Text
           style={{
             color: colors.text,
             alignSelf: 'center',
-            fontSize: appStyle.dp(16),
+            fontSize: appStyle.dp(16)
           }}
         >
           dp={appStyle.dp(50)} dp={appStyle.dp(16)}
@@ -147,14 +147,14 @@ const HomePage = ({ navigation, route }) => {
           height: 50,
           // justifyContent: 'center',
           // alignItems: 'center',
-          backgroundColor: appStyle.randomColor(),
+          backgroundColor: appStyle.randomColor()
         }}
       >
         <XText
           style={{
             color: colors.text,
             alignSelf: 'center',
-            fontSize: 16,
+            fontSize: 16
           }}
           text={'XView'}
         />
@@ -162,9 +162,9 @@ const HomePage = ({ navigation, route }) => {
       <Button
         title='测试Sentry'
         onPress={() => {
-          sentryLog('captureMessage3333');
-          sentryLog('captureMessage4444');
-          captureMessage();
+          sentryLog('captureMessage3333')
+          sentryLog('captureMessage4444')
+          captureMessage()
         }}
       />
       <Text style={{ color: colors.text }}>
@@ -173,52 +173,52 @@ const HomePage = ({ navigation, route }) => {
       <Button
         title="切换为中文"
         onPress={() => {
-          console.log('HomePage.js 切换为中文');
-          switchToCN();
+          console.log('HomePage.js 切换为中文')
+          switchToCN()
         }}
       />
       <Button
         title="切换为英文"
         onPress={() => {
-          console.log('HomePage.js 切换为英文');
-          switchToEN();
+          console.log('HomePage.js 切换为英文')
+          switchToEN()
         }}
       />
       <Text style={{ color: colors.text }}>测试 ahooks的 useInterval = {count}</Text>
       <Button
         title="show drawer"
         onPress={() => {
-          console.log('HomePage.js openDrawer navigation=', navigation);
-          openDrawer();
+          console.log('HomePage.js openDrawer navigation=', navigation)
+          openDrawer()
         }}
       />
     </SafeView>
-  );
-};
+  )
+}
 
-export default HomePage;
+export default HomePage
 
 const styles = StyleSheet.create({
   v: {
     width: '100%',
     height: XSize(50),
-    backgroundColor: appStyle.randomColor(),
+    backgroundColor: appStyle.randomColor()
   },
   text: {
     color: '#333',
     alignSelf: 'center',
-    fontSize: XTSize(16),
-  },
-});
+    fontSize: XTSize(16)
+  }
+})
 const myStyleSheet = MyStyleSheet.create({
   v: {
     width: '100%',
     height: 50,
-    backgroundColor: appStyle.randomColor(),
+    backgroundColor: appStyle.randomColor()
   },
   text: {
     color: '#333',
     alignSelf: 'center',
-    fontSize: 16,
-  },
-});
+    fontSize: 16
+  }
+})
