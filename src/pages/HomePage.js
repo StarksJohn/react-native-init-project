@@ -8,6 +8,7 @@ import { MyStyleSheet } from '@style'
 import { captureMessage, sentryLog } from '../sentry/sentry'
 import { FormattedMessage } from 'react-intl'
 import { useDrawerNavigator, useNavFocusListener, useBannerModel, useIntlModel } from '@useHooks'
+import { login } from '@api'
 
 const HomePage = ({ navigation, route }) => {
   const { networkAvailable } = useSelector((state) => state.netInfoModel)
@@ -57,17 +58,8 @@ const HomePage = ({ navigation, route }) => {
       //   // }
       // }, 1000)
 
-      // setTimeout(() => {
-      //   dva.getDispatch({
-      //     type: testModel_effects.test,
-      //     action: action.pageName,
-      //     payload: '445',
-      //     callback: (result) => {},
-      //   });
-      //   dva.getState();
-      // }, 6000);
-
       fetch_campaign_banner()
+      // login().then()
 
       // componentWillUnmount
       return () => {

@@ -24,5 +24,7 @@ export default {
   testHost,
   version,
   onlineHost,
-  campaign_banner: `${host}/api/${version}/campaign/banner`
+  campaign_banner: `${host}/api/${version}/campaign/banner`,
+  login: `${host}/api/${version}/mini-program/login`
+
 }

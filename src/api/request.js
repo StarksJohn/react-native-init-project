@@ -1,22 +1,18 @@
 import axios from 'axios'
 import { Platform } from 'react-native'
 
-// 配置请求头
-axios.defaults.headers['Content-Type'] = 'application/x-www-form-urlencoded; application/json; charset=UTF-8'
-// 响应时间
 axios.defaults.timeout = 10000
 
-// 请求拦截器
+// Request interceptor
+// 每次发送请求之前本地存储中是否存在token，也可以通过Redux这里只演示通过本地拿到token
+// 如果存在，则统一在http请求的headers都加上token，这样后台根据token判断你的登录情况
+// 即使本地存在token，也有可能token是过期的，所以在响应拦截器中要对返回状态进行判断
 axios.interceptors.request.use(config => {
-  // 每次发送请求之前本地存储中是否存在token，也可以通过Redux这里只演示通过本地拿到token
-  // 如果存在，则统一在http请求的headers都加上token，这样后台根据token判断你的登录情况
-  // 即使本地存在token，也有可能token是过期的，所以在响应拦截器中要对返回状态进行判断
-  // 在每次的请求中添加token
-  config.headers.Authorization = '从dva里拿TOKEN'
+  config.headers.Authorization = '从dva里拿TOKEN' // Add token to each request
   config.headers.platform = Platform.OS // 后台需要的参数
+  config.headers.Origin = config.url
+  config.headers['Content-Type'] = 'application/json;'// 除了上传文件时需要 multipart/form-data,其他 都是 application/json
 
-  // 序列化请求参数，不然post请求参数后台接收不正常
-  // config.data = JSON.stringify(config.data)
   console.log('request.js interceptors.request config=', config)
   return config
 }, error => {
@@ -45,49 +41,62 @@ axios.interceptors.response.use(response => {
     }
   } else if (response.status !== 200) { // 接口请求失败，具体根据实际情况判断
     // eslint-disable-next-line prefer-promise-reject-errors
-    return Promise.reject('axios response.status !== 200')// 接口Promise返回错误状态
+    return Promise.reject('request.js response.status !== 200')// 接口Promise返回错误状态
   } else {
     return response
   }
-}, (error) => {
-  if (axios.isCancel(error)) {
+}, (err) => {
+  if (err && axios.isCancel(err)) {
     // requestList.length = 0
     // store.dispatch('changeGlobalState', {loading: false})
-    throw new axios.Cancel('axios cancel api')
+    console.log('request.js throw axios.Cancel')
+    throw new axios.Cancel('request.js cancel api')
+  } else if (err && err.response) {
+    switch (err.response.status) {
+      case 400:
+        err.message = '错误请求'
+        break
+      case 401:
+        err.message = '未授权，请重新登录'
+        break
+      case 403:
+        err.message = '拒绝访问'
+        break
+      case 404:
+        err.message = '请求错误,未找到该资源'
+        break
+      case 405:
+        err.message = '请求方法未允许'
+        break
+      case 408:
+        err.message = '请求超时'
+        break
+      case 500:
+        err.message = '服务器端出错'
+        break
+      case 501:
+        err.message = '网络未实现'
+        break
+      case 502:
+        err.message = '网络错误'
+        break
+      case 503:
+        err.message = '服务不可用'
+        break
+      case 504:
+        err.message = '网络超时'
+        break
+      case 505:
+        err.message = 'http版本不支持该请求'
+        break
+      default:
+        err.message = `连接错误${err.response.status}`
+    }
   } else {
-    // message.error('网络请求失败,请重试')
+    err.message = '连接到服务器失败'
   }
-  return Promise.reject(error)
+  return Promise.resolve(err)
 })
-
-/*
-*url:请求的url
-*params:请求的参数
-*config:请求时的header信息
-*method:请求方法
-*/
-// const api = function ({ url, params, config, method }) {
-//   // 如果是get请求 需要拼接参数
-//   let str = ''
-//   if (method === 'get' && params) {
-//     Object.keys(params).forEach(item => {
-//       str += `${item}=${params[item]}&`
-//     })
-//   }
-//   return new Promise((resolve, reject) => {
-//     axios[method](str ? (url + '?' + str.substring(0, str.length - 1)) : url, params, Object.assign({}, config)).then(response => {
-//       resolve(response.data)
-//     }, err => {
-//       // eslint-disable-next-line no-empty
-//       if (err.Cancel) {
-//       } else {
-//         reject(err)
-//       }
-//     }).catch(err => {
-//       reject(err)
-//     })
-//   })
-// }
 
 // 处理请求返回的数据
 const checkStatus = (response) => {
@@ -110,8 +119,8 @@ const validateStatus = (status) => {
 }
 
 const get = (url, params = {}) => {
-  console.log('api get url=', url)
-  console.log('api get params=', params)
+  console.log('request.js get url=', url)
+  console.log('request.js get params=', params)
 
   return axios.get(url, {
     params: params,
@@ -119,22 +128,26 @@ const get = (url, params = {}) => {
   }).then((res) => {
     return checkStatus(res)
   }).catch((error) => {
-    console.log('request get error=', error)
+    console.log('request.js get error=', error)
     return Promise.reject(error)
   })
 }
 
 const post = (url, params = {}) => {
+  console.log('request.js post url=', url)
+  console.log('request.js post params=', params)
   return axios
-    .post(url, params, {
-      params: params,
-      validateStatus: validateStatus
-    })
+    .post(url, params,
+      {
+      // params, 不要加这个参数,否则 Post 请求的 url里 会被加上 很长的 参数
+        validateStatus: validateStatus
+      }
+    )
     .then((res) => {
       return checkStatus(res)
     })
     .catch((error) => {
-      console.log('request post error=', error)
+      console.log('request.js post error=', error)
       return Promise.reject(error)
     })
 }
