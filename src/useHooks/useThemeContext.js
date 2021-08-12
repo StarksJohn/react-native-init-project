@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState, useMemo, memo, useCallback, forwardRef, useImperativeHandle } from 'react';
-import { ThemeContext } from '@context';
+import React, { useEffect, useRef, useState, useMemo, memo, useCallback, forwardRef, useImperativeHandle } from 'react'
+import { ThemeContext } from '@context'
 
 /**
  * Toggle dark mode
@@ -7,13 +7,13 @@ import { ThemeContext } from '@context';
  * @returns {{toggleTheme: ((function(): void)|*)}}
  */
 export default () => {
-  const { _toggleTheme } = React.useContext(ThemeContext);
+  const { _toggleTheme } = React.useContext(ThemeContext)
 
   const toggleTheme = useCallback(() => {
-    console.log('useThemeContext.js _toggleTheme=', _toggleTheme);
+    console.log('useThemeContext.js _toggleTheme=', _toggleTheme)
 
-    _toggleTheme();
-  }, [_toggleTheme]);
+    _toggleTheme()
+  }, [_toggleTheme])
 
-  return { toggleTheme };
-};
+  return { toggleTheme }
+}

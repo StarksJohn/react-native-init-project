@@ -1,7 +1,7 @@
 import Urls from './Urls'
-import { XHttp } from 'react-native-easy-app'
 import { get, post } from './request'
 import { tool } from 'react-native-common-tools'
+import userModel from '../dva/userModel.js'
 
 /**
  * import { campaignBanner } from '@api'
@@ -27,9 +27,10 @@ module.exports = {
   },
 
   async login () {
-    console.log('api.js login ')
     const [err, data] = await tool.to(post(Urls.login, {
-      iv: 'YQBPAYl0Ghm2ogLsd16Wvg==',
+      code: '081u72100UYPcM1PNA100QOiyy1u721X',
+      encryptedData: 'xcIzmj0ZZZSHfaI/qhRtk6sjBSvPiwkXslByvTdoagmt93Q4hrnNprror/XDZuIBxjFlbAfM66iq1rSxlXW0NxA7cJTcUxYkH/N27js35eXc8RKpPZmNS/hoZWxibkOjVG7HUw3Q+xKePutTvTHPbOeCiSAWlILH1P5hpoJe7j+IhuyyFzvmmGF1rZnUQBhxife+a1r0xS1eLh0jsYW2PJ5g68pGLNnnSuxg0HH41pkWfYL7TVH8pKqhmQAUju5ECXjN13uTrUeThr9R1opg4SQHWLT20EjxKn0H4bNIS+evE1nOMZeDcvzHHP/E0+NizOKuHJrGNAHvNE5RbqUL0sqJrGrK559QxfTwqjCCEIXfBTijwViZwjAKEaWairRlq/YE4QgndQmsl2Lmwn3PfQUjyf/Ez0DO5mMBnYFPsr78cIHZbE3CTvNd0ZvnQgCD',
+      iv: 'zw8Qmip3NNuxEE1p6hFgvQ==',
       rawData: JSON.stringify({
         nickName: 'Stark',
         gender: 1,
@@ -39,9 +40,19 @@ module.exports = {
         country: 'US',
         avatarUrl: 'https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTI8mVy14cXUbXbaKcTrQMVDje8N1ibeYPw7LgVvOgiauhIYLln6ZpuXHBlCvSzWibdqo8UYwUlS2iaFOQ/132'
       }),
-      encryptedData: 'g8Ki/a/uLaK/SziU8NdOITdzLLcIpmT9HxC0W68iLz9NNBTR/L+Z3V4CsjaAM8MTs7xaYXj//w/JGgheVphN+7msz93+mbKT8UV//ms0DGsgGKSKvdULVOlfftWGTxgnUdZ5XWvyOQ+PQK2ouXonO4DBU8+q/MEiQHdYdbYDKU7xJj+kFbQaxl5P+767QIfCpSbBmwjSFbJKL1ZN5AJX8P4DkaE52j4GTh8aWViN88SQUEKPE7wF5mCREWcTQpXyZZZo8aWG6wkHS8BHxoyAosS0GsYDmK6ENS4oME8Yw37uKV2GWyBdbhsNEN+wgkVhyY7fq2sxXLaFSonf5Y7SvpHjHg13/fYo5t8t65CccQL9UyLWW6Jh8xz8N8+pam39AHq7Fv2svan0zXBIkPekPQ3wohIxy+ImpgGL5zz4v+KGnpmleJsfrZXdf1GUyFeY',
-      signature: '37022f3e56b22101ff4344a6d1fbb5ade28270a9',
-      code: '031mLoll2q2Tw74RuDkl28X3u52mLolU'
+      signature: '8982b7d0878439bf01abc34b8796d02f5ecd3200'
     }))
+    console.log('api.js login data=', data, ' err=', err)
+    if (data) { // 登录成功
+      userModel.dispatchSaveSomeThing({
+        action: userModel.action.access_token,
+        payload: {
+          access_token: data.access_token
+        },
+        callback: (result) => {
+          console.log('modelTools.js saveSomeThing callback=', result)
+        }
+      })
+    }
   }
 }

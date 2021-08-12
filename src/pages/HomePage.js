@@ -12,9 +12,9 @@ import { login } from '@api'
 
 const HomePage = ({ navigation, route }) => {
   const { networkAvailable } = useSelector((state) => state.netInfoModel)
+  const { access_token } = useSelector((state) => state.userModel)
   const dispatch = useDispatch()
   const { routes } = route.params
-
   const { colors } = useTheme()
   const { fetch_campaign_banner, campaign_banner } = useBannerModel()
   const { setOptions } = navigation // 在具体页面内设置 ScreenOptions https://www.jianshu.com/p/a2582f8b16fd
@@ -22,6 +22,7 @@ const HomePage = ({ navigation, route }) => {
   const [count, setCount] = useState(0)
   const { useInterval } = ahooks
   const { openDrawer } = useDrawerNavigator({ navigation })
+  console.log('HomePage.js access_token=', access_token)
 
   // useInterval(() => {
   //   setCount(count + 1);
@@ -59,7 +60,6 @@ const HomePage = ({ navigation, route }) => {
       // }, 1000)
 
       fetch_campaign_banner()
-      // login().then()
 
       // componentWillUnmount
       return () => {
@@ -182,6 +182,12 @@ const HomePage = ({ navigation, route }) => {
         onPress={() => {
           console.log('HomePage.js openDrawer navigation=', navigation)
           openDrawer()
+        }}
+      />
+      <Button
+        title="登录"
+        onPress={() => {
+          login().then()
         }}
       />
     </SafeView>

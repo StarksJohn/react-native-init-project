@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { Platform } from 'react-native'
+import { tool } from 'react-native-common-tools'
 
 axios.defaults.timeout = 10000
 
@@ -8,7 +9,9 @@ axios.defaults.timeout = 10000
 // 如果存在，则统一在http请求的headers都加上token，这样后台根据token判断你的登录情况
 // 即使本地存在token，也有可能token是过期的，所以在响应拦截器中要对返回状态进行判断
 axios.interceptors.request.use(config => {
-  config.headers.Authorization = '从dva里拿TOKEN' // Add token to each request
+  const { userModel } = tool.getStore().getState()
+  console.log('request.js userModel=', userModel)
+  config.headers.Authorization = userModel.access_token // Add token to each request
   config.headers.platform = Platform.OS // 后台需要的参数
   config.headers.Origin = config.url
   config.headers['Content-Type'] = 'application/json;'// 除了上传文件时需要 multipart/form-data,其他 都是 application/json

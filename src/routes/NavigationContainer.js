@@ -1,12 +1,12 @@
-import React, { useEffect, useRef, useState, useMemo, memo, useCallback, forwardRef, useImperativeHandle } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import routes from './routes.js';
-import SecondStack from './SecondStack.js';
-import MainStack from './MainStack.js';
-import DrawerContent from './DrawerContent.js';
-import { NavigationContainer } from '@react-navigation/native';
-import { createDrawerNavigator } from '@react-navigation/drawer';
-const Drawer = createDrawerNavigator();
+import React, { useEffect, useRef, useState, useMemo, memo, useCallback, forwardRef, useImperativeHandle } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import routes from './routes.js'
+import SecondStack from './SecondStack.js'
+import MainStack from './MainStack.js'
+import DrawerContent from './DrawerContent.js'
+import { NavigationContainer } from '@react-navigation/native'
+import { createDrawerNavigator } from '@react-navigation/drawer'
+const Drawer = createDrawerNavigator()
 
 /**
  * PureComponent
@@ -16,24 +16,24 @@ const Drawer = createDrawerNavigator();
  * @constructor
  */
 const _NavigationContainer = ({ theme }) => {
-  const { useDrawer } = useSelector((state) => state.DrawerNavigatorModel);
-  console.log('NavigationContainer.js useDrawer=', useDrawer);
+  const { useDrawer } = useSelector((state) => state.DrawerNavigatorModel)
+  console.log('NavigationContainer.js useDrawer=', useDrawer)
 
   /**
    * componentDidMount && componentWillUnmount
    */
   useEffect(
-    /*The async keyword cannot be added to the first parameter https://juejin.im/post/6844903985338400782#heading-27 */
+    /* The async keyword cannot be added to the first parameter https://juejin.im/post/6844903985338400782#heading-27 */
     () => {
-      console.log('NavigationContainer componentDidMount');
+      console.log('NavigationContainer componentDidMount')
 
-      //componentWillUnmount
+      // componentWillUnmount
       return () => {
-        console.log('NavigationContainer componentWillUnmount');
-      };
+        console.log('NavigationContainer componentWillUnmount')
+      }
     },
     []
-  );
+  )
 
   return (
     <NavigationContainer theme={theme}>
@@ -53,7 +53,7 @@ const _NavigationContainer = ({ theme }) => {
         <MainStack />
       )}
     </NavigationContainer>
-  );
-};
+  )
+}
 
-export default _NavigationContainer;
+export default _NavigationContainer

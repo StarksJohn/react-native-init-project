@@ -1,5 +1,5 @@
-import IntlWrapper from './IntlWrapper';
-import intlModel from './intlModel.js';
+import IntlWrapper from './IntlWrapper'
+import intlModel from './intlModel.js'
 
 /**
  * import { IntlWrapper } from '@react_intl';
@@ -8,5 +8,5 @@ import intlModel from './intlModel.js';
  */
 module.exports = {
   IntlWrapper,
-  intlModel,
-};
+  intlModel
+}

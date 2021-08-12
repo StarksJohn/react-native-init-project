@@ -1,23 +1,23 @@
-import { EN, MOMENT_LOCALE } from './locale';
-import messages from './messages/messages';
-import { baseModel } from 'react-native-common-tools';
+import { EN, MOMENT_LOCALE } from './locale'
+import messages from './messages/messages'
+import { baseModel } from 'react-native-common-tools'
 
-const intlModel = 'intlModel';
+const intlModel = 'intlModel'
 const initState = {
   intlLocale: EN,
   locale: EN,
   messages: messages[EN],
   momentLocale: MOMENT_LOCALE,
   initialNow: Date.now(),
-  setLocaleCompleted: false,
-};
+  setLocaleCompleted: false
+}
 const effects = {
-  saveSomeThing: `intlModel/${baseModel.baseEffects.saveSomeThing}`, //每个model默认的同步的直接改变此 model 的某个 state 的 effect
-};
+  saveSomeThing: `intlModel/${baseModel.baseEffects.saveSomeThing}` // 每个model默认的同步的直接改变此 model 的某个 state 的 effect
+}
 const action = {
   ...baseModel.baseAction,
-  locale: 'locale',
-};
+  locale: 'locale'
+}
 
 /**
  * https://dvajs.com/api/#model
@@ -25,7 +25,7 @@ const action = {
 export default {
   namespace: intlModel,
   state: initState,
-  attributesToBeCached: [action.locale], //被缓存的数据的key
+  attributesToBeCached: [action.locale], // 被缓存的数据的key
   effects,
-  action,
-};
+  action
+}

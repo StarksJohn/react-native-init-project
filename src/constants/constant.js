@@ -1,5 +1,5 @@
-import React from 'react';
-import { constant } from 'react-native-common-tools';
+import { constant } from 'react-native-common-tools'
+
 export default Object.freeze({
   fakeData: false,
   sentryLog: true,
@@ -7,7 +7,7 @@ export default Object.freeze({
   initialRouteName: 'initialRouteName',
   event: {
     ...constant.event,
-    MinePageRightBtClicks: 'MinePageRightBtClicks',
+    MinePageRightBtClicks: 'MinePageRightBtClicks'
   },
-  isDarkTheme: 'isDarkTheme',
-});
+  isDarkTheme: 'isDarkTheme'
+})
