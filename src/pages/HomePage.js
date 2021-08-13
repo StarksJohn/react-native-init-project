@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState, useRef } from 'react'
 import { View, Text, Button, StyleSheet, StatusBar } from 'react-native'
 import { useTheme } from '@react-navigation/native'
 import { SafeView } from '@components'
@@ -9,6 +9,7 @@ import { captureMessage, sentryLog } from '../sentry/sentry'
 import { FormattedMessage } from 'react-intl'
 import { useDrawerNavigator, useNavFocusListener, useBannerModel, useIntlModel } from '@useHooks'
 import { login } from '@api'
+import { Pedometer } from 'expo-sensors'
 
 const HomePage = ({ navigation, route }) => {
   const { networkAvailable } = useSelector((state) => state.netInfoModel)
@@ -23,6 +24,10 @@ const HomePage = ({ navigation, route }) => {
   const { useInterval } = ahooks
   const { openDrawer } = useDrawerNavigator({ navigation })
   console.log('HomePage.js access_token=', access_token)
+  const [isPedometerAvailable, setIsPedometerAvailable] = useState('checking')
+  const [pastStepCount, setPastStepCount] = useState(0)
+  const [currentStepCount, setCurrentStepCount] = useState(0)
+  const _subscription = useRef(undefined)
 
   // useInterval(() => {
   //   setCount(count + 1);
@@ -60,13 +65,63 @@ const HomePage = ({ navigation, route }) => {
       // }, 1000)
 
       fetch_campaign_banner()
+      _subscribe()
 
       // componentWillUnmount
       return () => {
         console.log('DetailsScreen componentWillUnmount')
+        _unsubscribe()
       }
     },
     [colors.text, fetch_campaign_banner, navigation, setOptions]
+  )
+
+  const _subscribe = useCallback(
+    () => {
+      console.log('HomePage.js _subscribe ')
+
+      _subscription.current = Pedometer.watchStepCount(result => {
+        console.log('HomePage.js watchStepCount result=', result)
+        setCurrentStepCount(result.steps)
+      })
+
+      Pedometer.isAvailableAsync().then(
+        result => {
+          setIsPedometerAvailable(String(result))
+          console.log('HomePage.js isAvailableAsync result=', result)
+        },
+        error => {
+          console.log('HomePage.js isAvailableAsync error=', error)
+
+          setIsPedometerAvailable('Could not get isPedometerAvailable: ' + error)
+        }
+      )
+
+      const end = new Date()
+      const start = new Date()
+      start.setDate(end.getDate() - 1)
+      console.log('HomePage.js getStepCountAsync start=', start, ' end=', end)
+      Pedometer.getStepCountAsync(start, end).then(
+        result => {
+          console.log('HomePage.js getStepCountAsync result=', result)
+
+          setPastStepCount(result.steps)
+        },
+        error => {
+          console.log('HomePage.js getStepCountAsync error=', error)
+
+          setPastStepCount('Could not get stepCount: ' + error)
+        }
+      )
+    },
+    [dispatch]
+  )
+  const _unsubscribe = useCallback(
+    () => {
+      _subscription && _subscription.current.remove()
+      _subscription.current = null
+    },
+    [_subscription.current]
   )
 
   useEffect(() => {
@@ -190,6 +245,10 @@ const HomePage = ({ navigation, route }) => {
           login().then()
         }}
       />
+      <Text style={{ color: colors.text }}>Pedometer.isAvailableAsync(): {isPedometerAvailable}</Text>
+      <Text style={{ color: colors.text }}>Steps taken in the last 24 hours: {pastStepCount}</Text>
+      <Text style={{ color: colors.text }}>Walk! And watch this go up: {currentStepCount}</Text>
+
     </SafeView>
   )
 }
