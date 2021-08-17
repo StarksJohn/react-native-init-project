@@ -6884,15 +6884,17 @@ react-native-axios-jwt@^1.1.0:
   dependencies:
     jwt-decode "^3.1.2"
 
-react-native-common-tools@^1.0.8:
-  version "1.0.8"
-  resolved "https://registry.npmjs.org/react-native-common-tools/-/react-native-common-tools-1.0.8.tgz#4b61a5a881c610dac2fc60a206946b059b938d47"
-  integrity sha512-KxG7TbmUxELcZv1qO4rd+aqjZY70exWuVTQuk6ZYblY21d1ZwGvm5lv/rebMPFvHnQw+rt54KNJTeDqjgfYmaA==
+react-native-common-tools@^1.0.11:
+  version "1.0.11"
+  resolved "https://registry.npmjs.org/react-native-common-tools/-/react-native-common-tools-1.0.11.tgz#74317ef55198f3c420d820bbb887ed433da2017f"
+  integrity sha512-CaD08sE+zRkZvR6N3uohqM/zcADdwGY3PGg12k6jqfwmAbhmIjUJil4Xt52hWOYFs946/kp17inmIT6kwTy6hA==
   dependencies:
     "@react-native-async-storage/async-storage" "^1.15.5"
     "@react-native-community/eslint-config" "^3.0.0"
     babel-eslint "^10.1.0"
     eslint-plugin-react-hooks "^4.2.0"
+    react-native "0.63.4"
+    react-native-easy-app "^1.7.27"
     typescript "^4.3.5"
 
 react-native-config@^1.4.2:
@@ -6908,10 +6910,10 @@ react-native-drawer@2.5.1:
     prop-types "^15.5.8"
     tween-functions "^1.0.1"
 
-react-native-easy-app@^1.7.20:
-  version "1.7.25"
-  resolved "https://registry.npmjs.org/react-native-easy-app/-/react-native-easy-app-1.7.25.tgz#68b97da24e8a3543e04c347283e819bf0c36828d"
-  integrity sha512-CVFUC1y+vbrCo1oNgiXQbuItRjxF4dm+DeuVMWi7e/BLgwjmWiwulZNakuBLPfFhz1Uy00lbo5ddAUapZ0+rNw==
+react-native-easy-app@^1.7.27:
+  version "1.7.27"
+  resolved "https://registry.npmjs.org/react-native-easy-app/-/react-native-easy-app-1.7.27.tgz#6cd994da41708767b4aa17c9a35b49e0b8b93410"
+  integrity sha512-gxQTVoc0TOwPdHaNNY+rne6YLlGbN3VjFs7990AjHSKtT84fRtEfDJKezWhBDJeTEqEVjybQpm4VCtCYOTcVGw==
 
 react-native-easy-grid@0.2.2:
   version "0.2.2"

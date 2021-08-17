@@ -20,7 +20,7 @@ Main technology stack:
 
     react-navigation V5 : you can choose whether to use DrawerNavigator by changing useDrawer
 
-    react-native-easy-app
+    MyStyleSheet: Realize the adaptation of different device screens
 
     dva : implemented dva that can cache data
 

@@ -1,7 +1,7 @@
-import React, { useEffect, useRef, useState, useMemo, memo, useCallback, forwardRef, useImperativeHandle } from 'react';
-import { Image, View, SafeAreaView, StyleSheet } from 'react-native';
-import { appStyle } from 'react-native-common-tools';
-import { useTheme } from '@react-navigation/native';
+import React, { useEffect, useRef, useState, useMemo, memo, useCallback, forwardRef, useImperativeHandle } from 'react'
+import { Image, View, SafeAreaView, StyleSheet } from 'react-native'
+import { appStyle } from 'react-native-common-tools'
+import { useTheme } from '@react-navigation/native'
 
 /**
  * 安全区外层的根视图
@@ -13,7 +13,7 @@ import { useTheme } from '@react-navigation/native';
  */
 // eslint-disable-next-line react/prop-types
 const SafeView = ({ children }) => {
-  const { colors } = useTheme();
+  const { colors } = useTheme()
 
   // SafeAreaView: 安全区外层的根视图
   return (
@@ -22,11 +22,11 @@ const SafeView = ({ children }) => {
         avoidBlankSpaceAtTheBottomOfSafeAreaView({})
         // appStyle.pageStyle.backgroundColor,
       }
-      {/*安全区域*/}
+      {/* 安全区域 */}
       <View style={[Styles.page, { backgroundColor: colors.primary }]}>{children}</View>
     </SafeAreaView>
-  );
-};
+  )
+}
 
 /**
  * Avoid a background color that is not white at the bottom on bangs devices such as ipx
@@ -36,7 +36,7 @@ const SafeView = ({ children }) => {
  */
 export const avoidBlankSpaceAtTheBottomOfSafeAreaView = ({ color = '#fff' }) => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const { colors } = useTheme();
+  const { colors } = useTheme()
 
   return (
     <View
@@ -45,21 +45,21 @@ export const avoidBlankSpaceAtTheBottomOfSafeAreaView = ({ color = '#fff' }) => 
         height: appStyle.safeAreaInsets.bottom / 2,
         position: 'absolute',
         bottom: 0,
-        backgroundColor: colors.primary,
+        backgroundColor: colors.primary
       }}
     />
-  );
-};
+  )
+}
 
 const Styles = StyleSheet.create({
   page: {
     ...appStyle.pageStyle,
-    justifyContent: 'flex-end',
-  },
-});
+    justifyContent: 'flex-end'
+  }
+})
 
-SafeView.propTypes = {};
+SafeView.propTypes = {}
 
-SafeView.defaultProps = {};
+SafeView.defaultProps = {}
 
-export default SafeView;
+export default SafeView

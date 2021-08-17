@@ -3,8 +3,7 @@ import { View, Text, Button, StyleSheet, StatusBar } from 'react-native'
 import { useTheme } from '@react-navigation/native'
 import { SafeView } from '@components'
 import { useSelector, useDispatch } from 'react-redux'
-import { tool, appStyle, XView, XWidget, XText, XSize, XTSize, ResetStyle, ahooks } from 'react-native-common-tools'
-import { MyStyleSheet } from '@style'
+import { tool, appStyle, XView, XWidget, XText, XSize, XTSize, ResetStyle, ahooks, MyStyleSheet } from 'react-native-common-tools'
 import { captureMessage, sentryLog } from '../sentry/sentry'
 import { FormattedMessage } from 'react-intl'
 import { useDrawerNavigator, useNavFocusListener, useBannerModel, useIntlModel } from '@useHooks'
@@ -85,72 +84,18 @@ const HomePage = ({ navigation, route }) => {
           routes.push(navigation, routes.DetailsPage.routeName)
         }}
       />
-      <Text style={{ color: colors.text }}>networkAvailable={networkAvailable ? '开' : '关'}</Text>
-      <View
-        style={ResetStyle({
-          width: '100%',
-          height: 50,
-          backgroundColor: appStyle.randomColor()
-        })}
-      >
-        <Text
-          style={ResetStyle({
-            color: colors.text,
-            alignSelf: 'center',
-            fontSize: 16
-          })}
-        >
-          ResetStyle=
-          {
-            ResetStyle({
-              width: '100%',
-              height: 50,
-              backgroundColor: appStyle.randomColor()
-            }).height
-          }
-        </Text>
-      </View>
-      <View
-        style={{
-          width: '100%',
-          height: appStyle.dp(50),
-          backgroundColor: appStyle.randomColor()
-        }}
-      >
-        <Text
-          style={{
-            color: colors.text,
-            alignSelf: 'center',
-            fontSize: appStyle.dp(16)
-          }}
-        >
-          dp={appStyle.dp(50)} dp={appStyle.dp(16)}
+      {/* <Text style={{ color: colors.text }}>networkAvailable={networkAvailable ? '开' : '关'}</Text> */}
+      <View style={styles.v}>
+        <Text style={styles.text}>
+          styles 375*50
         </Text>
       </View>
       <View style={myStyleSheet.v}>
         <Text style={myStyleSheet.text}>
-          myStyleSheet={styles.v.height} myStyleSheet=
-          {styles.v.fontSize}
+          myStyleSheet 375*50
         </Text>
       </View>
-      <XView
-        style={{
-          width: '100%',
-          height: 50,
-          // justifyContent: 'center',
-          // alignItems: 'center',
-          backgroundColor: appStyle.randomColor()
-        }}
-      >
-        <XText
-          style={{
-            color: colors.text,
-            alignSelf: 'center',
-            fontSize: 16
-          }}
-          text={'XView'}
-        />
-      </XView>
+
       <Button
         title='测试Sentry'
         onPress={() => {
@@ -198,19 +143,19 @@ export default HomePage
 
 const styles = StyleSheet.create({
   v: {
-    width: '100%',
-    height: XSize(50),
+    width: 375,
+    height: 50,
     backgroundColor: appStyle.randomColor()
   },
   text: {
     color: '#333',
     alignSelf: 'center',
-    fontSize: XTSize(16)
+    fontSize: 16
   }
 })
 const myStyleSheet = MyStyleSheet.create({
   v: {
-    width: '100%',
+    width: 375,
     height: 50,
     backgroundColor: appStyle.randomColor()
   },
