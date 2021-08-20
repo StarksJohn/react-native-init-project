@@ -1,7 +1,7 @@
-import DetailsPage from './DetailsPage.js';
-import WelcomePage from './WelcomePage.js';
-import HomePage from './HomePage.js';
-import MinePage from './MinePage.js';
+import DetailsPage from './DetailsPage.js'
+import WelcomePage from './WelcomePage.js'
+import HomePage from './HomePage.js'
+import MinePage from './MinePage.js'
 
 /**
  * import {  } from '@pages';
@@ -12,5 +12,5 @@ module.exports = {
   DetailsPage,
   WelcomePage,
   HomePage,
-  MinePage,
-};
+  MinePage
+}

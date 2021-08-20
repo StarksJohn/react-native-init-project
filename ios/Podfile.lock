@@ -320,6 +320,8 @@ PODS:
   - RNSentry (2.6.1):
     - React-Core
     - Sentry (= 7.1.4)
+  - RNSpringScrollView (3.0.1-rc.5):
+    - React
   - RNVectorIcons (8.1.0):
     - React-Core
   - Sentry (7.1.4):
@@ -388,6 +390,7 @@ DEPENDENCIES:
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
   - "RNSentry (from `../node_modules/@sentry/react-native`)"
+  - RNSpringScrollView (from `../node_modules/react-native-spring-scrollview`)
   - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
   - "toolbar-android (from `../node_modules/@react-native-community/toolbar-android`)"
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
@@ -481,6 +484,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-screens"
   RNSentry:
     :path: "../node_modules/@sentry/react-native"
+  RNSpringScrollView:
+    :path: "../node_modules/react-native-spring-scrollview"
   RNVectorIcons:
     :path: "../node_modules/react-native-vector-icons"
   toolbar-android:
@@ -537,6 +542,7 @@ SPEC CHECKSUMS:
   RNReanimated: 514a11da3a2bcc6c3dfd9de32b38e2b9bf101926
   RNScreens: f7ad633b2e0190b77b6a7aab7f914fad6f198d8d
   RNSentry: af7873b080a0beb74c020644644d247ef4771644
+  RNSpringScrollView: 99b3d11358895e04704a66c23739173fa33d35a6
   RNVectorIcons: 31cebfcf94e8cf8686eb5303ae0357da64d7a5a4
   Sentry: 1d3eb1a25f8c5333c88dd5603904a6d461cd9fcf
   toolbar-android: 85f3ef4d691469f2d304e7dee4bca013aa1ba1ff

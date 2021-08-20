@@ -84,7 +84,7 @@ const HomePage = ({ navigation, route }) => {
           routes.push(navigation, routes.DetailsPage.routeName)
         }}
       />
-      {/* <Text style={{ color: colors.text }}>networkAvailable={networkAvailable ? '开' : '关'}</Text> */}
+       <Text style={{ color: colors.text }}>networkAvailable={networkAvailable ? '开' : '关'}</Text>
       <View style={styles.v}>
         <Text style={styles.text}>
           styles 375*50
