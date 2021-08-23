@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from 'react'
-import { View, Text, Button, StyleSheet, StatusBar } from 'react-native'
+import React, { useEffect, useRef, useState } from 'react'
+import { View, Text, Button, StyleSheet, StatusBar, Image } from 'react-native'
 import { useTheme } from '@react-navigation/native'
 import { SafeView } from '@components'
 import { useSelector, useDispatch } from 'react-redux'
-import { tool, appStyle, XView, XWidget, XText, XSize, XTSize, ResetStyle, ahooks, MyStyleSheet } from 'react-native-common-tools'
+import { tool, appStyle, XView, XWidget, XText, XSize, mockData, List, ahooks, MyStyleSheet } from 'react-native-common-tools'
 import { captureMessage, sentryLog } from '../sentry/sentry'
 import { FormattedMessage } from 'react-intl'
 import { useDrawerNavigator, useNavFocusListener, useBannerModel, useIntlModel } from '@useHooks'
 import { login } from '@api'
+
+const { one_section_array } = mockData
 
 const HomePage = ({ navigation, route }) => {
   const { networkAvailable } = useSelector((state) => state.netInfoModel)
@@ -22,6 +24,7 @@ const HomePage = ({ navigation, route }) => {
   const { useInterval } = ahooks
   const { openDrawer } = useDrawerNavigator({ navigation })
   console.log('HomePage.js access_token=', access_token)
+  const refList = useRef(null)
 
   // useInterval(() => {
   //   setCount(count + 1);
@@ -78,63 +81,85 @@ const HomePage = ({ navigation, route }) => {
 
   return (
     <SafeView>
-      <Button
-        title='Go to details screen'
-        onPress={() => {
-          routes.push(navigation, routes.DetailsPage.routeName)
-        }}
-      />
-       <Text style={{ color: colors.text }}>networkAvailable={networkAvailable ? '开' : '关'}</Text>
-      <View style={styles.v}>
-        <Text style={styles.text}>
-          styles 375*50
-        </Text>
-      </View>
-      <View style={myStyleSheet.v}>
-        <Text style={myStyleSheet.text}>
-          myStyleSheet 375*50
-        </Text>
-      </View>
 
-      <Button
-        title='测试Sentry'
-        onPress={() => {
-          sentryLog('captureMessage3333')
-          sentryLog('captureMessage4444')
-          captureMessage()
-        }}
-      />
-      <Text style={{ color: colors.text }}>
-        当前的语言是: <FormattedMessage id='welcome' />
-      </Text>
-      <Button
-        title="切换为中文"
-        onPress={() => {
-          console.log('HomePage.js 切换为中文')
-          switchToCN()
-        }}
-      />
-      <Button
-        title="切换为英文"
-        onPress={() => {
-          console.log('HomePage.js 切换为英文')
-          switchToEN()
-        }}
-      />
-      <Text style={{ color: colors.text }}>测试 ahooks的 useInterval = {count}</Text>
-      <Button
-        title="show drawer"
-        onPress={() => {
-          console.log('HomePage.js openDrawer navigation=', navigation)
-          openDrawer()
-        }}
-      />
-      <Button
-        title="登录"
-        onPress={() => {
-          login().then()
-        }}
-      />
+      <List ref={refList} onRefresh={({ page }) => {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            resolve([1, 2, 3, 4, 5])
+          }, 1000)
+        })
+      }} onLoading={({ page }) => {
+      }} heightForIndexPath={({ section, row }) => {
+        return 100
+      }} renderIndexPath={({ section, row, mediaWrapperParam, rowData }) => {
+        switch (row) {
+          case 0: {
+            return (
+                  <View style={[styles.row, { }]}>
+                    <Button
+                      title='Go to details screen'
+                      onPress={() => {
+                        routes.push(navigation, routes.DetailsPage.routeName)
+                      }}
+                    />
+                  </View>
+            )
+          }
+          case 1: {
+            return <View style={[styles.row, { }]}>
+              <Button
+                title='测试Sentry'
+                onPress={() => {
+                  sentryLog('captureMessage3333')
+                  sentryLog('captureMessage4444')
+                  captureMessage()
+                }}
+              />
+            </View>
+          }
+          case 2: {
+            return <View style={[styles.row, { }]}>
+              <Button
+                title="切换为中文"
+                onPress={() => {
+                  switchToCN()
+                }}
+              />
+              <Text style={{ color: colors.text }}>
+                 <FormattedMessage id='welcome' />
+              </Text>
+              <Button
+                title="切换为英文"
+                onPress={() => {
+                  console.log('HomePage.js 切换为英文')
+                  switchToEN()
+                }}
+              />
+            </View>
+          }
+          case 3: {
+            return <View style={[styles.row, { }]}>
+              <Button
+                title="show drawer"
+                onPress={() => {
+                  console.log('HomePage.js openDrawer navigation=', navigation)
+                  openDrawer()
+                }}
+              />
+            </View>
+          }
+          case 4: {
+            return <View style={[styles.row, { }]}>
+               <Button
+                title="登录"
+                onPress={() => {
+                  login().then()
+                }}
+               />
+            </View>
+          }
+        }
+      }}></List>
     </SafeView>
   )
 }
@@ -151,6 +176,11 @@ const styles = StyleSheet.create({
     color: '#333',
     alignSelf: 'center',
     fontSize: 16
+  },
+  row: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
   }
 })
 const myStyleSheet = MyStyleSheet.create({
