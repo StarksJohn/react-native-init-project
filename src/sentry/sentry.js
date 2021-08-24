@@ -1,51 +1,51 @@
 /* istanbul ignore file
  * Should be imported in the index.js of the project
  *  */
-import * as Sentry from '@sentry/react-native';
+import * as Sentry from '@sentry/react-native'
 // import constant from '../constants/constant';
-import { constant } from '@/constant';
+import { constant } from '@/constant'
 // import Config from 'react-native-config';
 
-const sentryLogList = [];
+const sentryLogList = []
 
 // if (!__DEV__)
 {
   Sentry.init({
-    dsn: 'https://fad0a4194e4943769cc433647a495b16@o547966.ingest.sentry.io/5670897', //https://sentry.io/settings/cxa-um/projects/awesomeproject/keys/
+    dsn: 'https://fad0a4194e4943769cc433647a495b16@o547966.ingest.sentry.io/5670897' // https://sentry.io/settings/cxa-um/projects/awesomeproject/keys/
     // environment: Config.ENVIRONMENT,
-  });
+  })
 }
 
 export const captureError = (err) => {
-  return Sentry.captureException(err);
-};
+  return Sentry.captureException(err)
+}
 
 /**
  * The message to send to Sentry. Can be viewed in the backstage Issues
  * @returns {string}
  */
 export const captureMessage = () => {
-  return Sentry.captureMessage(JSON.stringify(sentryLogList));
-};
+  return Sentry.captureMessage(JSON.stringify(sentryLogList))
+}
 
 export const testJsCrash = () => {
-  throw new Error('');
-};
+  throw new Error('')
+}
 
 export const testNativeCrash = () => {
-  Sentry.nativeCrash();
-};
+  Sentry.nativeCrash()
+}
 
 export const captureEvent = ({ message, tags }) => {
-  Sentry.captureEvent({ message, tags });
-};
+  Sentry.captureEvent({ message, tags })
+}
 
 /**
  * Record the information to be capturedMessage
  * @param log
  */
-export const sentryLog = (log: string) => {
+export const sentryLog = (log) => {
   if (constant.sentryLog) {
-    sentryLogList.push(log);
+    sentryLogList.push(log)
   }
-};
+}

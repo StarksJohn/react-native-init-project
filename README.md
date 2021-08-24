@@ -31,6 +31,10 @@ Main technology stack:
     react-native-paper: support dark mode and Cacheable dark mode status
 
     react-native-config: a .env file can configure all of the project
+
+    react-native-largelist : Support high-performance native lists with variable heights per row
+
+    support TypeScript
     
 run: 
 
