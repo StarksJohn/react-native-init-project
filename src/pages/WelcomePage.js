@@ -1,31 +1,20 @@
-import React, { useEffect, useRef, useState, useMemo, useCallback, memo } from 'react';
-import { Image, View, SafeAreaView, StyleSheet, Text } from 'react-native';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { compose } from 'redux';
-import { useTheme } from '@react-navigation/native';
-import { asyncStorage } from 'react-native-common-tools';
-import { constant } from '@/constant';
+import React, { useEffect, useRef, useState, useMemo, useCallback, memo } from 'react'
+import { Image, View, SafeAreaView, StyleSheet, Text } from 'react-native'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import { compose } from 'redux'
+import { useTheme } from '@react-navigation/native'
+import { asyncStorage } from 'react-native-common-tools'
+import { constant } from '~constant'
 
 const WelcomePage = (props) => {
   // const r_nav = useRef();
-  const { navigation, route } = props;
-  const { routes } = route.params;
-  console.log('WelcomePage.js routes=', routes);
-  const { setOptions } = navigation; //在具体页面内设置 ScreenOptions https://www.jianshu.com/p/a2582f8b16fd
-  const { colors } = useTheme();
+  const { navigation, route } = props
+  const { routes } = route.params
+  console.log('WelcomePage.js routes=', routes)
+  const { setOptions } = navigation // 在具体页面内设置 ScreenOptions https://www.jianshu.com/p/a2582f8b16fd
+  const { colors } = useTheme()
 
-  // useNavFocusListener({
-  //   navigation,
-  //   onFocus: () => {
-  //     console.log('WelcomePage onFocus isFocused=', navigation.isFocused());
-  //   },
-  //   isLightStatusBar: true,
-  //   statusBarBackgroundColor: appStyle.appThemeColor,
-  //   unfocused: () => {
-  //     console.log('WelcomePage unfocused isFocused=', navigation.isFocused());
-  //   },
-  // });
   // useAppStateListener({
   //   onChange: (appState) => {
   //     console.log(
@@ -53,28 +42,28 @@ const WelcomePage = (props) => {
    * componentDidMount && componentWillUnmount
    */
   useEffect(
-    /*The async keyword cannot be added to the first parameter https://juejin.im/post/6844903985338400782#heading-27 */
+    /* The async keyword cannot be added to the first parameter https://juejin.im/post/6844903985338400782#heading-27 */
     () => {
-      console.log('WelcomePage componentDidMount,props=', props);
+      console.log('WelcomePage componentDidMount,props=', props)
 
       setTimeout(() => {
-        routes.reset(navigation, routes.MainTabNavigator.routeName);
-        asyncStorage.setItem(constant.initialRouteName, routes.MainTabNavigator.routeName).then();
-      }, 3000);
-      //componentWillUnmount
+        routes.reset(navigation, routes.MainTabNavigator.routeName)
+        asyncStorage.setItem(constant.initialRouteName, routes.MainTabNavigator.routeName).then()
+      }, 3000)
+      // componentWillUnmount
       return () => {
-        console.log('WelcomePage componentWillUnmount');
-      };
+        console.log('WelcomePage componentWillUnmount')
+      }
     },
     []
-  );
+  )
 
   /*
   componentDidUpdate
   */
   useEffect(() => {
-    console.log('WelcomePage componentDidUpdate');
-  });
+    console.log('WelcomePage componentDidUpdate')
+  })
 
   // const renderNav = () => {
   //   return (
@@ -86,32 +75,25 @@ const WelcomePage = (props) => {
   //   );
   // };
 
-  //render
+  // render
   return (
     <View style={[styles.container, { backgroundColor: colors.background }]}>
       <Text>WelcomePage</Text>
     </View>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'blue',
-  },
-});
+    backgroundColor: 'blue'
+  }
+})
 
-WelcomePage.propTypes = {};
+WelcomePage.propTypes = {}
 
-WelcomePage.defaultProps = {};
+WelcomePage.defaultProps = {}
 
-const mapStateToProps = ({}) => ({});
-
-const mapDispatchToProps = {};
-
-// const enhance = compose(connect(mapStateToProps, mapDispatchToProps));
-//
-// export default enhance(memo(WelcomePage));
-export default WelcomePage;
+export default WelcomePage

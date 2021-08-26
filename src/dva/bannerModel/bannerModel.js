@@ -1,5 +1,5 @@
 import { baseModel, tool } from 'react-native-common-tools'
-import { campaignBanner } from '@api'
+import { campaignBanner } from '~api'
 
 /**
  * 健康走页面 banner

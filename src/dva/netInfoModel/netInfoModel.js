@@ -1,11 +1,11 @@
-import { baseModel } from 'react-native-common-tools';
+import { baseModel } from 'react-native-common-tools'
 /**
  * 可动态监听 网络情况
  * @type {string}
  */
-const netInfoModel = 'netInfoModel';
+const netInfoModel = 'netInfoModel'
 const initState = {
-  networkAvailable: false,
+  networkAvailable: false
   /**
    *   details:{
      *   bssid: null
@@ -19,14 +19,14 @@ const initState = {
        type: "wifi"
    */
   // networkInfo: undefined, //NetInfo.addEventListener方法的回调参数返回的state
-};
+}
 const effects = {
-  saveSomeThing: `netInfoModel/${baseModel.baseEffects.saveSomeThing}`, //每个model默认的同步的直接改变此 model 的某个 state 的 effect
-};
+  saveSomeThing: `netInfoModel/${baseModel.baseEffects.saveSomeThing}` // 每个model默认的同步的直接改变此 model 的某个 state 的 effect
+}
 const action = {
   ...baseModel.baseAction,
-  networkAvailable: 'networkAvailable',
-};
+  networkAvailable: 'networkAvailable'
+}
 
 /**
  * https://dvajs.com/api/#model
@@ -35,5 +35,5 @@ export default {
   namespace: netInfoModel,
   state: initState,
   action,
-  effects,
-};
+  effects
+}

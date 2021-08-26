@@ -7,19 +7,16 @@ module.exports = {
       'module-resolver',
       {
         root: ['./src'],
+        extensions: ['.ios.js', '.android.js', '.js', '.ts', '.tsx', '.json'],
         alias: {
-          '@dva': ['./src/dva/index.js'],
-          '@react_intl': ['./src/react_intl/index.js'],
-          '@context': ['./src/context/index.js'],
-          '@routes': ['./src/routes/index.js'],
-          '@useHooks': ['./src/useHooks/index.js'],
-          '@/constant': ['./src/constants/index.js'],
-          '@components': ['./src/components/index.js'],
-          '@pages': ['./src/pages/index.js'],
-          '@style': ['./src/style/index.js'],
-          '@api': ['./src/api/index.js'],
-          '@/res': ['./src/res/index.js']
         }
+      }
+    ],
+    [
+      'babel-plugin-root-import',
+      {
+        rootPathPrefix: '~', // `~` 默认
+        rootPathSuffix: 'src'
       }
     ]
   ]

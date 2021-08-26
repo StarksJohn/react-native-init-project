@@ -1,12 +1,11 @@
-import React, { useEffect, useCallback } from 'react';
-import { StatusBar, Platform } from 'react-native';
-import { appStyle } from 'react-native-common-tools';
-import { useFocusEffect } from '@react-navigation/native';
-import { useTheme } from '@react-navigation/native';
+import React, { useEffect, useCallback } from 'react'
+import { StatusBar, Platform } from 'react-native'
+import { appStyle } from 'react-native-common-tools'
+import { useFocusEffect, useTheme } from '@react-navigation/native'
 
-useNavFocusListener.propTypes = {};
+useNavFocusListener.propTypes = {}
 
-useNavFocusListener.defaultProps = {};
+useNavFocusListener.defaultProps = {}
 
 /**
  * PureComponent
@@ -20,53 +19,53 @@ useNavFocusListener.defaultProps = {};
  * @returns {*}
  * @constructor
  */
-export default function useNavFocusListener(props) {
+export default function useNavFocusListener (props) {
   const {
     onFocus,
     unfocused,
     isDarkStatusBar,
     isLightStatusBar,
-    statusBarBackgroundColor = appStyle.appThemeColor,
-  } = props;
-  const theme = useTheme();
+    statusBarBackgroundColor = appStyle.appThemeColor
+  } = props
+  const theme = useTheme()
 
   // https://blog.csdn.net/Cui_xing_tian/article/details/105294567
   useFocusEffect(
     useCallback(() => {
       // Do something when the screen is focused
-      console.log('useNavFocusListener.js focused');
-      _onFocus();
+      console.log('useNavFocusListener.js focused')
+      _onFocus()
       return () => {
         // Do something when the screen is unfocused
         // Useful for cleanup functions
-        unfocused && unfocused();
-        console.log('useNavFocusListener.js unfocused');
-      };
+        unfocused && unfocused()
+        console.log('useNavFocusListener.js unfocused')
+      }
     }, [_onFocus, unfocused])
-  );
+  )
 
   const _onFocus = useCallback(() => {
-    console.log('useNavFocusListener useCallback,onFocus');
-    let _isLightStatusBar = isLightStatusBar,
-      _isDarkStatusBar = isDarkStatusBar;
+    console.log('useNavFocusListener useCallback,onFocus')
+    let _isLightStatusBar = isLightStatusBar
+    const _isDarkStatusBar = isDarkStatusBar
     if (theme.dark) {
-      //暗黑模式
-      _isLightStatusBar = true;
+      // 暗黑模式
+      _isLightStatusBar = true
     }
 
     if (_isLightStatusBar) {
-      Platform.OS === 'android' && StatusBar.setTranslucent(false);
-      StatusBar.setBarStyle('light-content', true);
+      Platform.OS === 'android' && StatusBar.setTranslucent(false)
+      StatusBar.setBarStyle('light-content', true)
     } else if (_isDarkStatusBar) {
-      Platform.OS === 'android' && StatusBar.setTranslucent(false);
-      StatusBar.setBarStyle('dark-content', true);
+      Platform.OS === 'android' && StatusBar.setTranslucent(false)
+      StatusBar.setBarStyle('dark-content', true)
     }
     if (statusBarBackgroundColor && Platform.OS === 'android') {
-      StatusBar.setBackgroundColor(statusBarBackgroundColor);
+      StatusBar.setBackgroundColor(statusBarBackgroundColor)
     }
 
-    onFocus && onFocus();
-  }, [isDarkStatusBar, isLightStatusBar, onFocus, statusBarBackgroundColor]);
+    onFocus && onFocus()
+  }, [isDarkStatusBar, isLightStatusBar, onFocus, statusBarBackgroundColor])
 
   /**
    * componentDidMount && componentWillUnmount
@@ -89,6 +88,6 @@ export default function useNavFocusListener(props) {
  componentDidUpdate
  */
   useEffect(() => {
-    console.log('useNavFocusListener componentDidUpdate');
-  });
+    console.log('useNavFocusListener componentDidUpdate')
+  })
 }

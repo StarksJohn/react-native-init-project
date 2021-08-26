@@ -1,11 +1,11 @@
 import React, { useEffect, useRef, useCallback } from 'react'
 import { View, Text, Button, Image } from 'react-native'
 import { useTheme } from '@react-navigation/native'
-import { SafeView } from '@components'
+import { SafeView } from '~components'
 import { useAndroidBackHandler, MyStyleSheet, appStyle, Math, List, mockData } from 'react-native-common-tools'
-import { useNavFocusListener } from '@useHooks'
+import { useNavFocusListener } from '~useHooks'
 import { MediaWrapper } from 'react-native-largelist'
-import { loading } from '@/res'
+import { loading } from '~res'
 
 const { one_section_array } = mockData
 

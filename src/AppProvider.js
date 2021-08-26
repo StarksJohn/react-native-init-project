@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState, useMemo, memo, useCallback, forwardRef, useImperativeHandle } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { ThemeContext } from '@context'
+import { ThemeContext } from '~context'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 import {
   Provider as PaperProvider,
@@ -9,8 +9,8 @@ import {
 } from 'react-native-paper'
 import { DefaultTheme as NavigationDefaultTheme, DarkTheme as NavigationDarkTheme } from '@react-navigation/native'
 import { appStyle } from 'react-native-common-tools'
-import { NavigationContainer } from '@routes'
-import { ThemeContextModel } from '@dva'
+import { NavigationContainer } from '~routes'
+import { ThemeContextModel } from '~dva'
 
 /**
  * PureComponent

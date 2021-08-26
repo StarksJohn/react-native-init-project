@@ -5,7 +5,7 @@ import { AppRegistry, Platform } from 'react-native'
 import { sentryLog } from './src/sentry/sentry' // init sentry
 import App from './src/App'
 import { name as appName } from './app.json'
-import { constant } from '@/constant'
+import { constant } from '~constant'
 
 if (!constant.fakeData && process.env.NODE_ENV === 'production') {
   // release package

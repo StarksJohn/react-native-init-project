@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState, useMemo, memo, useCallback, forwardRef, useImperativeHandle } from 'react'
-import { ThemeContext } from '@context'
+import { ThemeContext } from '~context'
 
 /**
  * Toggle dark mode

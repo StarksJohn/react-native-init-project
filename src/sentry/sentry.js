@@ -3,7 +3,7 @@
  *  */
 import * as Sentry from '@sentry/react-native'
 // import constant from '../constants/constant';
-import { constant } from '@/constant'
+import { constant } from '~constant'
 // import Config from 'react-native-config';
 
 const sentryLogList = []

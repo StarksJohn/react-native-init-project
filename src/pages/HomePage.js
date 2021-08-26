@@ -1,13 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { View, Text, Button, TextInput, TouchableOpacity } from 'react-native'
 import { useTheme } from '@react-navigation/native'
-import { SafeView } from '@components'
+import { SafeView } from '~components'
 import { useSelector, useDispatch } from 'react-redux'
 import { ScrollView, appStyle, XView, XWidget, XText, XSize, List, ahooks, MyStyleSheet } from 'react-native-common-tools'
 import { captureMessage, sentryLog } from '../sentry/sentry'
 import { FormattedMessage } from 'react-intl'
-import { useDrawerNavigator, useNavFocusListener, useBannerModel, useIntlModel } from '@useHooks'
-import { login } from '@api'
+import { useDrawerNavigator, useNavFocusListener, useBannerModel, useIntlModel } from '~useHooks'
+import { login } from '~api'
 import { SpringScrollView } from 'react-native-spring-scrollview'
 
 const arr = []

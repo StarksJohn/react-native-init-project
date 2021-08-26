@@ -10,12 +10,22 @@
     "noEmit": true,
     "strict": true,
     "target": "esnext",
-        "baseUrl": ".",
-         "paths": {
-            "*": ["src/*"],
-          "tests": ["tests/*"],
-          "@components/*": ["src/components/*"],
-         },
+    "baseUrl": "./",
+    "paths": {
+      "*": ["src/*"],
+      "~/*": ["src/*"],
+      "~components": ["src/components"],
+      "~api": ["src/api"],
+      "~dva": ["src/dva"],
+      "~react_intl": ["src/react_intl"],
+      "~context": ["src/context"],
+      "~routes": ["src/routes"],
+      "~useHooks": ["src/useHooks"],
+      "~constant": ["src/constant"],
+      "~pages": ["src/pages"],
+      "~style": ["src/style"],
+      "~res": ["src/res"]
+    }
   },
   "exclude": [
     "node_modules",

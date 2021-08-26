@@ -1,59 +1,59 @@
-import React, { useEffect } from 'react';
-import { View, Text, Button, StyleSheet, StatusBar } from 'react-native';
-import { useTheme } from '@react-navigation/native';
-import { EventListener } from 'react-native-common-tools';
-import { constant } from '@/constant';
-import { SafeView } from '@components';
+import React, { useEffect } from 'react'
+import { View, Text, Button, StyleSheet, StatusBar } from 'react-native'
+import { useTheme } from '@react-navigation/native'
+import { EventListener } from 'react-native-common-tools'
+import { constant } from '~constant'
+import { SafeView } from '~components'
 
 const MinePage = (props) => {
-  const { navigation, route } = props;
+  const { navigation, route } = props
 
-  const { colors } = useTheme();
-  const { setParams } = navigation; //在具体页面内设置 ScreenOptions https://www.jianshu.com/p/a2582f8b16fd
-  const theme = useTheme();
+  const { colors } = useTheme()
+  const { setParams } = navigation // 在具体页面内设置 ScreenOptions https://www.jianshu.com/p/a2582f8b16fd
+  const theme = useTheme()
 
   /**
    * componentDidMount && componentWillUnmount
    */
   useEffect(
-    /*The async keyword cannot be added to the first parameter https://juejin.im/post/6844903985338400782#heading-27 */
+    /* The async keyword cannot be added to the first parameter https://juejin.im/post/6844903985338400782#heading-27 */
     () => {
-      //todo
-      console.log('MinePage componentDidMount navigation=', navigation);
-      let MinePageRightBtClicks = new EventListener({
+      // todo
+      console.log('MinePage componentDidMount navigation=', navigation)
+      const MinePageRightBtClicks = new EventListener({
         eventName: constant.event.MinePageRightBtClicks,
         eventCallback: ({}) => {
           // console.log('MinePage.js MinePageRightBtClicks toggleTheme=', toggleTheme);
-        },
-      });
+        }
+      })
 
-      //componentWillUnmount
+      // componentWillUnmount
       return () => {
-        console.log('MinePage componentWillUnmount');
-        MinePageRightBtClicks.removeEventListener();
-      };
+        console.log('MinePage componentWillUnmount')
+        MinePageRightBtClicks.removeEventListener()
+      }
     },
     [navigation]
-  );
+  )
 
   return (
     <SafeView>
-      {/*<StatusBar barStyle={theme.dark ? 'light-content' : 'dark-content'} />*/}
+      {/* <StatusBar barStyle={theme.dark ? 'light-content' : 'dark-content'} /> */}
       <Text style={{ color: colors.text }}>MinePage</Text>
-      {/*<Button*/}
-      {/*  title="Go to details screen"*/}
-      {/*  onPress={() => navigation.navigate('Details')}*/}
-      {/*/>*/}
+      {/* <Button */}
+      {/*  title="Go to details screen" */}
+      {/*  onPress={() => navigation.navigate('Details')} */}
+      {/* /> */}
     </SafeView>
-  );
-};
+  )
+}
 
-export default MinePage;
+export default MinePage
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+    justifyContent: 'center'
+  }
+})

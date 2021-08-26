@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, useMemo, memo, useCallback, forwardRef, useImperativeHandle } from 'react';
+import React, { useEffect, useRef, useState, useMemo, memo, useCallback, forwardRef, useImperativeHandle } from 'react'
 
 /**
  * const { openDrawer } = useDrawerNavigator({ navigation });
@@ -7,11 +7,11 @@ import React, { useEffect, useRef, useState, useMemo, memo, useCallback, forward
  */
 const useDrawerNavigator = ({ navigation }) => {
   const openDrawer = useCallback(() => {
-    console.log('useDrawerNavigator.js  openDrawer navigation=', navigation);
-    return navigation?.openDrawer();
-  }, [navigation]);
+    console.log('useDrawerNavigator.js  openDrawer navigation=', navigation)
+    return navigation?.openDrawer()
+  }, [navigation])
 
-  return { openDrawer };
-};
+  return { openDrawer }
+}
 
-export { useDrawerNavigator };
+export { useDrawerNavigator }

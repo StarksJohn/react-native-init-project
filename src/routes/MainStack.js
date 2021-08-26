@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react'
 import { ActivityIndicator, View } from 'react-native'
 import { useTheme } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
-import { CustomNavigationBar } from '@components'
+import { CustomNavigationBar } from '~components'
 import MainTabNavigator from './MainTabNavigator'
-import { DetailsPage, WelcomePage } from '@pages'
+import { DetailsPage, WelcomePage } from '~pages'
 import { appStyle, asyncStorage, tool } from 'react-native-common-tools'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
-import { useNetInfoModel } from '@useHooks'
-import { constant } from '@/constant'
+import { useNetInfoModel } from '~useHooks'
+import { constant } from '~constant'
 import routes from './routes.js'
 
 const Stack = createStackNavigator()
@@ -79,7 +79,7 @@ const MainStack = ({}) => {
     >
       {/* 所有 Stack.Screen 共用 Stack.Navigator里的同一个 导航栏 */}
       <Stack.Screen
-        // 因为在页面里使用 import { routes } from '@routes'; 拿到的 routes是 undefined,故把 routes 注入到 initialParams里,在页面里就可以通过 const { routes } =
+        // 因为在页面里使用 import { routes } from '~routes'; 拿到的 routes是 undefined,故把 routes 注入到 initialParams里,在页面里就可以通过 const { routes } =
         // props.route.params; 拿到 routes
         initialParams={{ routes }}
         name={routes.WelcomePage.routeName}
@@ -94,7 +94,7 @@ const MainStack = ({}) => {
       <Stack.Screen
         name={routes.DetailsPage.routeName}
         component={DetailsPage}
-        // 因为在页面里使用 import { routes } from '@routes'; 拿到的 routes是 undefined,故把 routes 注入到 initialParams里,在页面里就可以通过 const { routes } =
+        // 因为在页面里使用 import { routes } from '~routes'; 拿到的 routes是 undefined,故把 routes 注入到 initialParams里,在页面里就可以通过 const { routes } =
         // props.route.params; 拿到 routes
         initialParams={{ routes }}
         options={{
