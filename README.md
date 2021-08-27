@@ -35,6 +35,8 @@ Main technology stack:
     react-native-largelist : Support high-performance native lists with variable heights per row
 
     support TypeScript
+
+    support global.d.ts
     
 run: 
 

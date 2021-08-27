@@ -25,7 +25,8 @@
       "~pages": ["src/pages"],
       "~style": ["src/style"],
       "~res": ["src/res"]
-    }
+    },
+    "skipLibCheck": true /* 忽略所有的声明文件（ *.d.ts）的类型检查。 */
   },
   "exclude": [
     "node_modules",
