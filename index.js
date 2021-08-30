@@ -7,8 +7,6 @@ import './global'
 import App from './src/App'
 import { name as appName } from './app.json'
 import { constant } from '~constant'
-import { appStyle } from 'react-native-common-tools'
-import { getBottomSpace } from 'react-native-iphone-x-helper'
 
 console.log('global.ios=', global.ios)
 
