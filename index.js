@@ -11,9 +11,6 @@ import { appStyle } from 'react-native-common-tools'
 import { getBottomSpace } from 'react-native-iphone-x-helper'
 
 console.log('global.ios=', global.ios)
-console.log('appStyle.isIphoneX=', appStyle.isIphoneX)
-console.log('appStyle.getStatusBarHeight=', appStyle.getStatusBarHeight(true))
-console.log('appStyle.getBottomSpace=', appStyle.getBottomSpace())
 
 if (!constant.fakeData && process.env.NODE_ENV === 'production') {
   // release package

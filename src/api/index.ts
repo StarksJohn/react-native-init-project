@@ -6,7 +6,7 @@ import { userModel } from '~dva'
 export const campaignBanner = async (payload: {
   campaign_type: string
 } | undefined) => {
-  console.log('index.js campaign_banner payload=', payload)
+  console.log('api.ts campaign_banner payload=', payload)
   payload = {
     ...{
       campaign_type: payload?.campaign_type || 'weight' // weight, step
@@ -15,7 +15,7 @@ export const campaignBanner = async (payload: {
   }
 
   const [err, data] = await tool.to(get(Urls.campaign_banner, payload))
-  console.log('src/api/index.js campaign_banner data=', data, ' err=', err)
+  console.log('api.ts campaign_banner data=', data, ' err=', err)
   if (data) {
     return Promise.resolve(data)
   } else {
