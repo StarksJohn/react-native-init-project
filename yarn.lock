@@ -3268,7 +3268,7 @@ domexception@^2.0.1:
   dependencies:
     webidl-conversions "^5.0.0"
 
-dva-core@^2.0.3:
+dva-core@^2.0.4:
   version "2.0.4"
   resolved "https://registry.npmjs.org/dva-core/-/dva-core-2.0.4.tgz#086665d1d5f684e089c5bfac9ba388d91cc9050a"
   integrity sha512-Zh39llFyItu9HKXKfCZVf9UFtDTcypdAjGBew1S+wK8BGVzFpm1GPTdd6uIMeg7O6STtCvt2Qv+RwUut1GFynA==
@@ -7037,17 +7037,19 @@ react-native-axios-jwt@^1.1.0:
   dependencies:
     jwt-decode "^3.1.2"
 
-react-native-common-tools@^1.0.21:
-  version "1.0.21"
-  resolved "https://registry.npmjs.org/react-native-common-tools/-/react-native-common-tools-1.0.21.tgz#881aff34ab0758ccf21a96f2cfe48f1302fc0a19"
-  integrity sha512-07auNKsPhrlzgLX8plBkVZo6im8GZmtQpak88q+k0oY7Mtdv7MDWFUR/jfiEYBqWMV0oqz9wiAdDpnCspjoJug==
+react-native-common-tools@^1.0.23:
+  version "1.0.23"
+  resolved "https://registry.npmjs.org/react-native-common-tools/-/react-native-common-tools-1.0.23.tgz#116a1912c010ba5ae8508ef5997d26b82ba52863"
+  integrity sha512-8esedWc4+zxy7fkveIo4ob4+qry4UYOyP8ky/NoSO09+i+Hujehg0lY7HBVYrZ/pGsOdRG/GKnTK7wB3bh2G/g==
   dependencies:
     "@react-native-async-storage/async-storage" "^1.15.5"
     "@react-native-community/eslint-config" "^3.0.0"
     axios "^0.21.1"
     babel-eslint "^10.1.0"
     clean-deep "^3.4.0"
+    dva-core "^2.0.4"
     eslint-plugin-react-hooks "^4.2.0"
+    lodash "^4.17.21"
     prop-types "^15.7.2"
     qs "^6.10.1"
     react-native "0.63.4"

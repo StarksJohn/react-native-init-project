@@ -6,6 +6,7 @@ import { intlModel } from '~react_intl'
 import netInfoModel from './netInfoModel/netInfoModel.js'
 import userModel from './userModel.js'
 
+// @ts-ignore
 /**
  * 初始化dva 模块
  * @type {{_models: [*], _store: null, _plugin: Plugin, use: *, start: function(): void, model: function(Object): *}}

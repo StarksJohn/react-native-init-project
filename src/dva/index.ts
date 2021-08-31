@@ -1,4 +1,4 @@
-import _dvaApp from './dvaApp.js'
+import _dvaApp from './dvaApp'
 import _ThemeContextModel from './ThemeContextModel'
 import _DrawerNavigatorModel from './DrawerNavigatorModel.js'
 import _netInfoModel from './netInfoModel/netInfoModel.js'

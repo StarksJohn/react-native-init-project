@@ -5,6 +5,7 @@
  * @flow
  */
 
+// eslint-disable-next-line no-use-before-define
 import React, { useEffect } from 'react'
 import { Provider as StoreProvider } from 'react-redux'
 import { IntlWrapper } from '~react_intl'
