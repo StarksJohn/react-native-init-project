@@ -19,6 +19,7 @@ const App = () => {
     console.log('App.js componentDidMount')
   }, [])
 
+  // @ts-ignore
   return (
     <StoreProvider store={store}>
       <IntlWrapper>

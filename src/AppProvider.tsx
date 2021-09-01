@@ -29,25 +29,24 @@ const AppProvider:React.FC<Props> = (Props, parentRef) => {
   // const { toggleTheme } = useThemeContext();不能用,否则报错
 
   const dispatch = useDispatch()
-  const [_isDarkTheme, set_IsDarkTheme] = useState(isDarkTheme)
-  // const [theme, setTheme] = useState({  });
+  const [appProviderIsDarkTheme, setAppProviderIsDarkTheme] = useState(isDarkTheme)
 
   const toggleTheme = useCallback(
-    (payload) => {
+    () => {
       console.log('AppProvider.js toggleTheme Start to change ThemeContextModel.isDarkTheme')
 
       return dispatch({
         type: ThemeContextModel.effects.saveSomeThing, // 对应bannerModel里的某个effect
         action: ThemeContextModel._action.isDarkTheme, // 对应某个reducer
         payload: {
-          isDarkTheme: !_isDarkTheme
+          isDarkTheme: !appProviderIsDarkTheme
         },
-        callback: (result) => {
+        callback: (result: any) => {
           console.log('AppProvider.jsx toggleTheme callback=', result)
         }
       })
     },
-    [_isDarkTheme, dispatch]
+    [appProviderIsDarkTheme, dispatch]
   )
 
   /**
@@ -79,7 +78,7 @@ const AppProvider:React.FC<Props> = (Props, parentRef) => {
     }
   }
 
-  const theme = _isDarkTheme ? CustomDarkTheme : CustomDefaultTheme
+  const theme = appProviderIsDarkTheme ? CustomDarkTheme : CustomDefaultTheme
 
   /**
    * componentDidMount && componentWillUnmount
@@ -99,15 +98,15 @@ const AppProvider:React.FC<Props> = (Props, parentRef) => {
   )
 
   /**
-   * 为了app启动时从 ThemeContextModel.isDarkTheme 的缓存值初始化 _isDarkTheme
+   * 为了app启动时从 ThemeContextModel.isDarkTheme 的缓存值初始化 appProviderIsDarkTheme
    */
   useEffect(() => {
-    console.log('AppProvider.js isDarkTheme has changed to =', isDarkTheme, ' _isDarkTheme=', _isDarkTheme)
-    if (isDarkTheme !== _isDarkTheme) {
-      console.log('AppProvider.js useEffect set_IsDarkTheme =', isDarkTheme)
-      set_IsDarkTheme(isDarkTheme)
+    console.log('AppProvider.js isDarkTheme has changed to =', isDarkTheme, ' appProviderIsDarkTheme=', appProviderIsDarkTheme)
+    if (isDarkTheme !== appProviderIsDarkTheme) {
+      console.log('AppProvider.js useEffect setAppProviderIsDarkTheme =', isDarkTheme)
+      setAppProviderIsDarkTheme(isDarkTheme)
     }
-  }, [isDarkTheme, _isDarkTheme])
+  }, [isDarkTheme, appProviderIsDarkTheme])
 
   // 切换主题模块,不会因为当前控件重绘而重新创建
   const themeContext = React.useMemo(
@@ -115,7 +114,7 @@ const AppProvider:React.FC<Props> = (Props, parentRef) => {
       // 切换 正常 | 暗黑 模式 Toggle normal | dark mode
       _toggleTheme: () => {
         console.log('AppProvider.js _toggleTheme 切换了主题')
-        set_IsDarkTheme((_isDarkTheme) => !_isDarkTheme)
+        setAppProviderIsDarkTheme((appProviderIsDarkTheme) => !appProviderIsDarkTheme)
         toggleTheme()
       }
     }),
@@ -123,7 +122,7 @@ const AppProvider:React.FC<Props> = (Props, parentRef) => {
   )
 
   // render
-  console.log('AppProvider.js render _isDarkTheme=', _isDarkTheme, ' theme=', theme)
+  console.log('AppProvider.js render appProviderIsDarkTheme=', appProviderIsDarkTheme, ' theme=', theme)
 
   return (
     <PaperProvider theme={theme}>
