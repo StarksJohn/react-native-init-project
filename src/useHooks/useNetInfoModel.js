@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, useMemo, memo, useCallback, forwardRef, useImperativeHandle } from 'react'
+import React, { useEffect, useRef, useState, useMemo, memo, useCallback, useImperativeHandle } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNetInfo } from '@react-native-community/netinfo'
 import { Platform } from 'react-native'

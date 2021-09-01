@@ -33,7 +33,7 @@ const MainStack = ({}) => {
       )
       // 保证 WelcomePage 只显示一次
       if (data_initialRouteName) {
-        console.log('App.js setInitialRouteName routes.MainTabNavigator.routeName')
+        console.log('MainStack.js setInitialRouteName routes.MainTabNavigator.routeName')
         setInitialRouteName(routes.MainTabNavigator.routeName)
       } else {
         setInitialRouteName(routes.WelcomePage.routeName)

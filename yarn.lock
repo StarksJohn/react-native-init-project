@@ -7037,10 +7037,10 @@ react-native-axios-jwt@^1.1.0:
   dependencies:
     jwt-decode "^3.1.2"
 
-react-native-common-tools@^1.0.23:
-  version "1.0.23"
-  resolved "https://registry.npmjs.org/react-native-common-tools/-/react-native-common-tools-1.0.23.tgz#116a1912c010ba5ae8508ef5997d26b82ba52863"
-  integrity sha512-8esedWc4+zxy7fkveIo4ob4+qry4UYOyP8ky/NoSO09+i+Hujehg0lY7HBVYrZ/pGsOdRG/GKnTK7wB3bh2G/g==
+react-native-common-tools@^1.0.25:
+  version "1.0.25"
+  resolved "https://registry.npmjs.org/react-native-common-tools/-/react-native-common-tools-1.0.25.tgz#af6cd4a29f541cd1f3b7e557faf076571e24254c"
+  integrity sha512-qAPWBmER7q5tBnUbWH0bL+MQnS2KKgQgWWOUwmI81Fn7Oz8Vj3QeERDKOWat7QC7Ovp7KNjhjGJqaEtK/h26NQ==
   dependencies:
     "@react-native-async-storage/async-storage" "^1.15.5"
     "@react-native-community/eslint-config" "^3.0.0"

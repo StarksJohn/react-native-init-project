@@ -1,4 +1,6 @@
-import React, { useEffect, useRef, useState, useMemo, memo, useCallback, forwardRef, useImperativeHandle } from 'react'
+
+// eslint-disable-next-line no-use-before-define
+import React, { useEffect, useRef, useState, useMemo, memo, useCallback, useImperativeHandle } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { ThemeContext } from '~context'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
@@ -10,8 +12,10 @@ import {
 import { DefaultTheme as NavigationDefaultTheme, DarkTheme as NavigationDarkTheme } from '@react-navigation/native'
 import { appStyle } from 'react-native-common-tools'
 import { NavigationContainer } from '~routes'
-import { ThemeContextModel } from '~dva'
+import { ThemeContextModel, dvaState } from '~dva'
 
+export interface Props {
+}
 /**
  * PureComponent
  * @param props
@@ -19,8 +23,8 @@ import { ThemeContextModel } from '~dva'
  * @returns {*}
  * @constructor
  */
-const AppProvider = ({}, parentRef) => {
-  const { isDarkTheme } = useSelector((state) => state.ThemeContextModel)
+const AppProvider:React.FC<Props> = (Props, parentRef) => {
+  const { isDarkTheme } = useSelector((state:dvaState) => state.ThemeContextModel)
   console.log('AppProvider.js ThemeContextModel.isDarkTheme=', isDarkTheme)
   // const { toggleTheme } = useThemeContext();不能用,否则报错
 
@@ -110,7 +114,7 @@ const AppProvider = ({}, parentRef) => {
     () => ({
       // 切换 正常 | 暗黑 模式 Toggle normal | dark mode
       _toggleTheme: () => {
-        console.log('App.js _toggleTheme 切换了主题')
+        console.log('AppProvider.js _toggleTheme 切换了主题')
         set_IsDarkTheme((_isDarkTheme) => !_isDarkTheme)
         toggleTheme()
       }

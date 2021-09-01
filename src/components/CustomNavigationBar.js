@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, useMemo, memo, useCallback, forwardRef, useImperativeHandle } from 'react'
+import React, { useEffect, useRef, useState, useMemo, memo, useCallback, useImperativeHandle } from 'react'
 import { Image, View, SafeAreaView, StyleSheet } from 'react-native'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
@@ -111,5 +111,4 @@ const Styles = StyleSheet.create({})
 //   ),
 // );
 //
-// export default enhance(memo(forwardRef(CustomNavigationBar)));
 export default CustomNavigationBar

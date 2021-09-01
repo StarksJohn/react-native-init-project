@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback, forwardRef, useImperativeHandle, useRef, memo, useState } from 'react'
+import React, { useEffect, useCallback, useImperativeHandle, useRef, memo, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { intlModel, locale } from '~react_intl'
 const { CN, EN } = locale

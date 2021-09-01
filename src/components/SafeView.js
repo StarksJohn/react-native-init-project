@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, useMemo, memo, useCallback, forwardRef, useImperativeHandle } from 'react'
+import React, { useEffect, useRef, useState, useMemo, memo, useCallback, useImperativeHandle } from 'react'
 import { Image, View, SafeAreaView, StyleSheet } from 'react-native'
 import { appStyle } from 'react-native-common-tools'
 import { useTheme } from '@react-navigation/native'

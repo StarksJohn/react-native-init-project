@@ -1,4 +1,4 @@
-import { baseModel } from 'react-native-common-tools'
+import { baseModel, modelProps } from 'react-native-common-tools'
 
 const ThemeContextModel = 'ThemeContextModel'
 const initState = {
@@ -21,6 +21,10 @@ export const effects = {
 export const _action = {
   ...baseModel.baseAction,
   isDarkTheme: 'isDarkTheme' // 改变 initState里的 isDarkTheme 的 action
+}
+
+export interface ThemeContextModelProps extends modelProps{
+  isDarkTheme:boolean,
 }
 
 /**

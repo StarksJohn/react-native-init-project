@@ -2,12 +2,12 @@ import React, { useEffect, useRef, useCallback } from 'react'
 import { View, Text, Button, Image } from 'react-native'
 import { useTheme } from '@react-navigation/native'
 import { SafeView } from '~components'
-import { useAndroidBackHandler, MyStyleSheet, appStyle, Math, List, mockData } from 'react-native-common-tools'
+import { useAndroidBackHandler, MyStyleSheet, appStyle, Math, List, one_section_array } from 'react-native-common-tools'
 import { useNavFocusListener } from '~useHooks'
 import { MediaWrapper } from 'react-native-largelist'
 import { loading } from '~res'
 
-const { one_section_array } = mockData
+// const { one_section_array } = mockData
 
 const DetailsPage = ({ navigation }) => {
   const { setOptions } = navigation // 在具体页面内设置 ScreenOptions https://www.jianshu.com/p/a2582f8b16fd
@@ -93,38 +93,38 @@ const DetailsPage = ({ navigation }) => {
               resolve(one_section_array[page - 1])
             }, 1000)
           })
-        }} onLoading={({ page }) => {
-          return new Promise((resolve, reject) => {
-            setTimeout(() => {
-              console.log('DetailsPage.js onLoading page =', page)
-              if (page - 1 > one_section_array.length - 1) {
-                // eslint-disable-next-line prefer-promise-reject-errors
-                reject(null)
-              } else {
-                console.log('DetailsPage.js onLoading resolve =', one_section_array[page - 1])
-                initOneSectionRowsH({ rowNums: one_section_array[page - 1].length })
+        }}
+              onLoading={({ page }) => {
+                return new Promise((resolve, reject) => {
+                  setTimeout(() => {
+                    console.log('DetailsPage.js onLoading page =', page)
+                    if (page - 1 > one_section_array.length - 1) {
+                      // eslint-disable-next-line prefer-promise-reject-errors
+                      reject(null)
+                    } else {
+                      console.log('DetailsPage.js onLoading resolve =', one_section_array[page - 1])
+                      initOneSectionRowsH({ rowNums: one_section_array[page - 1].length })
 
-                resolve(one_section_array[page - 1])
-              }
-            }, 1000)
-          })
-        }} heightForIndexPath={({ section, row }) => {
-          const heightForIndexPath = ref_heightForIndexPath.current[section].items[row]
-          console.log('DetailsPage.js heightForIndexPath ref_heightForIndexPath.current=', ref_heightForIndexPath.current, ' section=', section, '  row=', row, ' height=', heightForIndexPath)
-          return heightForIndexPath
-        }} renderIndexPath={({ section, row, mediaWrapperParam, rowData }) => {
-          console.log('DetailsPage.js renderIndexPath section=', section, ' \n row=', row, ' \n rowData=', rowData)
-          // 画 大图片视频列表的每个row https://bolan9999.github.io/react-native-largelist/#/zh-cn/V3/BigMedia
-          return (
+                      resolve(one_section_array[page - 1])
+                    }
+                  }, 1000)
+                })
+              }} heightForIndexPath={({ section, row }) => {
+                const heightForIndexPath = ref_heightForIndexPath.current[section].items[row]
+                console.log('DetailsPage.js heightForIndexPath ref_heightForIndexPath.current=', ref_heightForIndexPath.current, ' section=', section, '  row=', row, ' height=', heightForIndexPath)
+                return heightForIndexPath
+              }} renderIndexPath={({ section, row, mediaWrapperParam, rowData }) => {
+                console.log('DetailsPage.js renderIndexPath section=', section, ' \n row=', row, ' \n rowData=', rowData)
+                // 画 大图片视频列表的每个row https://bolan9999.github.io/react-native-largelist/#/zh-cn/V3/BigMedia
+                return (
             <View style={[styles.row, { }]}>
               <Image
                 style={[styles.mediaWrapper, { backgroundColor: appStyle.randomColor() }]}
                 source={{ uri: rowData }}
               />
-
             </View>
-          )
-        }}></List>
+                )
+              }}></List>
     </SafeView>
   )
 }
