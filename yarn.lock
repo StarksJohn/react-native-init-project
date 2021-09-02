@@ -1677,6 +1677,11 @@
   resolved "https://registry.npmjs.org/@types/json-schema/-/json-schema-7.0.9.tgz#97edc9037ea0c38585320b28964dde3b39e4660d"
   integrity sha512-qcUXuemtEu+E5wZSJHNxUXeCZhAfXKQ41D+duX+VYPde7xyEVZci+/oXKJL13tnRs9lR2pr4fod59GT6/X1/yQ==
 
+"@types/lodash@^4.14.172":
+  version "4.14.172"
+  resolved "https://registry.npmjs.org/@types/lodash/-/lodash-4.14.172.tgz#aad774c28e7bfd7a67de25408e03ee5a8c3d028a"
+  integrity sha512-/BHF5HAx3em7/KkzVKm3LrsD6HZAXuXO1AJZQ3cRRBZj4oHZDviWPYu0aEplAqDFNHZPW6d3G7KN+ONcCCC7pw==
+
 "@types/node@*":
   version "16.4.11"
   resolved "https://registry.npmjs.org/@types/node/-/node-16.4.11.tgz#245030af802c776c31f00eb0cdde40ee615db462"
@@ -7037,10 +7042,10 @@ react-native-axios-jwt@^1.1.0:
   dependencies:
     jwt-decode "^3.1.2"
 
-react-native-common-tools@^1.0.26:
-  version "1.0.26"
-  resolved "https://registry.npmjs.org/react-native-common-tools/-/react-native-common-tools-1.0.26.tgz#90e8b7f90b9f84b5209cfe82f681d180859e4141"
-  integrity sha512-mgcMbgHNALzHqZhMYwOWKn9k0AV+jUOY4XbHHuWJ8gvj+zYbBdaCvHa5DIjNn1FKEp/Aaj9SVA1aUXhPw/hV6w==
+react-native-common-tools@^1.0.29:
+  version "1.0.29"
+  resolved "https://registry.npmjs.org/react-native-common-tools/-/react-native-common-tools-1.0.29.tgz#39a4961ce47a72ed269605adb52ff421b0a52715"
+  integrity sha512-6nynzOifjjTICfhmkhw1ew1UKGQ/YPuc3yejaVeqE/36TGiZicUvyzD3bkyKbxPC0gnKdhDp/Fzpxk9O+DTu7w==
   dependencies:
     "@react-native-async-storage/async-storage" "^1.15.5"
     "@react-native-community/eslint-config" "^3.0.0"

@@ -1,11 +1,14 @@
-import React, { useEffect, useRef, useState, useMemo, memo, useCallback, useImperativeHandle } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+// eslint-disable-next-line no-use-before-define
+import React, { useEffect } from 'react'
+import { useSelector } from 'react-redux'
 import routes from './routes.js'
 import SecondStack from './SecondStack.js'
 import MainStack from './MainStack.js'
-import DrawerContent from './DrawerContent.js'
-import { NavigationContainer } from '@react-navigation/native'
+import DrawerContent from './DrawerContent'
+import { NavigationContainer, Theme } from '@react-navigation/native'
 import { createDrawerNavigator } from '@react-navigation/drawer'
+import { dvaState } from '~dva'
+
 const Drawer = createDrawerNavigator()
 
 /**
@@ -15,8 +18,12 @@ const Drawer = createDrawerNavigator()
  * @returns {*}
  * @constructor
  */
-const _NavigationContainer = ({ theme }) => {
-  const { useDrawer } = useSelector((state) => state.DrawerNavigatorModel)
+export interface Props {
+    theme:Theme | undefined,
+}
+const _NavigationContainer :React.FC<Props> = (Props, parentRef) => {
+  const { theme } = Props
+  const { useDrawer } = useSelector((state:dvaState) => state.DrawerNavigatorModel)
   console.log('NavigationContainer.js useDrawer=', useDrawer)
 
   /**
@@ -37,6 +44,7 @@ const _NavigationContainer = ({ theme }) => {
 
   return (
     <NavigationContainer theme={theme}>
+        {/* eslint-disable-next-line multiline-ternary */}
       {useDrawer ? (
         // https://reactnavigation.org/docs/drawer-based-navigation
         // https://reactnavigation.org/docs/drawer-navigator

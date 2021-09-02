@@ -1,7 +1,7 @@
 import _routes from './routes.js'
 import _SecondStack from './SecondStack.js'
 import _MainStack from './MainStack'
-import _DrawerContent from './DrawerContent.js'
+import _DrawerContent from './DrawerContent'
 import _NavigationContainer from './NavigationContainer'
 
 /**

@@ -1,10 +1,11 @@
+// eslint-disable-next-line no-use-before-define
 import React from 'react'
 import { View, StyleSheet } from 'react-native'
-import { useTheme, Avatar, Title, Caption, Paragraph, Drawer, Text, TouchableRipple, Switch } from 'react-native-paper'
+import { useTheme, Avatar, Title, Caption, Drawer, Text, TouchableRipple, Switch } from 'react-native-paper'
 import { DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer'
-import routes from './routes.js'
 import { useThemeContext } from '~useHooks'
-
+import { NavigationHelpers } from '@react-navigation/core'
+import { routes } from '~routes'
 /**
  * PureComponent
  * @param props
@@ -12,13 +13,17 @@ import { useThemeContext } from '~useHooks'
  * @returns {*}
  * @constructor
  */
-const DrawerContent = (props) => {
+export interface Props {
+  navigation:NavigationHelpers<any>
+}
+const DrawerContent :React.FC<Props> = (Props, parentRef) => {
+  const { navigation } = Props
   const paperTheme = useTheme()
   const { toggleTheme } = useThemeContext()
 
   return (
     <View style={{ flex: 1 }}>
-      <DrawerContentScrollView {...props}>
+      <DrawerContentScrollView {...Props}>
         <View style={styles.drawerContent}>
           <View style={styles.userInfoSection}>
             <View style={{ flexDirection: 'row', marginTop: 15 }}>
@@ -51,14 +56,14 @@ const DrawerContent = (props) => {
               // icon={({ color, size }) => <Icon name='home-outline' color={color} size={size} />}
               label='MainStack'
               onPress={() => {
-                props.navigation.navigate(routes.MainStack.routeName)
+                routes.navigate(navigation, routes.MainStack.routeName, {})
               }}
             />
             <DrawerItem
               // icon={({ color, size }) => <Icon name='settings-outline' color={color} size={size} />}
               label='SecondStack'
               onPress={() => {
-                props.navigation.navigate(routes.SecondStack.routeName)
+                routes.navigate(navigation, routes.SecondStack.routeName, {})
               }}
             />
           </Drawer.Section>

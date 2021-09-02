@@ -1,4 +1,4 @@
-import { baseModel } from 'react-native-common-tools'
+import { baseModel, modelProps } from 'react-native-common-tools'
 
 /**
  * Control whether to use Drawer.Navigator
@@ -25,6 +25,10 @@ export const effects = {
 export const _action = {
   ...baseModel.baseAction,
   useDrawer: 'useDrawer' // 改变 initState里的 useDrawer 的 action
+}
+
+export interface DrawerNavigatorModelProps extends modelProps{
+  useDrawer:boolean,
 }
 
 /**
