@@ -1,5 +1,5 @@
 import _SafeView from './SafeView'
-import _CustomNavigationBar from './CustomNavigationBar.js'
+import _CustomNavigationBar from './CustomNavigationBar'
 
 /**
  * import {  } from '~components';

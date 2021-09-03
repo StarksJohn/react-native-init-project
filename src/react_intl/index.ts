@@ -1,6 +1,5 @@
 import _IntlWrapper from './IntlWrapper'
-import _intlModel from './intlModel.js'
-import * as _locale from './locale.js'
+import * as _locale from './locale'
 
 /**
  * import {  } from '~react_intl'
@@ -8,5 +7,4 @@ import * as _locale from './locale.js'
  * @type {{dvaApp: {_models: *[], _store: null, _plugin: Plugin, use: *, start: (function(): void), model: (function(Object): *)}}}
  */
 export const IntlWrapper = _IntlWrapper
-export const intlModel = _intlModel
 export const locale = _locale

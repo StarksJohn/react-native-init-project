@@ -1,7 +1,8 @@
+// eslint-disable-next-line no-use-before-define
 import React, { useEffect, useState } from 'react'
 import { ActivityIndicator, View } from 'react-native'
 import { useTheme } from '@react-navigation/native'
-import { createStackNavigator } from '@react-navigation/stack'
+import { createStackNavigator, StackHeaderProps } from '@react-navigation/stack'
 import { CustomNavigationBar } from '~components'
 import MainTabNavigator from './MainTabNavigator'
 import { DetailsPage, WelcomePage } from '~pages'
@@ -9,11 +10,13 @@ import { appStyle, asyncStorage, tool } from 'react-native-common-tools'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { useNetInfoModel } from '~useHooks'
 import { constant } from '~constant'
-import routes from './routes.js'
+import { routes } from '~routes'
 
 const Stack = createStackNavigator()
 
-const MainStack = ({}) => {
+export interface Props {
+}
+const MainStack :React.FC<Props> = (Props) => {
   const { colors } = useTheme()
   appStyle.safeAreaInsets = useSafeAreaInsets()
   console.log('MainStack.js safeAreaInsets =', appStyle.safeAreaInsets)
@@ -21,32 +24,36 @@ const MainStack = ({}) => {
 
   useEffect(() => {
     console.log('MainStack.js componentDidMount')
-    const get_initialRouteName = async () => {
-      const [err_initialRouteName, data_initialRouteName] = await tool.to(
+    const getInitialRouteName = async () => {
+      const [errInitialRouteName, dataInitialRouteName] = await tool.to(
         asyncStorage.getItem(constant.initialRouteName)
       )
       console.log(
-        'MainStack.js componentDidMount data_initialRouteName=',
-        data_initialRouteName,
-        ' err_initialRouteName=',
-        err_initialRouteName
+        'MainStack.js componentDidMount dataInitialRouteName=',
+        dataInitialRouteName,
+        ' errInitialRouteName=',
+        errInitialRouteName
       )
       // 保证 WelcomePage 只显示一次
-      if (data_initialRouteName) {
+      if (dataInitialRouteName) {
         console.log('MainStack.js setInitialRouteName routes.MainTabNavigator.routeName')
+        // @ts-ignore
         setInitialRouteName(routes.MainTabNavigator.routeName)
       } else {
+        // @ts-ignore
         setInitialRouteName(routes.WelcomePage.routeName)
       }
     }
-    get_initialRouteName().then()
+    getInitialRouteName().then()
     return () => {
       console.log('MainStack componentWillUnmount')
     }
   }, [])
 
   useNetInfoModel()
-  return !initialRouteName ? (
+  return !initialRouteName
+  // eslint-disable-next-line multiline-ternary
+    ? (
     // 加载各种启动时需要的缓存时 ,先显示全屏菊花
     <View
       style={{
@@ -58,9 +65,10 @@ const MainStack = ({}) => {
     >
       <ActivityIndicator size='large' />
     </View>
-  ) : (
+      ) : (
     <Stack.Navigator
-      initialRouteName={initialRouteName}
+        // @ts-ignore
+        initialRouteName={initialRouteName}
       // 通用的导航栏的样式,可根据暗黑模式改变背景色和title颜色 https://www.jianshu.com/p/a2582f8b16fd
       screenOptions={{
         headerStyle: {
@@ -86,7 +94,9 @@ const MainStack = ({}) => {
         component={WelcomePage}
         options={{
           headerTitle: routes.WelcomePage.headerTitle,
-          header: (props) => <CustomNavigationBar {...props} />,
+          // @ts-ignore
+          // eslint-disable-next-line react/display-name
+          header: (props:StackHeaderProps) => <CustomNavigationBar {...props} />,
           headerShown: true
         }}
       />
@@ -104,7 +114,7 @@ const MainStack = ({}) => {
         }}
       />
     </Stack.Navigator>
-  )
+      )
 }
 
 export default MainStack

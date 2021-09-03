@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import React, { useEffect, useCallback } from 'react'
 import { StatusBar, Platform } from 'react-native'
 import { appStyle } from 'react-native-common-tools'
@@ -19,7 +20,7 @@ useNavFocusListener.defaultProps = {}
  * @returns {*}
  * @constructor
  */
-export default function useNavFocusListener (props) {
+export default function useNavFocusListener (props: { onFocus?: Function ; unfocused?: Function; isDarkStatusBar?: boolean; isLightStatusBar?: boolean; statusBarBackgroundColor?: string | undefined }) {
   const {
     onFocus,
     unfocused,
@@ -41,7 +42,7 @@ export default function useNavFocusListener (props) {
         unfocused && unfocused()
         console.log('useNavFocusListener.js unfocused')
       }
-    }, [_onFocus, unfocused])
+    }, [unfocused])
   )
 
   const _onFocus = useCallback(() => {

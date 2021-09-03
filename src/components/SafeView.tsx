@@ -1,7 +1,10 @@
-import React, { useEffect, useRef, useState, useMemo, memo, useCallback, useImperativeHandle } from 'react'
-import { Image, View, SafeAreaView, StyleSheet } from 'react-native'
-import { appStyle } from 'react-native-common-tools'
+// eslint-disable-next-line no-use-before-define
+import React, { ReactNode } from 'react'
+import { View, SafeAreaView } from 'react-native'
+import { appStyle, RouteProps, MyStyleSheet } from 'react-native-common-tools'
 import { useTheme } from '@react-navigation/native'
+import { NavigationProp } from '@react-navigation/core'
+import { StackHeaderProps } from '@react-navigation/stack'
 
 /**
  * 安全区外层的根视图
@@ -12,7 +15,15 @@ import { useTheme } from '@react-navigation/native'
  * @constructor
  */
 // eslint-disable-next-line react/prop-types
-const SafeView = ({ children }) => {
+export interface Props {
+    navigation?:NavigationProp<any>,
+    scene?:StackHeaderProps['scene'], // Used for page components
+    route?:RouteProps,
+    children?: ReactNode
+}
+const SafeView:React.FC<Props> = (Props) => {
+  const { children } = Props
+
   const { colors } = useTheme()
 
   // SafeAreaView: 安全区外层的根视图
@@ -23,7 +34,8 @@ const SafeView = ({ children }) => {
         // appStyle.pageStyle.backgroundColor,
       }
       {/* 安全区域 */}
-      <View style={[Styles.page, { backgroundColor: colors.primary }]}>{children}</View>
+      {/*  @ts-ignore */}
+        <View style={[styles.page, { backgroundColor: colors.primary }]}>{children}</View>
     </SafeAreaView>
   )
 }
@@ -35,13 +47,13 @@ const SafeView = ({ children }) => {
  * @returns {*}
  */
 export const avoidBlankSpaceAtTheBottomOfSafeAreaView = ({ color = '#fff' }) => {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   const { colors } = useTheme()
 
   return (
     <View
       style={{
         width: '100%',
+        // @ts-ignore
         height: appStyle.safeAreaInsets.bottom / 2,
         position: 'absolute',
         bottom: 0,
@@ -51,7 +63,8 @@ export const avoidBlankSpaceAtTheBottomOfSafeAreaView = ({ color = '#fff' }) => 
   )
 }
 
-const Styles = StyleSheet.create({
+const styles = MyStyleSheet.create({
+  // @ts-ignore
   page: {
     ...appStyle.pageStyle,
     justifyContent: 'flex-end'

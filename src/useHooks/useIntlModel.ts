@@ -1,6 +1,8 @@
-import React, { useEffect, useCallback, useImperativeHandle, useRef, memo, useState } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { intlModel, locale } from '~react_intl'
+// eslint-disable-next-line no-unused-vars
+import React, { useCallback } from 'react'
+import { useDispatch } from 'react-redux'
+import { locale } from '~react_intl'
+import { intlModel } from '~dva'
 const { CN, EN } = locale
 
 export default () => {
@@ -8,13 +10,13 @@ export default () => {
   const dispatch = useDispatch()
 
   const switchToCN = useCallback(
-    (payload) => {
+    (payload?:any) => {
       console.log('useIntlModel switchToCN payload=', payload)
       return dispatch({
         type: intlModel.effects.saveSomeThing,
         action: intlModel.action.locale,
         payload: { locale: CN },
-        callback: (result) => {
+        callback: (result: any) => {
           console.log('useIntlModel.js 切换为中文 locale callback=', result)
         }
       })
@@ -23,13 +25,13 @@ export default () => {
   )
 
   const switchToEN = useCallback(
-    (payload) => {
+    (payload?:any) => {
       console.log('useIntlModel switchToEN payload=', payload)
       return dispatch({
         type: intlModel.effects.saveSomeThing,
         action: intlModel.action.locale,
         payload: { locale: EN },
-        callback: (result) => {
+        callback: (result: any) => {
           console.log('useIntlModel.js 切换为EN callback=', result)
         }
       })

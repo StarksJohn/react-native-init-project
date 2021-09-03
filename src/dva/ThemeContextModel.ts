@@ -2,7 +2,7 @@ import { baseModel, modelProps } from 'react-native-common-tools'
 
 const ThemeContextModel = 'ThemeContextModel'
 const initState = {
-  isDarkTheme: false //
+  isDarkTheme: true //
 }
 
 /**

@@ -1,9 +1,13 @@
+// @ts-ignore
 import loading from './loading.gif'
 
 /**
  * import {  } from '~res';
  * @type {{}}
  */
-module.exports = {
+// module.exports = {
+//   loading
+// }
+export {
   loading
 }

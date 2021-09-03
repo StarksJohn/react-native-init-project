@@ -1,9 +1,9 @@
 // eslint-disable-next-line no-use-before-define
 import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
-import routes from './routes.js'
+import routes from './routes'
 import SecondStack from './SecondStack.js'
-import MainStack from './MainStack.js'
+import MainStack from './MainStack'
 import DrawerContent from './DrawerContent'
 import { NavigationContainer, Theme } from '@react-navigation/native'
 import { createDrawerNavigator } from '@react-navigation/drawer'

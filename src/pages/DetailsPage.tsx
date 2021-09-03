@@ -1,18 +1,27 @@
+// eslint-disable-next-line no-use-before-define
 import React, { useEffect, useRef, useCallback } from 'react'
-import { View, Text, Button, Image } from 'react-native'
+import { View, Button, Image } from 'react-native'
 import { useTheme } from '@react-navigation/native'
 import { SafeView } from '~components'
-import { useAndroidBackHandler, MyStyleSheet, appStyle, Math, List, one_section_array } from 'react-native-common-tools'
+// eslint-disable-next-line camelcase
+import { useAndroidBackHandler, MyStyleSheet, appStyle, Math, List, one_section_array, RouteProps } from 'react-native-common-tools'
 import { useNavFocusListener } from '~useHooks'
-import { MediaWrapper } from 'react-native-largelist'
-import { loading } from '~res'
+// import { MediaWrapper } from 'react-native-largelist'
+// import { loading } from '~res'
+import { NavigationProp } from '@react-navigation/core'
+import { StackHeaderProps } from '@react-navigation/stack'
 
-// const { one_section_array } = mockData
-
-const DetailsPage = ({ navigation }) => {
+export interface Props {
+    navigation:NavigationProp<any>,
+    scene:StackHeaderProps['scene'], // Used for page components
+    route:RouteProps
+}
+const DetailsPage :React.FC<Props> = (Props) => {
+  const { navigation } = Props
   const { setOptions } = navigation // 在具体页面内设置 ScreenOptions https://www.jianshu.com/p/a2582f8b16fd
   const { colors } = useTheme()
   const refList = useRef(null)
+  // eslint-disable-next-line camelcase
   const ref_heightForIndexPath = useRef([])// 数组里每个{}代表一页数据的每条数据的高度,eg:[ {items:[111,222]} ],用于等高列表
 
   useNavFocusListener({
@@ -20,7 +29,7 @@ const DetailsPage = ({ navigation }) => {
       console.log('DetailsPage.js onFocus isFocused=', navigation.isFocused())
     },
     unfocused: () => {
-      console.log('MinePage.js unfocused isFocused=', navigation.isFocused())
+      console.log('MinePage.tsx unfocused isFocused=', navigation.isFocused())
     }
   })
 
@@ -33,6 +42,7 @@ const DetailsPage = ({ navigation }) => {
         arr.push(Math.randomNums(100, 300))
       }
       console.log('DetailsPage.js initOneSectionRowsH arr=', arr)
+      // @ts-ignore
       ref_heightForIndexPath.current.push({ items: arr })
       console.log('DetailsPage.js ref_heightForIndexPath.current=', ref_heightForIndexPath.current)
     },
@@ -75,12 +85,14 @@ const DetailsPage = ({ navigation }) => {
       <Button
         title='scrollTo'
         onPress={() => {
+          // @ts-ignore
           refList.current.scrollTo({ x: 0, y: 100 })
         }}
       />
       <Button
         title='scrollToIndexPath'
         onPress={() => {
+          // @ts-ignore
           refList.current.scrollToIndexPath({ section: 3, row: 2 })
         }}
       />
@@ -110,6 +122,7 @@ const DetailsPage = ({ navigation }) => {
                   }, 1000)
                 })
               }} heightForIndexPath={({ section, row }) => {
+                // @ts-ignore
                 const heightForIndexPath = ref_heightForIndexPath.current[section].items[row]
                 console.log('DetailsPage.js heightForIndexPath ref_heightForIndexPath.current=', ref_heightForIndexPath.current, ' section=', section, '  row=', row, ' height=', heightForIndexPath)
                 return heightForIndexPath
@@ -119,7 +132,8 @@ const DetailsPage = ({ navigation }) => {
                 return (
             <View style={[styles.row, { }]}>
               <Image
-                style={[styles.mediaWrapper, { backgroundColor: appStyle.randomColor() }]}
+                  // @ts-ignore
+                  style={[styles.mediaWrapper, { backgroundColor: appStyle.randomColor() }]}
                 source={{ uri: rowData }}
               />
             </View>

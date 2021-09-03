@@ -1,18 +1,21 @@
-import React, { useEffect, useRef, useState, useMemo, useCallback, memo } from 'react'
-import { Image, View, SafeAreaView, StyleSheet, Text } from 'react-native'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { compose } from 'redux'
+// eslint-disable-next-line no-use-before-define
+import React, { useEffect } from 'react'
+import { View, StyleSheet, Text } from 'react-native'
 import { useTheme } from '@react-navigation/native'
-import { asyncStorage } from 'react-native-common-tools'
+import { asyncStorage, RouteProps } from 'react-native-common-tools'
 import { constant } from '~constant'
+import { NavigationProp } from '@react-navigation/core'
+import { StackHeaderProps } from '@react-navigation/stack'
+import { routes } from '~routes'
 
-const WelcomePage = (props) => {
-  // const r_nav = useRef();
-  const { navigation, route } = props
-  const { routes } = route.params
+export interface Props {
+    navigation:NavigationProp<any>,
+    scene:StackHeaderProps['scene'], // Used for page components
+    route:RouteProps
+}
+const WelcomePage:React.FC<Props> = (Props) => {
+  const { navigation } = Props
   console.log('WelcomePage.js routes=', routes)
-  const { setOptions } = navigation // 在具体页面内设置 ScreenOptions https://www.jianshu.com/p/a2582f8b16fd
   const { colors } = useTheme()
 
   // useAppStateListener({
@@ -44,8 +47,6 @@ const WelcomePage = (props) => {
   useEffect(
     /* The async keyword cannot be added to the first parameter https://juejin.im/post/6844903985338400782#heading-27 */
     () => {
-      console.log('WelcomePage componentDidMount,props=', props)
-
       setTimeout(() => {
         routes.reset(navigation, routes.MainTabNavigator.routeName)
         asyncStorage.setItem(constant.initialRouteName, routes.MainTabNavigator.routeName).then()

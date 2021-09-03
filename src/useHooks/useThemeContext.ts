@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, useMemo, memo, useCallback, useImperativeHandle } from 'react'
+import React, { useCallback } from 'react'
 import { ThemeContext } from '~context'
 
 /**
@@ -7,6 +7,7 @@ import { ThemeContext } from '~context'
  * @returns {{toggleTheme: ((function(): void)|*)}}
  */
 export default () => {
+  // @ts-ignore
   const { _toggleTheme } = React.useContext(ThemeContext)
 
   const toggleTheme = useCallback(() => {

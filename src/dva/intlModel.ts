@@ -1,6 +1,6 @@
-import { EN, MOMENT_LOCALE } from './locale'
-import messages from './messages/messages'
-import { baseModel } from 'react-native-common-tools'
+import { EN, MOMENT_LOCALE } from 'react_intl/locale'
+import messages from 'react_intl/messages/messages'
+import { baseModel, modelProps } from 'react-native-common-tools'
 
 const intlModel = 'intlModel'
 const initState = {
@@ -17,6 +17,15 @@ const effects = {
 const action = {
   ...baseModel.baseAction,
   locale: 'locale'
+}
+
+export interface intlModelProps extends modelProps{
+  intlLocale: string,
+  locale: string,
+  messages: object,
+  momentLocale: string,
+  initialNow: Date,
+  setLocaleCompleted: boolean
 }
 
 /**

@@ -1,4 +1,4 @@
-import _routes from './routes.js'
+import _routes from './routes'
 import _SecondStack from './SecondStack.js'
 import _MainStack from './MainStack'
 import _DrawerContent from './DrawerContent'

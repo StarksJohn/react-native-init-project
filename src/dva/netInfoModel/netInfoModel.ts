@@ -1,4 +1,4 @@
-import { baseModel } from 'react-native-common-tools'
+import { baseModel, modelProps } from 'react-native-common-tools'
 /**
  * 可动态监听 网络情况
  * @type {string}
@@ -26,6 +26,10 @@ const effects = {
 const action = {
   ...baseModel.baseAction,
   networkAvailable: 'networkAvailable'
+}
+
+export interface netInfoModelProps extends modelProps{
+  networkAvailable:boolean,
 }
 
 /**

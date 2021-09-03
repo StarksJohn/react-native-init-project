@@ -9,10 +9,11 @@ import {
   DefaultTheme as PaperDefaultTheme,
   DarkTheme as PaperDarkTheme
 } from 'react-native-paper'
-import { DefaultTheme as NavigationDefaultTheme, DarkTheme as NavigationDarkTheme } from '@react-navigation/native'
+import { DefaultTheme as NavigationDefaultTheme, DarkTheme as NavigationDarkTheme, Theme } from '@react-navigation/native'
 import { appStyle } from 'react-native-common-tools'
 import { NavigationContainer } from '~routes'
 import { ThemeContextModel, dvaState } from '~dva'
+// import { Theme } from '~style'
 
 export interface Props {
 }
@@ -133,6 +134,7 @@ const AppProvider:React.FC<Props> = (Props, parentRef) => {
           Context is wired into the local state of our main component, so that its values could be propagated throughout the entire application 上下文被连接到我们的主要组件的本地状态中，因此它的值可以在整个应用程序中传播
           eg: 在 DrawerContent.tsx 可以 调 toggleTheme 方法: const { toggleTheme } = useThemeContext();
           */}
+      {/* @ts-ignore */}
       <ThemeContext.Provider value={themeContext}>
         <SafeAreaProvider>
           <NavigationContainer theme={theme} />

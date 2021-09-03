@@ -1,9 +1,9 @@
-import React, { useEffect, useRef, useState, useMemo, memo, useCallback, useImperativeHandle } from 'react'
-import { Image, View, SafeAreaView, StyleSheet } from 'react-native'
-import { connect } from 'react-redux'
-import { compose } from 'redux'
-import PropTypes from 'prop-types'
-import { Appbar, Menu } from 'react-native-paper'
+// eslint-disable-next-line no-use-before-define
+import React, { ComponentType, useEffect, useState } from 'react'
+import { } from 'react-native'
+import { Appbar } from 'react-native-paper'
+import { NavigationHelpers } from '@react-navigation/core'
+import { StackHeaderProps } from '@react-navigation/stack'
 
 /**
  * 基于 react-native-paper 的自定义导航栏 https://callstack.github.io/react-native-paper/integrate-app-bar-with-react-navigation.html
@@ -13,14 +13,20 @@ import { Appbar, Menu } from 'react-native-paper'
  * @returns {*}
  * @constructor
  */
-const CustomNavigationBar = (props) => {
+export interface Props {
+  navigation:NavigationHelpers<any>,
+  scene:StackHeaderProps['scene'],
+  previous:boolean,
+  rightComp:ComponentType
+}
+const CustomNavigationBar:React.FC<Props> = (Props) => {
   const {
     navigation,
     scene,
     rightComp,
     previous /* If it has, it means there is another screen on the stack beneath the current screen and we should render the back arrow button in
      such a case 如果有的话，则意味着当前屏幕下方的堆栈中还有另一个屏幕，在这种情况下，我们应该渲染后退箭头按钮 */
-  } = props
+  } = Props
   const [visible, setVisible] = useState(false)
   const openMenu = () => setVisible(true)
   const closeMenu = () => setVisible(false)
@@ -39,17 +45,16 @@ const CustomNavigationBar = (props) => {
         console.log('CustomNavigationBar componentWillUnmount')
       }
     },
-    [navigation, props]
+    [navigation, Props]
   )
 
   /*
   componentDidUpdate
   */
   useEffect(() => {
-    // console.log('CustomNavigationBar componentDidUpdate props=', props);
   })
 
-  console.log('CustomNavigationBar render props=', props)
+  console.log('CustomNavigationBar render Props=', Props)
   // render
   return (
     <Appbar.Header>
@@ -90,25 +95,4 @@ const CustomNavigationBar = (props) => {
   )
 }
 
-CustomNavigationBar.propTypes = {
-  rightComp: PropTypes.element
-}
-
-CustomNavigationBar.defaultProps = {
-  rightComp: null
-}
-
-// const mapStateToProps = ({}) => ({});
-//
-// const mapDispatchToProps = {};
-
-const Styles = StyleSheet.create({})
-
-// const enhance = compose(
-//   connect(
-//     mapStateToProps,
-//     mapDispatchToProps,
-//   ),
-// );
-//
 export default CustomNavigationBar

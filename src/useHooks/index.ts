@@ -1,9 +1,9 @@
-import _useThemeContext from './useThemeContext.js'
+import _useThemeContext from './useThemeContext'
 import _useNetInfoModel from './useNetInfoModel.js'
-import { useDrawerNavigator as _useDrawerNavigator } from './useDrawerNavigator.js'
-import _useNavFocusListener from './useNavFocusListener.js'
+import { useDrawerNavigator as _useDrawerNavigator } from './useDrawerNavigator'
+import _useNavFocusListener from './useNavFocusListener'
 import _useBannerModel from './useBannerModel.js'
-import _useIntlModel from './useIntlModel.js'
+import _useIntlModel from './useIntlModel'
 
 /**
  * import {  } from '~useHooks';

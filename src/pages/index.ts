@@ -1,7 +1,7 @@
-import _DetailsPage from './DetailsPage.js'
-import _WelcomePage from './WelcomePage.js'
-import _HomePage from './HomePage.js'
-import _MinePage from './MinePage.js'
+import _DetailsPage from './DetailsPage'
+import _WelcomePage from './WelcomePage'
+import _HomePage from './HomePage'
+import _MinePage from './MinePage'
 
 /**
  * import {  } from '~pages';

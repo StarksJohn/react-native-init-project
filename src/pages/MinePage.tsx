@@ -1,16 +1,21 @@
+// eslint-disable-next-line no-use-before-define
 import React, { useEffect } from 'react'
-import { View, Text, Button, StyleSheet, StatusBar } from 'react-native'
+import { Text } from 'react-native'
 import { useTheme } from '@react-navigation/native'
-import { EventListener } from 'react-native-common-tools'
-import { constant } from '~constant'
+import { RouteProps } from 'react-native-common-tools'
 import { SafeView } from '~components'
+import { StackHeaderProps } from '@react-navigation/stack'
+import { NavigationProp } from '@react-navigation/core'
 
-const MinePage = (props) => {
-  const { navigation, route } = props
+export interface Props {
+  navigation:NavigationProp<any>,
+  scene:StackHeaderProps['scene'], // Used for page components
+  route:RouteProps
+}
+const MinePage :React.FC<Props> = (Props) => {
+  const { navigation } = Props
 
   const { colors } = useTheme()
-  const { setParams } = navigation // 在具体页面内设置 ScreenOptions https://www.jianshu.com/p/a2582f8b16fd
-  const theme = useTheme()
 
   /**
    * componentDidMount && componentWillUnmount
@@ -20,17 +25,17 @@ const MinePage = (props) => {
     () => {
       // todo
       console.log('MinePage componentDidMount navigation=', navigation)
-      const MinePageRightBtClicks = new EventListener({
-        eventName: constant.event.MinePageRightBtClicks,
-        eventCallback: ({}) => {
-          // console.log('MinePage.js MinePageRightBtClicks toggleTheme=', toggleTheme);
-        }
-      })
+      // const MinePageRightBtClicks = new EventListener({
+      //   eventName: constant.event.MinePageRightBtClicks,
+      //   eventCallback: ({}) => {
+      //     // console.log('MinePage.js MinePageRightBtClicks toggleTheme=', toggleTheme);
+      //   }
+      // })
 
       // componentWillUnmount
       return () => {
         console.log('MinePage componentWillUnmount')
-        MinePageRightBtClicks.removeEventListener()
+        // MinePageRightBtClicks.removeEventListener()
       }
     },
     [navigation]
@@ -49,11 +54,3 @@ const MinePage = (props) => {
 }
 
 export default MinePage
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center'
-  }
-})

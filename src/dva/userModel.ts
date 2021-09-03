@@ -1,4 +1,4 @@
-import { tool, baseModel } from 'react-native-common-tools'
+import { tool, baseModel, modelProps } from 'react-native-common-tools'
 
 const userModel = 'userModel'
 const initState = {
@@ -24,16 +24,24 @@ const action = {
   access_token: 'access_token' // 改变 initState里的 access_token 的 action
 }
 
+// @ts-ignore
 const dispatchSaveSomeThing = ({ action, payload, callback }) => {
   tool.dispatchAnyWhere({
     type: effects.saveSomeThing,
     action,
     payload,
-    callback: (result) => {
+    callback: (result: any) => {
       console.log('userModel.js dispatchSaveSomeThing callback=', result)
       callback && callback(result)
     }
   })
+}
+
+export interface userModelProps extends modelProps{
+  // eslint-disable-next-line camelcase
+  access_token: string,
+  // eslint-disable-next-line camelcase
+  member_id: string
 }
 
 /**

@@ -1707,7 +1707,15 @@
   resolved "https://registry.npmjs.org/@types/qs/-/qs-6.9.7.tgz#63bb7d067db107cc1e457c303bc25d511febf6cb"
   integrity sha512-FGa1F62FT09qcrueBA6qYTrJPVDzah9a+493+o2PCXsesWHIn27G98TsSMs3WPNbZIEj4+VJf6saSFpvD+3Zsw==
 
-"@types/react-native@^0.64.13":
+"@types/react-native-vector-icons@^6.4.8":
+  version "6.4.8"
+  resolved "https://registry.npmjs.org/@types/react-native-vector-icons/-/react-native-vector-icons-6.4.8.tgz#7dd9740f36a71e98c484b9ea12155940c85cedc2"
+  integrity sha512-ImqhwVPHtcWrfwaS4vVrnN/C1mY50+Gjer4wMltUJlkt9pTJ5WXCyn8VFPmxC5h8Zy0DBN2tYdusBZ2xJP14OA==
+  dependencies:
+    "@types/react" "*"
+    "@types/react-native" "*"
+
+"@types/react-native@*", "@types/react-native@^0.64.13":
   version "0.64.13"
   resolved "https://registry.npmjs.org/@types/react-native/-/react-native-0.64.13.tgz#9e57b85631380b75979a09f5a97e1884299e8d5a"
   integrity sha512-QSOBN6m3TKBPFAcDhuFItDQtw1Fo1/FKDTHGeyeTwBXd3bu0V9s+oHEhntHN7PUK5dAOYFWsnO0wynWwS/KRxQ==
@@ -7042,10 +7050,10 @@ react-native-axios-jwt@^1.1.0:
   dependencies:
     jwt-decode "^3.1.2"
 
-react-native-common-tools@^1.0.29:
-  version "1.0.29"
-  resolved "https://registry.npmjs.org/react-native-common-tools/-/react-native-common-tools-1.0.29.tgz#39a4961ce47a72ed269605adb52ff421b0a52715"
-  integrity sha512-6nynzOifjjTICfhmkhw1ew1UKGQ/YPuc3yejaVeqE/36TGiZicUvyzD3bkyKbxPC0gnKdhDp/Fzpxk9O+DTu7w==
+react-native-common-tools@^1.0.33:
+  version "1.0.33"
+  resolved "https://registry.npmjs.org/react-native-common-tools/-/react-native-common-tools-1.0.33.tgz#a5b739227ba5e791a2973ddf77fd6f636c38c210"
+  integrity sha512-2Fl86yJbyeKeMfMm2gblqzentEaWGM/gLzJ3O/afGCEP8z62FtkUsfXAt7ECQjMtFMMVeo3kiZAcc5XWsNHq0g==
   dependencies:
     "@react-native-async-storage/async-storage" "^1.15.5"
     "@react-native-community/eslint-config" "^3.0.0"

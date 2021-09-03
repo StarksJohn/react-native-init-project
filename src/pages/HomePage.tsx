@@ -1,34 +1,42 @@
-import React, { useEffect, useRef, useState } from 'react'
-import { View, Text, Button, TextInput, TouchableOpacity } from 'react-native'
+// eslint-disable-next-line no-use-before-define
+import React, { useEffect, useRef } from 'react'
+import { View, Text, Button, TextInput } from 'react-native'
 import { useTheme } from '@react-navigation/native'
 import { SafeView } from '~components'
-import { useSelector, useDispatch } from 'react-redux'
-import { ScrollView, appStyle, ahooks, MyStyleSheet } from 'react-native-common-tools'
+import { useSelector } from 'react-redux'
+import { ScrollView, appStyle, MyStyleSheet, RouteProps } from 'react-native-common-tools'
 import { captureMessage, sentryLog } from '../sentry/sentry'
 import { FormattedMessage } from 'react-intl'
 import { useDrawerNavigator, useNavFocusListener, useBannerModel, useIntlModel } from '~useHooks'
 import { login } from '~api'
-import { SpringScrollView } from 'react-native-spring-scrollview'
+import { NavigationProp } from '@react-navigation/core'
+import { StackHeaderProps } from '@react-navigation/stack'
+import { dvaState } from '~dva'
+import { routes } from '~routes'
 
-const arr = []
-for (let i = 0; i < 50; ++i) arr.push(i)
-
-const HomePage = ({ navigation, route }) => {
-  const { networkAvailable } = useSelector((state) => state.netInfoModel)
-  const { access_token } = useSelector((state) => state.userModel)
-  const dispatch = useDispatch()
-  const { routes } = route.params
+export interface Props {
+  navigation:NavigationProp<any>,
+  scene:StackHeaderProps['scene'], // Used for page components
+  route:RouteProps
+}
+const HomePage:React.FC<Props> = (Props) => {
+  const { navigation } = Props
+  const { networkAvailable } = useSelector((state:dvaState) => state.netInfoModel)
+  // eslint-disable-next-line camelcase
+  const { access_token } = useSelector((state:dvaState) => state.userModel)
+  // const { routes } = route.params
   const { colors } = useTheme()
+  // eslint-disable-next-line camelcase
   const { fetch_campaign_banner, campaign_banner } = useBannerModel()
   const { setOptions } = navigation // 在具体页面内设置 ScreenOptions https://www.jianshu.com/p/a2582f8b16fd
   const { switchToCN, switchToEN } = useIntlModel()
-  const [count, setCount] = useState(0)
-  const { useInterval } = ahooks
+  // const [count, setCount] = useState(0)
+  // const { useInterval } = ahooks
   const { openDrawer } = useDrawerNavigator({ navigation })
   console.log('HomePage.js access_token=', access_token)
-  const refList = useRef(null)
+  // const refList = useRef(null)
   const _topInput = useRef(null)
-  const _bottomInput = useRef(null)
+  // const _bottomInput = useRef(null)
 
   // useInterval(() => {
   //   setCount(count + 1);
@@ -42,7 +50,7 @@ const HomePage = ({ navigation, route }) => {
       // });
     },
     unfocused: () => {
-      console.log('MinePage.js unfocused isFocused=', navigation.isFocused())
+      console.log('MinePage.tsx unfocused isFocused=', navigation.isFocused())
     }
   })
 
@@ -72,11 +80,13 @@ const HomePage = ({ navigation, route }) => {
         console.log('DetailsScreen componentWillUnmount')
       }
     },
+    // eslint-disable-next-line camelcase
     [colors.text, fetch_campaign_banner, navigation, setOptions]
   )
 
   useEffect(() => {
     console.log('HomePage.js useEffect campaign_banner=', campaign_banner)
+    // eslint-disable-next-line camelcase
   }, [campaign_banner])
 
   useEffect(() => {
@@ -90,7 +100,7 @@ const HomePage = ({ navigation, route }) => {
           <Button
             title='Go to details screen'
             onPress={() => {
-              routes.push(navigation, routes.DetailsPage.routeName)
+              routes.push(navigation, routes.DetailsPage.routeName, {})
             }}
           />
         </View>

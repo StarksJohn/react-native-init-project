@@ -2,9 +2,9 @@ import { dva, models } from 'react-native-common-tools'
 import bannerModel from './bannerModel/bannerModel'
 import ThemeContextModel from './ThemeContextModel'
 import DrawerNavigatorModel from './DrawerNavigatorModel'
-import { intlModel } from '~react_intl'
-import netInfoModel from './netInfoModel/netInfoModel.js'
-import userModel from './userModel.js'
+import intlModel from './intlModel'
+import netInfoModel from './netInfoModel/netInfoModel'
+import userModel from './userModel'
 
 /**
  * 初始化dva 模块
