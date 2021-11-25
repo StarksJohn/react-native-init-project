@@ -33,7 +33,6 @@ export interface DrawerNavigatorModelProps extends modelProps{
 
 /**
  * https://dvajs.com/api/#model
- 被注入到 dvaApp.ts 里
  */
 export default {
   namespace: DrawerNavigatorModel,

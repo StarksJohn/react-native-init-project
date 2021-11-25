@@ -20,12 +20,12 @@ const App = () => {
   }, [])
 
   return (
-      // @ts-ignore
-      <StoreProvider store={store}>
-      <IntlWrapper>
-        <AppProvider />
-      </IntlWrapper>
-    </StoreProvider>
+        // @ts-ignore
+        <StoreProvider store={store}>
+            <IntlWrapper>
+                <AppProvider />
+            </IntlWrapper>
+        </StoreProvider>
   )
 }
 

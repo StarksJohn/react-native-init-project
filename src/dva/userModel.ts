@@ -26,15 +26,15 @@ const action = {
 
 // @ts-ignore
 const dispatchSaveSomeThing = ({ action, payload, callback }) => {
-  tool.dispatchAnyWhere({
-    type: effects.saveSomeThing,
-    action,
-    payload,
-    callback: (result: any) => {
-      console.log('userModel.js dispatchSaveSomeThing callback=', result)
-      callback && callback(result)
-    }
-  })
+  // tool.dispatchAnyWhere({
+  //   type: effects.saveSomeThing,
+  //   action,
+  //   payload,
+  //   callback: (result: any) => {
+  //     console.log('userModel.js dispatchSaveSomeThing callback=', result)
+  //     callback && callback(result)
+  //   }
+  // })
 }
 
 export interface userModelProps extends modelProps{
@@ -46,7 +46,6 @@ export interface userModelProps extends modelProps{
 
 /**
  * https://dvajs.com/api/#model
- 被注入到 dvaApp.ts 里
  */
 export default {
   namespace: userModel,

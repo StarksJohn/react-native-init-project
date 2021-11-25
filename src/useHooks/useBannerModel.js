@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState, useMemo, memo, useCallback, useImperativeHandle } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { effects, _action } from '../dva/bannerModel/bannerModel'
+import { effects, _action } from '~dva/bannerModel/bannerModel'
 
 export default () => {
   const dispatch = useDispatch()
