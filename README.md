@@ -2,8 +2,8 @@
 
     This project will help you quickly build a fully functional and high-quality react native project
 
-HomePage:  
-    
+HomePage:
+
     https://github.com/StarksJohn/react-native-init-project.git
 
 Install:
@@ -12,11 +12,13 @@ Install:
     yarn
     cd ios && pod install
 
-push: 
+push:
 
     open vpn in terminal and git push origin main
 
 Main technology stack:
+
+    react-native-template-typescript: The initial framework used to create the project
 
     react-navigation V5 : you can choose whether to use DrawerNavigator by changing useDrawer
 
@@ -28,7 +30,9 @@ Main technology stack:
 
     sentry: support crash monitoring
 
-    react-native-paper: support dark mode and Cacheable dark mode status
+    react-native-paper: support dark mode and Cacheable dark mode status and the theme of the system can be matched when it is opened for the 
+
+    first time
 
     react-native-config: a .env file can configure all of the project
 
@@ -37,8 +41,8 @@ Main technology stack:
     support TypeScript
 
     support global.d.ts
-    
-run: 
+
+run:
 
     yarn ios
     yarn android

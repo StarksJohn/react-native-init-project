@@ -1,4 +1,4 @@
-import { baseModel, modelProps } from 'react-native-common-tools'
+import { baseModel, modelProps } from 'react-cacheable-dva'
 
 /**
  * Control whether to use Drawer.Navigator
@@ -22,12 +22,12 @@ export const effects = {
  * 触发当前Model的 reducer
  * @type {{awaitSaveSomeThing: string, campaign_banner: string, saveSomeThing: string}}
  */
-export const _action = {
+export const action = {
   ...baseModel.baseAction,
   useDrawer: 'useDrawer' // 改变 initState里的 useDrawer 的 action
 }
 
-export interface DrawerNavigatorModelProps extends modelProps{
+export interface DrawerNavigatorModelProps extends modelProps.modelProps{
   useDrawer:boolean,
 }
 
@@ -37,7 +37,7 @@ export interface DrawerNavigatorModelProps extends modelProps{
 export default {
   namespace: DrawerNavigatorModel,
   state: initState,
-  attributesToBeCached: [_action.useDrawer], // 当前model需要被缓存的数据的key
+  attributesToBeCached: [action.useDrawer], // 当前model需要被缓存的数据的key
   effects: {},
   reducers: {}
 }

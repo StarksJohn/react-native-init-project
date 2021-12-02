@@ -6,11 +6,12 @@ import { createStackNavigator, StackHeaderProps } from '@react-navigation/stack'
 import { CustomNavigationBar } from '~components'
 import MainTabNavigator from './MainTabNavigator'
 import { DetailsPage, WelcomePage } from '~pages'
-import { appStyle, asyncStorage, tool } from 'react-native-common-tools'
+import { appStyle, asyncStorage } from 'react-native-common-tools'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { useNetInfoModel } from '~useHooks'
 import { constant } from '~constant'
 import { routes } from '~routes'
+import { tool } from 'starkfrontendtools'
 
 const Stack = createStackNavigator()
 

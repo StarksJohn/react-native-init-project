@@ -1,15 +1,14 @@
 /**
+ * @format
  */
 import 'react-native-gesture-handler'
 import { AppRegistry, Platform, Text, TextInput } from 'react-native'
-import { sentryLog } from './src/sentry/sentry' // init sentry
+// eslint-disable-next-line no-unused-vars
+import { sentryLog } from 'sentry/sentry' // init sentry
 import './global'
-import App from './src/App'
+import App from './App'
 import { name as appName } from './app.json'
 import { constant } from '~constant'
-
-console.log('global.ios=', global.ios)
-
 if (!constant.fakeData && process.env.NODE_ENV === 'production') {
   // release package
   global.console = {
@@ -27,9 +26,8 @@ if (!constant.fakeData && process.env.NODE_ENV === 'production') {
   // LogBox.ignoreAllLogs(true)
   console.disableYellowBox = true
 }
-
 if (Platform.OS === 'android') {
-  // for init  react_intl
+  // for init  react_intl module
   require('intl')
   require('intl/locale-data/jsonp/en')
 }

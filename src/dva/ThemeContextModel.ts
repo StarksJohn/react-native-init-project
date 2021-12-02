@@ -1,8 +1,8 @@
-import { baseModel, modelProps } from 'react-native-common-tools'
+import { baseModel, modelProps } from 'react-cacheable-dva'
 
 const ThemeContextModel = 'ThemeContextModel'
 const initState = {
-  isDarkTheme: true //
+  isDarkTheme: undefined //
 }
 
 /**
@@ -18,13 +18,13 @@ export const effects = {
  * 触发当前Model的 reducer
  * @type {{awaitSaveSomeThing: string, campaign_banner: string, saveSomeThing: string}}
  */
-export const _action = {
+export const action = {
   ...baseModel.baseAction,
   isDarkTheme: 'isDarkTheme' // 改变 initState里的 isDarkTheme 的 action
 }
 
-export interface ThemeContextModelProps extends modelProps{
-  isDarkTheme:boolean,
+export interface ThemeContextModelProps extends modelProps.modelProps{
+  isDarkTheme:boolean
 }
 
 /**
@@ -33,8 +33,7 @@ export interface ThemeContextModelProps extends modelProps{
 export default {
   namespace: ThemeContextModel,
   state: initState,
-  attributesToBeCached: [_action.isDarkTheme], // 当前model需要被缓存的数据的key
+  attributesToBeCached: [action.isDarkTheme], // 当前model需要被缓存的数据的key
   effects,
-  reducers: {},
-  _action
+  action
 }

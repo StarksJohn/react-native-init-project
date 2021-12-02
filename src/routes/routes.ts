@@ -1,10 +1,4 @@
-import React from 'react'
-import { View, Text, Button, StyleSheet, StatusBar } from 'react-native'
 import { routes } from 'react-native-common-tools'
-import { StackHeaderProps } from '@react-navigation/stack'
-import { CustomNavigationBar } from 'components'
-import { NavigationProp } from '@react-navigation/core'
-import Animated from 'react-native-reanimated'
 
 // export const setOptions=(navigation:NavigationProp,) => {
 //   const { setOptions } = navigation // 在具体页面内设置 ScreenOptions https://www.jianshu.com/p/a2582f8b16fd

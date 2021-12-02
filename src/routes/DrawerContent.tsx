@@ -4,7 +4,6 @@ import { View, StyleSheet } from 'react-native'
 import { useTheme, Avatar, Title, Caption, Drawer, Text, TouchableRipple, Switch } from 'react-native-paper'
 import { DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer'
 import { useThemeContext } from '~useHooks'
-import { NavigationHelpers } from '@react-navigation/core'
 import { routes } from '~routes'
 /**
  * PureComponent
@@ -13,8 +12,8 @@ import { routes } from '~routes'
  * @returns {*}
  * @constructor
  */
-export interface Props {
-  navigation:NavigationHelpers<any>
+export type Props ={
+  navigation:any
 }
 const DrawerContent :React.FC<Props> = (Props, parentRef) => {
   const { navigation } = Props

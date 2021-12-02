@@ -1,14 +1,17 @@
-import { tool, request } from 'react-native-common-tools'
+import { request } from 'react-native-common-tools'
 import Urls from './Urls'
 import { userModel } from '~dva'
+import { tool } from 'starkfrontendtools'
+import { dvaTool } from 'react-cacheable-dva'
 
 const getToken = () => {
-  const { userModel } = tool.getStore().getState()
+  const { userModel } = dvaTool.getStore().getState()
   console.log('api getToken userModel=', userModel)
   return { Authorization: userModel.access_token }
 }
 
 export const campaignBanner = async (payload: {
+  // eslint-disable-next-line camelcase
   campaign_type: string
 } | undefined) => {
   console.log('api.ts campaign_banner payload=', payload)
@@ -46,7 +49,8 @@ export const login = async () => {
   }, { ...getToken() }))
   console.log('api.js login data=', data, ' err=', err)
   if (data) { // 登录成功
-    userModel.dispatchSaveSomeThing({
+    dvaTool.dispatchAnyWhere({
+      type: userModel.effects.saveSomeThing,
       action: userModel.action.access_token,
       payload: {
         access_token: data.access_token

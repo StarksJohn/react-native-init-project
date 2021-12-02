@@ -1,29 +1,38 @@
 // eslint-disable-next-line no-use-before-define
 import React, { useEffect, useRef } from 'react'
-import { View, Text, Button, TextInput } from 'react-native'
+import {
+  SafeAreaView,
+  StatusBar, View, Text, Button, TextInput
+} from 'react-native'
 import { useTheme } from '@react-navigation/native'
 import { SafeView } from '~components'
 import { useSelector } from 'react-redux'
 import { ScrollView, appStyle, MyStyleSheet, RouteProps } from 'react-native-common-tools'
 import { captureMessage, sentryLog } from '../sentry/sentry'
 import { FormattedMessage } from 'react-intl'
-import { useDrawerNavigator, useNavFocusListener, useBannerModel, useIntlModel } from '~useHooks'
+import { useDrawerNavigator, useNavFocusListener, useIntlModel } from '~useHooks'
 import { login } from '~api'
 import { NavigationProp } from '@react-navigation/core'
 import { StackHeaderProps } from '@react-navigation/stack'
-import { dvaState } from '~dva'
+import { dvaState, useBannerModel } from '~dva'
+import {
+  Colors,
+  Header
+} from 'react-native/Libraries/NewAppScreen'
+// import useAppProvider from '../AppProvider/useAppProvider'
 import { routes } from '~routes'
 
 export interface Props {
-  navigation:NavigationProp<any>,
-  scene:StackHeaderProps['scene'], // Used for page components
-  route:RouteProps
+  navigation: NavigationProp<any>,
+  scene: StackHeaderProps['scene'], // Used for page components
+  route: RouteProps
 }
-const HomePage:React.FC<Props> = (Props) => {
+
+const HomePage: React.FC<Props> = (Props) => {
   const { navigation } = Props
-  const { networkAvailable } = useSelector((state:dvaState) => state.netInfoModel)
+  const { networkAvailable } = useSelector((state: dvaState) => state.netInfoModel)
   // eslint-disable-next-line camelcase
-  const { access_token } = useSelector((state:dvaState) => state.userModel)
+  const { access_token } = useSelector((state: dvaState) => state.userModel)
   // const { routes } = route.params
   const { colors } = useTheme()
   // eslint-disable-next-line camelcase
@@ -38,9 +47,11 @@ const HomePage:React.FC<Props> = (Props) => {
   const _topInput = useRef(null)
   // const _bottomInput = useRef(null)
 
-  // useInterval(() => {
-  //   setCount(count + 1);
-  // }, 1000);
+  // const { isDarkTheme } = useAppProvider()
+  const backgroundStyle = {
+    // eslint-disable-next-line no-constant-condition
+    backgroundColor: true ? Colors.darker : Colors.lighter
+  }
 
   useNavFocusListener({
     onFocus: () => {
@@ -73,6 +84,7 @@ const HomePage:React.FC<Props> = (Props) => {
       //   // }
       // }, 1000)
 
+      // @ts-ignore
       fetch_campaign_banner()
 
       // componentWillUnmount
@@ -95,69 +107,74 @@ const HomePage:React.FC<Props> = (Props) => {
 
   return (
     <SafeView>
-      <ScrollView textInputRefs={[_topInput]}>
-        <View style={[styles.row, { }]}>
-          <Button
-            title='Go to details screen'
-            onPress={() => {
-              routes.push(navigation, routes.DetailsPage.routeName, {})
-            }}
+       {/* <ScrollView textInputRefs={[_topInput]}> */}
+        <>
+          <View style={[styles.row, { }]}>
+            <Button
+              title='Go to details screen'
+              onPress={() => {
+                routes.push(navigation, routes.DetailsPage.routeName, {})
+              }}
+            />
+          </View>
+          <View style={[styles.row, { }]}>
+            <Button
+              title='测试Sentry'
+              onPress={() => {
+                sentryLog('captureMessage3333')
+                sentryLog('captureMessage4444')
+                captureMessage()
+              }}
+            />
+          </View>
+          <View style={[styles.row, { }]}>
+            <Button
+              title="切换为中文"
+              onPress={() => {
+                switchToCN()
+              }}
+            />
+            <Text style={{ color: colors.text }}>
+              <FormattedMessage id='welcome' />
+            </Text>
+            <Button
+              title="切换为英文"
+              onPress={() => {
+                console.log('HomePage.js 切换为英文')
+                switchToEN()
+              }}
+            />
+          </View>
+          <View style={[styles.row, { }]}>
+            <Button
+              title="show drawer"
+              onPress={() => {
+                console.log('HomePage.js openDrawer navigation=', navigation)
+                openDrawer()
+              }}
+            />
+          </View>
+          <View style={[styles.row, { }]}>
+            <Button
+              title="登录"
+              onPress={() => {
+                login().then()
+              }}
+            />
+          </View>
+          <TextInput
+            ref={_topInput}
+            style={styles.input}
+            returnKeyType="next"
+            placeholder="Keyboard Test Top"
           />
-        </View>
-        <View style={[styles.row, { }]}>
-          <Button
-            title='测试Sentry'
-            onPress={() => {
-              sentryLog('captureMessage3333')
-              sentryLog('captureMessage4444')
-              captureMessage()
-            }}
-          />
-        </View>
-        <View style={[styles.row, { }]}>
-          <Button
-            title="切换为中文"
-            onPress={() => {
-              switchToCN()
-            }}
-          />
-          <Text style={{ color: colors.text }}>
-            <FormattedMessage id='welcome' />
-          </Text>
-          <Button
-            title="切换为英文"
-            onPress={() => {
-              console.log('HomePage.js 切换为英文')
-              switchToEN()
-            }}
-          />
-        </View>
-        <View style={[styles.row, { }]}>
-          <Button
-            title="show drawer"
-            onPress={() => {
-              console.log('HomePage.js openDrawer navigation=', navigation)
-              openDrawer()
-            }}
-          />
-        </View>
-        <View style={[styles.row, { }]}>
-          <Button
-            title="登录"
-            onPress={() => {
-              login().then()
-            }}
-          />
-        </View>
-        <TextInput
-          ref={_topInput}
-          style={styles.input}
-          returnKeyType="next"
-          placeholder="Keyboard Test Top"
-        />
-      </ScrollView>
-
+        </>
+       {/* </ScrollView> */}
     </SafeView>
+    // <SafeAreaView style={backgroundStyle}>
+    //   <StatusBar barStyle={true ? 'light-content' : 'dark-content'} />
+    //   <Header />
+    // </SafeAreaView>
   )
 }
 
@@ -181,7 +198,7 @@ const styles = MyStyleSheet.create({
     alignItems: 'center'
   },
   input: {
-    height: 44,
-    backgroundColor: appStyle.randomColor()
+    height: 44
+    // backgroundColor: appStyle.randomColor()
   }
 })

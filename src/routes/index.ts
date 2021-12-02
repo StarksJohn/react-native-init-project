@@ -1,6 +1,6 @@
 import _routes from './routes'
-import _SecondStack from './SecondStack.js'
-import _MainStack from './MainStack'
+import _SecondStack from './SecondStack'
+// import _MainStack from './MainStack'
 import _DrawerContent from './DrawerContent'
 import _NavigationContainer from './NavigationContainer'
 
@@ -11,5 +11,5 @@ import _NavigationContainer from './NavigationContainer'
 export const NavigationContainer = _NavigationContainer
 export const routes = _routes
 export const SecondStack = _SecondStack
-export const MainStack = _MainStack
+// export const MainStack = _MainStack
 export const DrawerContent = _DrawerContent

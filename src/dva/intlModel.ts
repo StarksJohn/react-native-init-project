@@ -1,6 +1,7 @@
 import { EN, MOMENT_LOCALE } from 'react_intl/locale'
 import messages from 'react_intl/messages/messages'
-import { baseModel, modelProps } from 'react-native-common-tools'
+import { baseModel, modelProps } from 'react-cacheable-dva'
+console.log('intlModel.ts EN=', EN)
 
 const intlModel = 'intlModel'
 const initState = {
@@ -19,7 +20,7 @@ const action = {
   locale: 'locale'
 }
 
-export interface intlModelProps extends modelProps{
+export interface intlModelProps extends modelProps.modelProps{
   intlLocale: string,
   locale: string,
   messages: object,

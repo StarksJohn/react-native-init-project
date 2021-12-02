@@ -6,7 +6,7 @@ import { IntlProvider } from 'react-intl'
 import Messages from './messages/messages'
 import { NavigationProp } from '@react-navigation/core'
 import { StackHeaderProps } from '@react-navigation/stack'
-import { RouteProps } from 'react-native-common-tools/index'
+import { RouteProps } from 'react-native-common-tools'
 import { dvaState } from '~dva'
 
 export interface Props {
@@ -18,7 +18,9 @@ export interface Props {
 export const IntlWrapper:React.FC<Props> = (Props) => {
   const { children } = Props
 
-  const { locale } = useSelector((state:dvaState) => state.intlModel)
+  const { locale } = useSelector((state:dvaState) => {
+    return state.intlModel
+  })
   console.log('IntlWrapper.js locale=', locale)
 
   // @ts-ignore

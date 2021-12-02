@@ -4,7 +4,8 @@ import { View, Button, Image } from 'react-native'
 import { useTheme } from '@react-navigation/native'
 import { SafeView } from '~components'
 // eslint-disable-next-line camelcase
-import { useAndroidBackHandler, MyStyleSheet, appStyle, Math, List, one_section_array, RouteProps } from 'react-native-common-tools'
+import { useAndroidBackHandler, MyStyleSheet, appStyle, List, mockData, RouteProps } from 'react-native-common-tools'
+import { Math } from 'starkfrontendtools'
 import { useNavFocusListener } from '~useHooks'
 // import { MediaWrapper } from 'react-native-largelist'
 // import { loading } from '~res'
@@ -100,9 +101,9 @@ const DetailsPage :React.FC<Props> = (Props) => {
           return new Promise((resolve, reject) => {
             setTimeout(() => {
               console.log('DetailsPage.js onRefresh page =', page)
-              console.log('DetailsPage.js onRefresh resolve =', one_section_array[page - 1])
-              initOneSectionRowsH({ rowNums: one_section_array[page - 1].length })
-              resolve(one_section_array[page - 1])
+              console.log('DetailsPage.js onRefresh resolve =', mockData.oneSectionArray[page - 1])
+              initOneSectionRowsH({ rowNums: mockData.oneSectionArray[page - 1].length })
+              resolve(mockData.oneSectionArray[page - 1])
             }, 1000)
           })
         }}
@@ -110,14 +111,14 @@ const DetailsPage :React.FC<Props> = (Props) => {
                 return new Promise((resolve, reject) => {
                   setTimeout(() => {
                     console.log('DetailsPage.js onLoading page =', page)
-                    if (page - 1 > one_section_array.length - 1) {
+                    if (page - 1 > mockData.oneSectionArray.length - 1) {
                       // eslint-disable-next-line prefer-promise-reject-errors
                       reject(null)
                     } else {
-                      console.log('DetailsPage.js onLoading resolve =', one_section_array[page - 1])
-                      initOneSectionRowsH({ rowNums: one_section_array[page - 1].length })
+                      console.log('DetailsPage.js onLoading resolve =', mockData.oneSectionArray[page - 1])
+                      initOneSectionRowsH({ rowNums: mockData.oneSectionArray[page - 1].length })
 
-                      resolve(one_section_array[page - 1])
+                      resolve(mockData.oneSectionArray[page - 1])
                     }
                   }, 1000)
                 })
