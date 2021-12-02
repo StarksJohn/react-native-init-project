@@ -7582,10 +7582,10 @@ react-native-codegen@^0.0.7:
     jscodeshift "^0.11.0"
     nullthrows "^1.1.1"
 
-react-native-common-tools@^1.0.52:
-  version "1.0.52"
-  resolved "https://registry.npmjs.org/react-native-common-tools/-/react-native-common-tools-1.0.52.tgz#9358bb90b2ef9678ebd597d7bbcbe71960582756"
-  integrity sha512-ip6jAG5QIt/TrWeL85qfoc9NNxfqncD/79Afd6dUXBlX6vcDfi4nVFNtDqmTrjEzxa9Ua5u1JZ9L53W7yBSsMg==
+react-native-common-tools@^1.0.53:
+  version "1.0.53"
+  resolved "https://registry.npmjs.org/react-native-common-tools/-/react-native-common-tools-1.0.53.tgz#34e6d4084896f8926febc0f8749da742c1e16f20"
+  integrity sha512-VyJUxEM9Xdol73wbPsgOio1zLddTsYPN4IzcyiAj0a3A3gb5izIpOK+IQBvQ1MkS+RyURl53f/vss9HIOsjJbA==
   dependencies:
     "@react-native-async-storage/async-storage" "^1.15.5"
     "@react-native-community/eslint-config" "^3.0.0"
