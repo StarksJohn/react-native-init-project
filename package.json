@@ -27,6 +27,7 @@
     "@react-navigation/stack": "^5.14.3",
     "@sentry/react-native": "^2.6.1",
     "ahooks": "^2.10.6",
+    "axios-tools": "^0.1.1",
     "dva-model-extend": "^0.1.2",
     "intl": "^1.2.5",
     "metro": "0.66.2",

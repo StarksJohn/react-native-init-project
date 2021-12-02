@@ -1,4 +1,4 @@
-import { request } from 'react-native-common-tools'
+import { get, post } from 'axios-tools'
 import Urls from './Urls'
 import { userModel } from '~dva'
 import { tool } from 'starkfrontendtools'
@@ -22,7 +22,8 @@ export const campaignBanner = async (payload: {
     ...payload
   }
 
-  const [err, data] = await tool.to(request.get(Urls.campaign_banner, payload, { ...getToken() }))
+  const [err, data] = await tool.to(get(Urls.campaign_banner, payload, { ...getToken() }))
+
   console.log('api.ts campaign_banner data=', data, ' err=', err)
   if (data) {
     return Promise.resolve(data)
@@ -32,20 +33,21 @@ export const campaignBanner = async (payload: {
 }
 
 export const login = async () => {
-  const [err, data] = await tool.to(request.post(Urls.login, {
-    code: '081u72100UYPcM1PNA100QOiyy1u721X',
-    encryptedData: 'xcIzmj0ZZZSHfaI/qhRtk6sjBSvPiwkXslByvTdoagmt93Q4hrnNprror/XDZuIBxjFlbAfM66iq1rSxlXW0NxA7cJTcUxYkH/N27js35eXc8RKpPZmNS/hoZWxibkOjVG7HUw3Q+xKePutTvTHPbOeCiSAWlILH1P5hpoJe7j+IhuyyFzvmmGF1rZnUQBhxife+a1r0xS1eLh0jsYW2PJ5g68pGLNnnSuxg0HH41pkWfYL7TVH8pKqhmQAUju5ECXjN13uTrUeThr9R1opg4SQHWLT20EjxKn0H4bNIS+evE1nOMZeDcvzHHP/E0+NizOKuHJrGNAHvNE5RbqUL0sqJrGrK559QxfTwqjCCEIXfBTijwViZwjAKEaWairRlq/YE4QgndQmsl2Lmwn3PfQUjyf/Ez0DO5mMBnYFPsr78cIHZbE3CTvNd0ZvnQgCD',
-    iv: 'zw8Qmip3NNuxEE1p6hFgvQ==',
+  const [err, data] = await tool.to(post(Urls.login, {
+    // 模拟的数据从 体脂称小程序项目的 api.js 的 login 方法里获取,注释调 那个方法的 request 部分
+    code: '091aey0w3zuAyX2E8r0w3F8C5I2aey07',
+    encryptedData: '2rwIHu8VreZJRwUOAnOKUg/y2aLl4f1+aFP2Rdl2XUbaJm/xkBfNdFf8XtV+4MpNml+fzll/wOVSu+qhT6EFANd2x+CmoxUZEpqE6GxXvY56fTaQQ0ThcG3jaSMrVUeqJ/9Lso9xGJwYr0dxGCLY9a+jM3as2aWwrLW3NP2PchsX44kA3pTaVKZ12AqJS2cmX119IpHQo5RDOAgmlS7icueFpHoe/fqCFC2bhefIr9F8+avTLORBTcp+U4nmhtYNabJ19+XRG2uDejFmrskEi5ACa/gfQcmBOuNmAOQd0PuWGlOjDJCraZAtcfrGi9B/n6WxXw8RtLbsVCaw7hbIPBtfpEuM4ORrHzMAPoxorjlA1tiQcoOVnpYT0Qb3s7q5K5jf1UzS5lim4s6AbaiH4A==',
+    iv: 'Ms2sTKG/cjW8xrJJRbYlTw==',
     rawData: JSON.stringify({
       nickName: 'Stark',
-      gender: 1,
+      gender: 0,
       language: 'zh_CN',
-      city: 'Santa Monica',
-      province: 'California',
-      country: 'US',
-      avatarUrl: 'https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTI8mVy14cXUbXbaKcTrQMVDje8N1ibeYPw7LgVvOgiauhIYLln6ZpuXHBlCvSzWibdqo8UYwUlS2iaFOQ/132'
+      city: '',
+      province: '',
+      country: '',
+      avatarUrl: 'https://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83eqR6PMrkLjvhwaYgQalaLRrGiaLUfJSzhL0RFmrow7vvbNcDm5nTFxRy8QFCnKbtVjcQj1HGJKWjlw/132'
     }),
-    signature: '8982b7d0878439bf01abc34b8796d02f5ecd3200'
+    signature: '574e21a907fdef73411f97628f69c3f409292d42'
   }, { ...getToken() }))
   console.log('api.js login data=', data, ' err=', err)
   if (data) { // 登录成功
