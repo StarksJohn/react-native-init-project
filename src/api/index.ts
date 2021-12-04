@@ -9,6 +9,7 @@ const getToken = () => {
   console.log('api getToken userModel=', userModel)
   return { Authorization: userModel.access_token }
 }
+const headers = getToken()
 
 export const campaignBanner = async (payload: {
   // eslint-disable-next-line camelcase
@@ -22,7 +23,7 @@ export const campaignBanner = async (payload: {
     ...payload
   }
 
-  const [err, data] = await tool.to(get(Urls.campaign_banner, payload, { ...getToken() }))
+  const [err, data] = await tool.to(get({ url: Urls.campaign_banner, params: payload, headers }))
 
   console.log('api.ts campaign_banner data=', data, ' err=', err)
   if (data) {
@@ -33,22 +34,27 @@ export const campaignBanner = async (payload: {
 }
 
 export const login = async () => {
-  const [err, data] = await tool.to(post(Urls.login, {
+  // @ts-ignore
+  const [err, data] = await tool.to(post({
+    url: Urls.login,
+    params: {
     // 模拟的数据从 体脂称小程序项目的 api.js 的 login 方法里获取,注释调 那个方法的 request 部分
-    code: '091aey0w3zuAyX2E8r0w3F8C5I2aey07',
-    encryptedData: '2rwIHu8VreZJRwUOAnOKUg/y2aLl4f1+aFP2Rdl2XUbaJm/xkBfNdFf8XtV+4MpNml+fzll/wOVSu+qhT6EFANd2x+CmoxUZEpqE6GxXvY56fTaQQ0ThcG3jaSMrVUeqJ/9Lso9xGJwYr0dxGCLY9a+jM3as2aWwrLW3NP2PchsX44kA3pTaVKZ12AqJS2cmX119IpHQo5RDOAgmlS7icueFpHoe/fqCFC2bhefIr9F8+avTLORBTcp+U4nmhtYNabJ19+XRG2uDejFmrskEi5ACa/gfQcmBOuNmAOQd0PuWGlOjDJCraZAtcfrGi9B/n6WxXw8RtLbsVCaw7hbIPBtfpEuM4ORrHzMAPoxorjlA1tiQcoOVnpYT0Qb3s7q5K5jf1UzS5lim4s6AbaiH4A==',
-    iv: 'Ms2sTKG/cjW8xrJJRbYlTw==',
-    rawData: JSON.stringify({
-      nickName: 'Stark',
-      gender: 0,
-      language: 'zh_CN',
-      city: '',
-      province: '',
-      country: '',
-      avatarUrl: 'https://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83eqR6PMrkLjvhwaYgQalaLRrGiaLUfJSzhL0RFmrow7vvbNcDm5nTFxRy8QFCnKbtVjcQj1HGJKWjlw/132'
-    }),
-    signature: '574e21a907fdef73411f97628f69c3f409292d42'
-  }, { ...getToken() }))
+      code: '021jfv00008gTM1qTl3000YWBl0jfv0M',
+      encryptedData: 'bvCz1CeemoOsz84FpRCFRWOyt3ehq4+m2km8PXocM5Y7loqLIShywbbT8V0b+mN9myTbaGQKW3jDID7um5pggkTaTBP1B4MTxofkL0Z4OLy/5g0Nvx2oq5fAQljOW/abxyutpCoIZa8v5xddHvHpWvo75oIHDpaFg+Rb0ET9amjUQLtjrPlkJtDBv9QdLPxgS6wOKs/vXR//qM781rh7rOymLcxkH+4GxYWpP7eA8CzTvOT3MQrUKG81BuBRcuSJk51/0ohTGSDZim8jwfT9HFgXnaWDsjhsqsYDDivmrFjlfD48Nov57eGO2MSqrySExrxZs97fZ+zxUX0iBKqpMBnx7u6Ud0p1vOAtVSmajmktZ3gj/I/nfPzJN4/7kmasW/62Vsodqs+J7NGWfNy5Og==',
+      iv: 'GMrC2Qi9wnyJw/8CQRb/bA==',
+      rawData: JSON.stringify({
+        nickName: 'Stark',
+        gender: 0,
+        language: 'zh_CN',
+        city: '',
+        province: '',
+        country: '',
+        avatarUrl: 'https://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83eqR6PMrkLjvhwaYgQalaLRrGiaLUfJSzhL0RFmrow7vvbNcDm5nTFxRy8QFCnKbtVjcQj1HGJKWjlw/132'
+      }),
+      signature: '6f2564af33823e98dedb2b20a9f87c727963781f'
+    },
+    headers
+  }))
   console.log('api.js login data=', data, ' err=', err)
   if (data) { // 登录成功
     dvaTool.dispatchAnyWhere({

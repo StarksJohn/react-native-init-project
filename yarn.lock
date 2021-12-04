@@ -2577,10 +2577,10 @@ atob@^2.1.2:
   resolved "https://registry.npmjs.org/atob/-/atob-2.1.2.tgz#6d9517eb9e030d2436666651e86bd9f6f13533c9"
   integrity sha512-Wm6ukoaOGJi/73p/cl2GvLjTI5JM1k/O14isD73YML8StrH/7/lRFgmg8nICZgD3bZZvjwCGxtMOD3wWNAu8cg==
 
-axios-tools@^0.1.1:
-  version "0.1.1"
-  resolved "https://registry.npmjs.org/axios-tools/-/axios-tools-0.1.1.tgz#603c91742c78e2abb86c4a0bc200e38790fd1e45"
-  integrity sha512-gbFYfzpzlK8qwyHKyzH98xQxMbGf7BZW6WNEDS5Krs+UcVr6z/YPmzA6y7vXlJWiZ/3V7a/N0VavHPsOANttFA==
+axios-tools@^2.0.5:
+  version "2.0.5"
+  resolved "https://registry.npmjs.org/axios-tools/-/axios-tools-2.0.5.tgz#c702f3a05e1d4b306b6cd5417700f7cfd94e34f2"
+  integrity sha512-bdUKuB5w/ZCrTdD0VFeqOV9tAtFviP8ux+9kiISRoT4bYANkPnX5Ojsc4PINoBu0fJkRlIOb2ckNWrDW6jz98w==
   dependencies:
     axios "^0.24.0"
     clean-deep "^3.4.0"
